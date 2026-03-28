@@ -16,12 +16,15 @@ const PORT = process.env.PORT || 5000;
 connectDB();
 
 // Middleware
+import cors from "cors";
+
 app.use(
   cors({
-    origin:
-      process.env.CLIENT_URL ||
-      "http://localhost:5173" ||
+    origin: [
+      "http://localhost:5173",
       "https://portfolio-weld-eight-88.vercel.app",
+    ],
+    methods: ["GET", "POST", "PUT", "DELETE"],
     credentials: true,
   }),
 );
