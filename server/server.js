@@ -1,5 +1,6 @@
 const express = require("express");
 const cors = require("cors");
+const fs = require("fs");
 const path = require("path");
 const { connectDB } = require("./config/db");
 const { loadEnv } = require("./config/env");
@@ -57,13 +58,22 @@ app.get("/api/health", (req, res) => {
 
 // Serve client build in production and handle client-side routing
 if (process.env.NODE_ENV === "production") {
-  app.use(express.static(path.join(__dirname, "..", "client", "dist")));
+  const clientDistPath = path.join(__dirname, "..", "client", "dist");
+  if (fs.existsSync(clientDistPath)) {
+    app.use(express.static(clientDistPath));
 
-  app.get("*", (req, res) => {
-    if (req.originalUrl.startsWith("/api"))
-      return res.status(404).json({ message: "Not Found" });
-    res.sendFile(path.join(__dirname, "..", "client", "dist", "index.html"));
-  });
+    app.get("*", (req, res) => {
+      if (req.originalUrl.startsWith("/api"))
+        return res.status(404).json({ message: "Not Found" });
+      res.sendFile(path.join(clientDistPath, "index.html"));
+    });
+  } else {
+    console.warn(
+      "⚠️ Client build directory not found:",
+      clientDistPath,
+      "- skipping static file serving",
+    );
+  }
 }
 
 // Error handling
