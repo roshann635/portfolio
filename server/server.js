@@ -31,7 +31,12 @@ app.use(
         return callback(null, true);
       }
 
-      return callback(new Error("Not allowed by CORS"));
+      if (origin.includes(".vercel.app")) {
+        return callback(null, true);
+      }
+
+      console.log("Blocked by CORS:", origin);
+      return callback(null, false);
     },
     credentials: true,
   }),
