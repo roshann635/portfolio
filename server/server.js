@@ -18,12 +18,23 @@ connectDB();
 // Middleware
 import cors from "cors";
 
+const allowedOrigins = [
+  "http://localhost:5173",
+  "https://portfolio-weld-eight-88.vercel.app",
+];
+
 app.use(
   cors({
-    origin: [
-      "http://localhost:5173",
-      "https://portfolio-weld-eight-88.vercel.app",
-    ],
+    origin: function (origin, callback) {
+      // allow requests with no origin (like Postman)
+      if (!origin) return callback(null, true);
+
+      if (allowedOrigins.includes(origin)) {
+        callback(null, true);
+      } else {
+        callback(new Error("CORS not allowed"));
+      }
+    },
     methods: ["GET", "POST", "PUT", "DELETE"],
     credentials: true,
   }),
