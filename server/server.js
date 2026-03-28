@@ -16,7 +16,6 @@ const PORT = process.env.PORT || 5000;
 connectDB();
 
 // Middleware
-import cors from "cors";
 
 const allowedOrigins = [
   "http://localhost:5173",
@@ -25,17 +24,15 @@ const allowedOrigins = [
 
 app.use(
   cors({
-    origin: function (origin, callback) {
-      // allow requests with no origin (like Postman)
+    origin: (origin, callback) => {
       if (!origin) return callback(null, true);
 
       if (allowedOrigins.includes(origin)) {
-        callback(null, true);
-      } else {
-        callback(new Error("CORS not allowed"));
+        return callback(null, true);
       }
+
+      return callback(new Error("Not allowed by CORS"));
     },
-    methods: ["GET", "POST", "PUT", "DELETE"],
     credentials: true,
   }),
 );
