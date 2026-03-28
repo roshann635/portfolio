@@ -1,0 +1,84 @@
+/* Auth */
+.admin-auth {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 80vh;
+}
+
+.admin-auth__card {
+  max-width: 440px;
+  margin: 0 auto;
+  padding: var(--space-2xl);
+  text-align: center;
+}
+
+.admin-auth__card h2 { margin-bottom: var(--space-sm); }
+.admin-auth__card > p { margin-bottom: var(--space-xl); font-size: var(--fs-sm); }
+
+.admin-auth__form {
+  text-align: left;
+}
+
+.admin-auth__form .btn { width: 100%; margin-top: var(--space-sm); }
+
+.admin-auth__switch {
+  margin-top: var(--space-lg);
+  font-size: var(--fs-sm);
+  color: var(--text-muted);
+}
+
+.admin-auth__switch button {
+  background: none;
+  border: none;
+  color: var(--accent-primary);
+  font-weight: 600;
+  cursor: pointer;
+}
+
+/* Dashboard Layout */
+.admin__header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: var(--space-2xl);
+  flex-wrap: wrap;
+  gap: var(--space-md);
+}
+
+.admin__header-actions {
+  display: flex;
+  align-items: center;
+  gap: var(--space-md);
+}
+
+.admin__tabs {
+  display: flex;
+  gap: var(--space-sm);
+  margin-bottom: var(--space-2xl);
+  border-bottom: 1px solid var(--border-color);
+  padding-bottom: var(--space-sm);
+}
+
+.admin__tab {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  padding: 10px 20px;
+  background: none;
+  border: none;
+  color: var(--text-secondary);
+  font-size: var(--fs-sm);
+  font-weight: 500;
+  cursor: pointer;
+  border-radius: var(--radius-sm) var(--radius-sm) 0 0;
+  transition: all var(--transition-fast);
+}
+
+.admin__tab:hover { color: var(--text-heading); background: rgba(var(--accent-primary-rgb), 0.05); }
+
+.admin__tab--active {
+  color: var(--accent-primary);
+  background: rgba(var(--accent-primary-rgb), 0.1);
+  border-bottom: 2px solid var(--accent-primary);
+}

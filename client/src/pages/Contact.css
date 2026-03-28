@@ -1,0 +1,96 @@
+.contact-page__grid {
+  display: grid;
+  grid-template-columns: 1fr 1.5fr;
+  gap: var(--space-2xl);
+  align-items: start;
+}
+
+.contact-page__details {
+  padding: var(--space-2xl);
+}
+
+.contact-page__details h3 { margin-bottom: var(--space-sm); }
+.contact-page__details > p { margin-bottom: var(--space-xl); font-size: var(--fs-sm); }
+
+.contact-page__info-list {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-lg);
+  margin-bottom: var(--space-2xl);
+}
+
+.contact-page__info-item {
+  display: flex;
+  align-items: center;
+  gap: var(--space-md);
+}
+
+.contact-page__info-icon {
+  width: 44px;
+  height: 44px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: rgba(var(--accent-primary-rgb), 0.1);
+  border-radius: var(--radius-sm);
+  color: var(--accent-primary);
+  font-size: var(--fs-lg);
+}
+
+.contact-page__info-label {
+  display: block;
+  font-size: var(--fs-xs);
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  color: var(--text-muted);
+  margin-bottom: 2px;
+}
+
+.contact-page__info-value {
+  font-size: var(--fs-sm);
+  font-weight: 500;
+  color: var(--text-primary);
+}
+
+a.contact-page__info-value:hover { color: var(--accent-primary); }
+
+.contact-page__socials h4 {
+  font-size: var(--fs-sm);
+  color: var(--text-muted);
+  margin-bottom: var(--space-md);
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  font-weight: 600;
+}
+
+.contact-page__social-links {
+  display: flex;
+  gap: var(--space-md);
+}
+
+.contact-page__social-link {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 44px;
+  height: 44px;
+  border-radius: var(--radius-sm);
+  background: var(--bg-tertiary);
+  color: var(--text-secondary);
+  font-size: var(--fs-lg);
+  border: 1px solid transparent;
+  transition: all var(--transition-fast);
+}
+
+.contact-page__social-link:hover {
+  color: var(--accent-primary);
+  border-color: var(--accent-primary);
+  transform: translateY(-3px);
+  box-shadow: var(--shadow-glow);
+}
+
+@media (max-width: 768px) {
+  .contact-page__grid {
+    grid-template-columns: 1fr;
+  }
+}

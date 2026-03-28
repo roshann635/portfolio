@@ -1,0 +1,105 @@
+.resume-page__actions {
+  text-align: center;
+  margin-bottom: var(--space-2xl);
+}
+
+.resume-page__content {
+  max-width: 800px;
+  margin: 0 auto;
+}
+
+.resume-page__header {
+  padding: var(--space-2xl);
+  text-align: center;
+  margin-bottom: var(--space-2xl);
+}
+
+.resume-page__header h2 { margin-bottom: var(--space-xs); }
+.resume-page__header-role {
+  color: var(--accent-secondary);
+  font-weight: 600;
+  margin-bottom: var(--space-sm);
+}
+.resume-page__header p { font-size: var(--fs-sm); }
+
+.resume-page__section {
+  margin-bottom: var(--space-2xl);
+}
+
+.resume-page__section-title {
+  display: flex;
+  align-items: center;
+  gap: var(--space-sm);
+  font-size: var(--fs-xl);
+  padding-bottom: var(--space-md);
+  border-bottom: 2px solid var(--border-color);
+  margin-bottom: var(--space-xl);
+  color: var(--accent-primary);
+}
+
+.resume-page__item {
+  margin-bottom: var(--space-xl);
+  padding-left: var(--space-lg);
+  border-left: 2px solid var(--border-color);
+}
+
+.resume-page__item-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  margin-bottom: var(--space-sm);
+}
+
+.resume-page__item h4 { margin-bottom: 2px; }
+
+.resume-page__item-company {
+  color: var(--accent-secondary);
+  font-size: var(--fs-sm);
+  font-weight: 600;
+}
+
+.resume-page__item-date {
+  font-size: var(--fs-xs);
+  color: var(--text-muted);
+  white-space: nowrap;
+  margin-left: var(--space-md);
+}
+
+.resume-page__item-desc {
+  font-size: var(--fs-sm);
+}
+
+.resume-page__skills {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: var(--space-xl);
+}
+
+.resume-page__skill-group h5 {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  margin-bottom: var(--space-md);
+  font-size: var(--fs-sm);
+}
+
+.resume-page__skill-tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+}
+
+.resume-page__skill-tag {
+  padding: 4px 12px;
+  background: var(--bg-tertiary);
+  border-radius: var(--radius-full);
+  font-size: var(--fs-xs);
+  color: var(--text-secondary);
+  border: 1px solid var(--border-color);
+}
+
+@media (max-width: 600px) {
+  .resume-page__item-header { flex-direction: column; }
+  .resume-page__item-date { margin-left: 0; margin-top: 4px; }
+  .resume-page__skills { grid-template-columns: 1fr; }
+}

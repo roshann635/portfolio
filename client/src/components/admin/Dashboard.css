@@ -1,0 +1,90 @@
+.dashboard__stats {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: var(--space-lg);
+  margin-bottom: var(--space-2xl);
+}
+
+.dashboard__stat {
+  display: flex;
+  align-items: center;
+  gap: var(--space-lg);
+  padding: var(--space-xl);
+}
+
+.dashboard__stat-icon { font-size: var(--fs-2xl); }
+.dashboard__stat h3 { font-size: var(--fs-2xl); margin-bottom: 2px; }
+.dashboard__stat p { font-size: var(--fs-sm); color: var(--text-muted); }
+
+.dashboard__section {
+  margin-bottom: var(--space-2xl);
+}
+
+.dashboard__section h3 {
+  margin-bottom: var(--space-lg);
+  font-size: var(--fs-xl);
+}
+
+.dashboard__messages,
+.dashboard__projects {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-md);
+}
+
+.dashboard__message {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  padding: var(--space-lg);
+}
+
+.dashboard__message--unread {
+  border-left: 3px solid var(--accent-secondary);
+}
+
+.dashboard__message-info strong { display: block; margin-bottom: 4px; }
+.dashboard__message-info span { font-size: var(--fs-sm); color: var(--accent-primary); }
+.dashboard__message-info p { font-size: var(--fs-sm); color: var(--text-secondary); margin-top: 4px; }
+.dashboard__message-body { max-width: 500px; }
+
+.dashboard__message-actions {
+  display: flex;
+  gap: var(--space-sm);
+}
+
+.dashboard__message-actions button,
+.dashboard__project button {
+  background: none;
+  border: 1px solid var(--border-color);
+  color: var(--text-secondary);
+  padding: 8px;
+  border-radius: var(--radius-sm);
+  cursor: pointer;
+  transition: all var(--transition-fast);
+}
+
+.dashboard__message-actions button:hover,
+.dashboard__project button:hover {
+  color: var(--accent-primary);
+  border-color: var(--accent-primary);
+}
+
+.dashboard__message-actions button.danger:hover,
+.dashboard__project button.danger:hover {
+  color: var(--accent-danger);
+  border-color: var(--accent-danger);
+}
+
+.dashboard__project {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: var(--space-md) var(--space-lg);
+}
+
+.dashboard__empty {
+  text-align: center;
+  padding: var(--space-xl);
+  color: var(--text-muted);
+}
