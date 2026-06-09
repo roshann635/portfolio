@@ -14,10 +14,7 @@ import {
 import Button from "../components/common/Button";
 import ProjectCard from "../components/project/ProjectCard";
 import ScrollReveal from "../components/common/ScrollReveal";
-import {
-  PROFILE,
-  PLACEHOLDER_PROJECTS,
-} from "../utils/constants";
+import { PROFILE, PLACEHOLDER_PROJECTS } from "../utils/constants";
 import useFetch from "../hooks/useFetch";
 import "./Home.css";
 
@@ -59,13 +56,16 @@ const Home = () => {
       setIsDeleting(false);
       setRoleIndex((prev) => (prev + 1) % PROFILE.roles.length);
     } else {
-      timeout = setTimeout(() => {
-        setDisplayText(
-          isDeleting
-            ? currentRole.substring(0, displayText.length - 1)
-            : currentRole.substring(0, displayText.length + 1)
-        );
-      }, isDeleting ? 50 : 100);
+      timeout = setTimeout(
+        () => {
+          setDisplayText(
+            isDeleting
+              ? currentRole.substring(0, displayText.length - 1)
+              : currentRole.substring(0, displayText.length + 1),
+          );
+        },
+        isDeleting ? 50 : 100,
+      );
     }
     return () => clearTimeout(timeout);
   }, [displayText, isDeleting, roleIndex]);
@@ -74,13 +74,24 @@ const Home = () => {
   useEffect(() => {
     const timer = setTimeout(() => {
       gsap.to(".split-char", {
-        opacity: 1, y: 0, filter: "blur(0px)",
-        duration: 1.2, stagger: 0.025, ease: "power3.inOut",
+        opacity: 1,
+        y: 0,
+        filter: "blur(0px)",
+        duration: 1.2,
+        stagger: 0.025,
+        ease: "power3.inOut",
       });
       gsap.fromTo(
         ".hero-subtitle, .hero-actions, .icons-section, .hero-stats-row",
         { opacity: 0, y: 20 },
-        { opacity: 1, y: 0, duration: 1.0, ease: "power1.inOut", delay: 0.6, stagger: 0.1 }
+        {
+          opacity: 1,
+          y: 0,
+          duration: 1.0,
+          ease: "power1.inOut",
+          delay: 0.6,
+          stagger: 0.1,
+        },
       );
     }, 300);
     return () => clearTimeout(timer);
@@ -97,7 +108,11 @@ const Home = () => {
         invalidateOnRefresh: true,
       },
     });
-    tl1.to(".landing-container", { opacity: 0, y: -120, duration: 1, ease: "power2.in" }, 0);
+    tl1.to(
+      ".landing-container",
+      { opacity: 0, y: -120, duration: 1, ease: "power2.in" },
+      0,
+    );
 
     const tl2 = gsap.timeline({
       scrollTrigger: {
@@ -107,7 +122,11 @@ const Home = () => {
         scrub: 1.5,
       },
     });
-    tl2.fromTo(".featured-section", { y: 100, opacity: 0 }, { y: 0, opacity: 1, ease: "power3.out" });
+    tl2.fromTo(
+      ".featured-section",
+      { y: 100, opacity: 0 },
+      { y: 0, opacity: 1, ease: "power3.out" },
+    );
 
     return () => {
       tl1.kill();
@@ -121,9 +140,23 @@ const Home = () => {
       {/* Fixed social icons */}
       <div className="icons-section">
         <div className="social-icons">
-          <a href="https://github.com/roshann635" target="_blank" rel="noreferrer"><FaGithub /></a>
-          <a href="https://www.linkedin.com/in/roshan-jadhav-100410339" target="_blank" rel="noreferrer"><FaLinkedin /></a>
-          <Link to="/contact"><FaEnvelope /></Link>
+          <a
+            href="https://github.com/roshann635"
+            target="_blank"
+            rel="noreferrer"
+          >
+            <FaGithub />
+          </a>
+          <a
+            href="https://www.linkedin.com/in/roshan-jadhav-100410339"
+            target="_blank"
+            rel="noreferrer"
+          >
+            <FaLinkedin />
+          </a>
+          <Link to="/contact">
+            <FaEnvelope />
+          </Link>
         </div>
       </div>
 
@@ -153,7 +186,7 @@ const Home = () => {
 
           {/* Typewriter subtitle */}
           <p className="hero-subtitle">
-            <span className="hero-role-prefix">I build </span>
+            <span className="hero-role-prefix">I am a </span>
             <span className="hero-role-dynamic">{displayText}</span>
             <span className="hero__cursor">|</span>
           </p>
@@ -164,12 +197,22 @@ const Home = () => {
           {/* CTA buttons */}
           <div className="hero-actions">
             <Button variant="primary" size="lg" icon={<FaArrowRight />}>
-              <Link to="/projects" style={{ color: "#050608", textDecoration: "none", fontWeight: 600 }}>
+              <Link
+                to="/projects"
+                style={{
+                  color: "#050608",
+                  textDecoration: "none",
+                  fontWeight: 600,
+                }}
+              >
                 View Projects
               </Link>
             </Button>
             <Button variant="secondary" size="lg" icon={<FaEnvelope />}>
-              <Link to="/contact" style={{ color: "inherit", textDecoration: "none" }}>
+              <Link
+                to="/contact"
+                style={{ color: "inherit", textDecoration: "none" }}
+              >
                 Contact Me
               </Link>
             </Button>
@@ -228,7 +271,10 @@ const Home = () => {
           <ScrollReveal direction="up" delay={0.3} distance={30}>
             <div className="home__projects-cta">
               <Button variant="secondary" size="md" icon={<FaArrowRight />}>
-                <Link to="/projects" style={{ color: "inherit", textDecoration: "none" }}>
+                <Link
+                  to="/projects"
+                  style={{ color: "inherit", textDecoration: "none" }}
+                >
                   View All Quests
                 </Link>
               </Button>

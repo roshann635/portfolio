@@ -53,7 +53,7 @@ export const PROFILE = {
   email: "roshanjadhav4385@gmail.com",
   avatar: "",
   stats: {
-    projects: 10,
+    projects: 12,
   },
 };
 
