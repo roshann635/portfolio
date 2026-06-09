@@ -1,0 +1,67 @@
+/* ============================================
+   PAGE LOADER — Cinematic intro screen
+   ============================================ */
+
+.page-loader {
+  position: fixed;
+  inset: 0;
+  z-index: 99999;
+  background: #050608;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+}
+
+.page-loader__content {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 16px;
+  z-index: 2;
+}
+
+.page-loader__counter {
+  font-family: 'Space Grotesk', sans-serif;
+  font-size: clamp(3rem, 8vw, 6rem);
+  font-weight: 700;
+  letter-spacing: 4px;
+  background: linear-gradient(135deg, #00ffcc 0%, #bc13fe 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+.page-loader__label {
+  font-family: 'Inter', sans-serif;
+  font-size: 0.85rem;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: #64748b;
+}
+
+.page-loader__bar {
+  width: 200px;
+  height: 2px;
+  background: rgba(255, 255, 255, 0.08);
+  border-radius: 999px;
+  overflow: hidden;
+  margin-top: 8px;
+}
+
+.page-loader__bar-fill {
+  height: 100%;
+  background: linear-gradient(90deg, #00ffcc, #bc13fe);
+  border-radius: 999px;
+  transition: width 0.1s linear;
+  box-shadow: 0 0 12px rgba(0, 255, 204, 0.5);
+}
+
+.page-loader__circle {
+  position: absolute;
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  background: #050608;
+  z-index: 1;
+}

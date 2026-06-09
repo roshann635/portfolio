@@ -75,6 +75,80 @@ export const PLACEHOLDER_SKILLS = [
 export const PLACEHOLDER_PROJECTS = [
   {
     _id: "1",
+    title: "CodeForge - DSA Learning Platform",
+    description:
+      "A web platform that provides interactive coding challenges, tutorials, and a community forum for learning data structures and algorithms, with features like code editor, progress tracking, and peer discussions, and video proctoring for coding interviews.",
+    techStack: [
+      "React",
+      "Node.js",
+      "MongoDB",
+      "JWT",
+      "Tailwind CSS",
+      "Express.js",
+      "API Integration",
+      "Video Proctoring",
+    ],
+    category: "web",
+    featured: true,
+    liveUrl: "https://codeforge-eta.vercel.app/",
+    githubUrl: "https://github.com/roshann635/CodeForge",
+    image: "",
+  },
+
+  {
+    _id: "2",
+    title: "Skill_Swap - A Peer-to-Peer Learning Platform",
+    description:
+      "A web platform that connects people for Learning new skills, collaborating on projects, and sharing knowledge in a community-driven environment.specifically designed for peer-to-peer learning and skill exchange, with features like user profiles, skill listings, messaging, and project collaboration tools. made for college campus students to connect, learn, and grow together.",
+    techStack: [
+      "React",
+      "Java",
+      "Spring Boot",
+      "MongoDB",
+      "Socket.io",
+      "JWT",
+      "Tailwind CSS",
+    ],
+    category: "web",
+    featured: true,
+    liveUrl: "https://skill-swap-rose-mu.vercel.app/",
+    githubUrl: "https://github.com/roshann635/Skill_Swap",
+    image: "",
+  },
+  {
+    _id: "3",
+    title: "Samvaad - Chat App",
+    description: "A web platform that connects people for chatting",
+    techStack: [
+      "React",
+      "Node.js",
+      "MongoDB",
+      "Socket.io",
+      "JWT",
+      "Tailwind CSS",
+      "Express.js",
+    ],
+    category: "web",
+    featured: true,
+    liveUrl: "https://samvaad-where-conversations-come-al.vercel.app/",
+    githubUrl:
+      "https://github.com/roshann635/Samvaad-Where-conversations-come-alive",
+    image: "",
+  },
+  {
+    _id: "4",
+    title: "Portfolio Website",
+    description:
+      "A personal portfolio website built with React and Tailwind CSS to showcase projects, skills, and experience, with a responsive design and smooth animations.MongoDB is used to store data and contact form submissions.",
+    techStack: ["React", "Node.js", "Express.js", "MongoDB"],
+    category: "web",
+    featured: true,
+    liveUrl: "https://portfolio-weld-eight-88.vercel.app/",
+    githubUrl: "https://github.com/roshann635/portfolio",
+    image: "",
+  },
+  {
+    _id: "5",
     title: "SevaSetu--A-platform-connecting-NGO-S-Donors-Volunteer",
     description:
       "A web platform that connects NGOs, donors, and volunteers to facilitate social impact projects and community support.",
@@ -82,23 +156,12 @@ export const PLACEHOLDER_PROJECTS = [
     category: "web",
     featured: true,
     liveUrl: "#",
-    githubUrl: "#",
+    githubUrl:
+      "https://github.com/roshann635/SevaSetu--A-platform-connecting-NGO-S-Donors-Volunteer",
     image: "",
   },
   {
-    _id: "2",
-    title: "E-Commerce Platform",
-    description:
-      "A full-featured e-commerce platform with cart, payments, and admin dashboard built with MERN stack.",
-    techStack: ["React", "Node.js", "MongoDB"],
-    category: "web",
-    featured: true,
-    liveUrl: "#",
-    githubUrl: "#",
-    image: "",
-  },
-  {
-    _id: "3",
+    _id: "6",
     title: "AI Chat Assistant",
     description:
       "An intelligent chatbot powered by GPT with real-time streaming, conversation history, and custom training.",
@@ -110,7 +173,7 @@ export const PLACEHOLDER_PROJECTS = [
     image: "",
   },
   {
-    _id: "4",
+    _id: "7",
     title: "Task Manager Pro",
     description:
       "A collaborative project management tool with Kanban boards, team features, and real-time updates.",
@@ -123,20 +186,7 @@ export const PLACEHOLDER_PROJECTS = [
   },
 
   {
-    _id: "5",
-    title: "Portfolio CMS",
-    description:
-      "A headless CMS specifically designed for developer portfolios with markdown support and API generation.",
-    techStack: ["Node.js", "Express", "MongoDB", "React"],
-    category: "web",
-    featured: false,
-    liveUrl: "#",
-    githubUrl: "#",
-    image: "",
-  },
-
-  {
-    _id: "6",
+    _id: "8",
     title: "Graph_Plotter-using-graphics",
     description:
       "A simple graph plotting application using HTML5 Canvas and JavaScript.",
@@ -144,12 +194,12 @@ export const PLACEHOLDER_PROJECTS = [
     category: "other",
     featured: false,
     liveUrl: "#",
-    githubUrl: "#",
+    githubUrl: "https://github.com/roshann635/Graph_Plotter-using-graphics",
     image: "",
   },
 
   {
-    _id: "7",
+    _id: "9",
     title: "AlgoNova : DSA Visualizer",
     description:
       "A web app that visualizes data structures and algorithms with interactive animations.",
@@ -162,7 +212,7 @@ export const PLACEHOLDER_PROJECTS = [
   },
 
   {
-    _id: "8",
+    _id: "10",
     title: "ProtectHer",
     description:
       "A safety app for women that shares real-time location with trusted contacts and has an emergency alert feature.",
@@ -170,12 +220,12 @@ export const PLACEHOLDER_PROJECTS = [
     category: "web",
     featured: false,
     liveUrl: "#",
-    githubUrl: "#",
+    githubUrl: "https://github.com/roshann635/protectHer",
     image: "",
   },
 
   {
-    _id: "9",
+    _id: "11",
     title: "energy-wise-companion",
     description:
       "A web app that helps users track and reduce their energy consumption with personalized tips and analytics.",
@@ -188,7 +238,7 @@ export const PLACEHOLDER_PROJECTS = [
   },
 
   {
-    _id: "10",
+    _id: "12",
     title: "sheCityAI",
     description:
       "An AI-powered platform for women safety that provides real-time alerts, location sharing, and community support features.",

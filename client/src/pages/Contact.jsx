@@ -4,11 +4,11 @@ import {
   FaMapMarkerAlt,
   FaGithub,
   FaLinkedin,
-  FaTwitter,
   FaInstagram,
 } from "react-icons/fa";
 import ContactForm from "../components/contact/ContactForm";
 import { PROFILE } from "../utils/constants";
+import ScrollReveal from "../components/common/ScrollReveal";
 import "./Contact.css";
 
 const Contact = () => {
@@ -56,71 +56,76 @@ const Contact = () => {
       style={{ paddingTop: "calc(var(--nav-height) + var(--space-3xl))" }}
     >
       <div className="container">
-        <div className="section-title">
-          <h2>Get In Touch</h2>
-          <p>Have a quest for me? Let's talk!</p>
-        </div>
+        <ScrollReveal direction="up" distance={40} duration={0.8}>
+          <div className="section-title">
+            <h2>Get In Touch</h2>
+            <p>Have a quest for me? Let's talk!</p>
+          </div>
+        </ScrollReveal>
 
         <div className="contact-page__grid">
-          <div className="contact-page__info">
-            <motion.div
-              className="contact-page__details glass-card"
-              initial={{ opacity: 0, x: -30 }}
-              whileInView={{ opacity: 1, x: 0 }}
-              viewport={{ once: true }}
-            >
-              <h3>Let's Connect</h3>
-              <p>
-                I'm always open to discussing new projects, creative ideas, or
-                opportunities to be part of your vision.
-              </p>
+          <ScrollReveal direction="left" distance={50} delay={0.1}>
+            <div className="contact-page__info">
+              <motion.div
+                className="contact-page__details glass-card"
+                whileHover={{ y: -4, boxShadow: "0 0 30px rgba(0, 255, 204, 0.12)" }}
+                transition={{ duration: 0.3 }}
+              >
+                <h3>Let's Connect</h3>
+                <p>
+                  I'm always open to discussing new projects, creative ideas, or
+                  opportunities to be part of your vision.
+                </p>
 
-              <div className="contact-page__info-list">
-                {contactInfo.map((item) => (
-                  <div key={item.label} className="contact-page__info-item">
-                    <div className="contact-page__info-icon">{item.icon}</div>
-                    <div>
-                      <span className="contact-page__info-label">
-                        {item.label}
-                      </span>
-                      {item.href ? (
-                        <a
-                          href={item.href}
-                          className="contact-page__info-value"
-                        >
-                          {item.value}
-                        </a>
-                      ) : (
-                        <span className="contact-page__info-value">
-                          {item.value}
+                <div className="contact-page__info-list">
+                  {contactInfo.map((item) => (
+                    <div key={item.label} className="contact-page__info-item">
+                      <div className="contact-page__info-icon">{item.icon}</div>
+                      <div>
+                        <span className="contact-page__info-label">
+                          {item.label}
                         </span>
-                      )}
+                        {item.href ? (
+                          <a
+                            href={item.href}
+                            className="contact-page__info-value"
+                          >
+                            {item.value}
+                          </a>
+                        ) : (
+                          <span className="contact-page__info-value">
+                            {item.value}
+                          </span>
+                        )}
+                      </div>
                     </div>
-                  </div>
-                ))}
-              </div>
-
-              <div className="contact-page__socials">
-                <h4>Find me online</h4>
-                <div className="contact-page__social-links">
-                  {socials.map((s) => (
-                    <a
-                      key={s.label}
-                      href={s.url}
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      className="contact-page__social-link"
-                      aria-label={s.label}
-                    >
-                      {s.icon}
-                    </a>
                   ))}
                 </div>
-              </div>
-            </motion.div>
-          </div>
 
-          <ContactForm />
+                <div className="contact-page__socials">
+                  <h4>Find me online</h4>
+                  <div className="contact-page__social-links">
+                    {socials.map((s) => (
+                      <a
+                        key={s.label}
+                        href={s.url}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="contact-page__social-link"
+                        aria-label={s.label}
+                      >
+                        {s.icon}
+                      </a>
+                    ))}
+                  </div>
+                </div>
+              </motion.div>
+            </div>
+          </ScrollReveal>
+
+          <ScrollReveal direction="right" distance={50} delay={0.2}>
+            <ContactForm />
+          </ScrollReveal>
         </div>
       </div>
     </div>

@@ -1,0 +1,59 @@
+.animated-bg {
+  position: fixed;
+  inset: 0;
+  width: 100vw;
+  height: 100vh;
+  background-color: var(--bg-primary, #0a0a0a);
+  z-index: -10;
+  overflow: hidden;
+  pointer-events: none;
+}
+
+.bg-blob {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 600px;
+  height: 600px;
+  border-radius: 50%;
+  filter: blur(120px);
+  will-change: transform, opacity;
+}
+
+.blob-cyan {
+  background: var(--accent-cyan-glow, rgba(0, 255, 204, 0.4));
+  margin-left: -500px;
+  margin-top: -400px;
+}
+
+.blob-purple {
+  background: var(--accent-purple-glow, rgba(188, 19, 254, 0.3));
+  margin-left: 200px;
+  margin-top: -100px;
+}
+
+.blob-cyan-2 {
+  background: var(--accent-cyan-glow, rgba(0, 255, 204, 0.2));
+  margin-left: -200px;
+  margin-top: 300px;
+  width: 800px;
+  height: 800px;
+}
+
+.bg-noise-overlay {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.65' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)'/%3E%3C/svg%3E");
+  opacity: 0.05;
+  mix-blend-mode: overlay;
+  pointer-events: none;
+}
+
+@media (max-width: 768px) {
+  .bg-blob {
+    width: 300px;
+    height: 300px;
+  }
+}

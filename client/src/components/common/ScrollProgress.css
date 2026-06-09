@@ -1,0 +1,72 @@
+.scroll-progress-container {
+  position: fixed;
+  right: 2rem;
+  top: 50%;
+  transform: translateY(-50%);
+  height: 250px;
+  width: 40px;
+  z-index: 1000;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  pointer-events: none;
+}
+
+.scroll-progress-track {
+  position: absolute;
+  height: 100%;
+  width: 2px;
+  background-color: var(--border-light, rgba(255, 255, 255, 0.1));
+  border-radius: 4px;
+  overflow: hidden;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+}
+
+.scroll-progress-bar {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 100%;
+  background: linear-gradient(to bottom, var(--accent-cyan, #00ffcc), var(--accent-purple, #bc13fe));
+  transform-origin: top;
+  box-shadow: 0 0 15px rgba(0, 255, 204, 0.6);
+}
+
+.scroll-progress-dots {
+  position: absolute;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0;
+}
+
+.scroll-progress-dot {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: var(--bg-secondary, #1a1a1a);
+  border: 2px solid var(--border-light, rgba(255, 255, 255, 0.2));
+  transition: all 0.3s ease;
+  z-index: 10;
+}
+
+.scroll-progress-dot:hover {
+  border-color: var(--accent-cyan, #00ffcc);
+  box-shadow: 0 0 8px var(--accent-cyan, #00ffcc);
+}
+
+@media (max-width: 768px) {
+  .scroll-progress-container {
+    right: 1rem;
+    height: 150px;
+  }
+  
+  .scroll-progress-dot {
+    width: 6px;
+    height: 6px;
+  }
+}

@@ -1,29 +1,47 @@
-import { useState, useEffect, useMemo } from "react";
+import { useState, useEffect, useRef } from "react";
 import { Link } from "react-router-dom";
-import { motion } from "framer-motion";
+import gsap from "gsap";
+import { ScrollTrigger } from "gsap/ScrollTrigger";
 import {
   FaArrowRight,
+  FaGithub,
+  FaLinkedin,
+  FaEnvelope,
   FaCode,
-  FaBriefcase,
-  FaUsers,
-  FaCoffee,
+  FaServer,
+  FaDatabase,
 } from "react-icons/fa";
 import Button from "../components/common/Button";
 import ProjectCard from "../components/project/ProjectCard";
+import ScrollReveal from "../components/common/ScrollReveal";
 import {
   PROFILE,
   PLACEHOLDER_PROJECTS,
-  PLACEHOLDER_SKILLS,
 } from "../utils/constants";
-import { generateParticles } from "../utils/helpers";
 import useFetch from "../hooks/useFetch";
 import "./Home.css";
+
+gsap.registerPlugin(ScrollTrigger);
+
+const SplitChars = ({ text, className = "" }) => (
+  <>
+    {text.split("").map((char, i) => (
+      <span
+        key={i}
+        className={`split-char ${className}`}
+        style={{ display: "inline-block", opacity: 0 }}
+      >
+        {char === " " ? "\u00A0" : char}
+      </span>
+    ))}
+  </>
+);
 
 const Home = () => {
   const [roleIndex, setRoleIndex] = useState(0);
   const [displayText, setDisplayText] = useState("");
   const [isDeleting, setIsDeleting] = useState(false);
-  const particles = useMemo(() => generateParticles(25), []);
+  const heroRef = useRef(null);
 
   const { data: dbProjects } = useFetch("/projects/featured");
   const featuredProjects =
@@ -31,172 +49,191 @@ const Home = () => {
       ? dbProjects
       : PLACEHOLDER_PROJECTS.filter((p) => p.featured);
 
-  // Typewriter effect
+  // Typewriter
   useEffect(() => {
     const currentRole = PROFILE.roles[roleIndex];
     let timeout;
-
     if (!isDeleting && displayText === currentRole) {
       timeout = setTimeout(() => setIsDeleting(true), 2000);
     } else if (isDeleting && displayText === "") {
-      // eslint-disable-next-line react-hooks/set-state-in-effect
       setIsDeleting(false);
       setRoleIndex((prev) => (prev + 1) % PROFILE.roles.length);
     } else {
-      timeout = setTimeout(
-        () => {
-          setDisplayText(
-            isDeleting
-              ? currentRole.substring(0, displayText.length - 1)
-              : currentRole.substring(0, displayText.length + 1),
-          );
-        },
-        isDeleting ? 50 : 100,
-      );
+      timeout = setTimeout(() => {
+        setDisplayText(
+          isDeleting
+            ? currentRole.substring(0, displayText.length - 1)
+            : currentRole.substring(0, displayText.length + 1)
+        );
+      }, isDeleting ? 50 : 100);
     }
-
     return () => clearTimeout(timeout);
   }, [displayText, isDeleting, roleIndex]);
 
-  const stats = [
-    {
-      icon: <FaCode />,
-      value: PROFILE.stats.projects,
-      label: "Projects",
-      color: "var(--accent-primary)",
-    },
-    // { icon: <FaBriefcase />, value: `${PROFILE.stats.experience} Yrs`, label: 'Experience', color: 'var(--accent-secondary)' },
-    // { icon: <FaUsers />, value: PROFILE.stats.clients, label: 'Clients', color: 'var(--accent-tertiary)' },
-    // { icon: <FaCoffee />, value: PROFILE.stats.coffee, label: 'Coffees', color: 'var(--accent-quaternary)' },
-  ];
+  // Entrance animations
+  useEffect(() => {
+    const timer = setTimeout(() => {
+      gsap.to(".split-char", {
+        opacity: 1, y: 0, filter: "blur(0px)",
+        duration: 1.2, stagger: 0.025, ease: "power3.inOut",
+      });
+      gsap.fromTo(
+        ".hero-subtitle, .hero-actions, .icons-section, .hero-stats-row",
+        { opacity: 0, y: 20 },
+        { opacity: 1, y: 0, duration: 1.0, ease: "power1.inOut", delay: 0.6, stagger: 0.1 }
+      );
+    }, 300);
+    return () => clearTimeout(timer);
+  }, []);
+
+  // Scroll parallax
+  useEffect(() => {
+    const tl1 = gsap.timeline({
+      scrollTrigger: {
+        trigger: ".landing-section",
+        start: "top top",
+        end: "bottom -20%",
+        scrub: 1.5,
+        invalidateOnRefresh: true,
+      },
+    });
+    tl1.to(".landing-container", { opacity: 0, y: -120, duration: 1, ease: "power2.in" }, 0);
+
+    const tl2 = gsap.timeline({
+      scrollTrigger: {
+        trigger: ".featured-section",
+        start: "top 80%",
+        end: "top 10%",
+        scrub: 1.5,
+      },
+    });
+    tl2.fromTo(".featured-section", { y: 100, opacity: 0 }, { y: 0, opacity: 1, ease: "power3.out" });
+
+    return () => {
+      tl1.kill();
+      tl2.kill();
+      ScrollTrigger.getAll().forEach((t) => t.kill());
+    };
+  }, []);
 
   return (
     <div className="home">
-      {/* Hero Section */}
-      <section className="hero">
-        <div className="particles">
-          {particles.map((p) => (
-            <div
-              key={p.id}
-              className="particle"
-              style={{
-                left: `${p.left}%`,
-                top: `${p.top}%`,
-                width: `${p.size}px`,
-                height: `${p.size}px`,
-                "--tx": p.tx,
-                "--ty": p.ty,
-                "--duration": p.duration,
-                "--delay": p.delay,
-              }}
-            />
-          ))}
+      {/* Fixed social icons */}
+      <div className="icons-section">
+        <div className="social-icons">
+          <a href="https://github.com/roshann635" target="_blank" rel="noreferrer"><FaGithub /></a>
+          <a href="https://www.linkedin.com/in/roshan-jadhav-100410339" target="_blank" rel="noreferrer"><FaLinkedin /></a>
+          <Link to="/contact"><FaEnvelope /></Link>
+        </div>
+      </div>
+
+      {/* ===== HERO SECTION ===== */}
+      <section className="landing-section" ref={heroRef}>
+        {/* Ambient background shapes */}
+        <div className="hero-ambient">
+          <div className="hero-glow hero-glow--1" />
+          <div className="hero-glow hero-glow--2" />
+          <div className="hero-grid-overlay" />
         </div>
 
-        <div className="hero__glow" />
+        <div className="landing-container">
+          {/* Status badge */}
+          <div className="hero-status-badge">
+            <span className="hero-status-dot" />
+            <span>Available for work</span>
+          </div>
 
-        <div className="container hero__content">
-          <motion.div
-            className="hero__text"
-            initial={{ opacity: 0, y: 40 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.8 }}
-          >
-            <span className="hero__greeting badge teal">
-              👋 Welcome to my digital realm
+          {/* Main headline */}
+          <h1 className="hero-headline">
+            <SplitChars text="Hi, I'm " />
+            <span className="split-char" style={{ display: "inline-block" }}>
+              <span className="hero-name-highlight">Roshan</span>
             </span>
-            <h1 className="hero__title">
-              Hi, I'm <span className="hero__name">{PROFILE.name}</span>
-            </h1>
-            <div className="hero__role">
-              <span className="hero__role-text">{displayText}</span>
-              <span className="hero__cursor">|</span>
-            </div>
-            <p className="hero__bio">{PROFILE.bio}</p>
-            <div className="hero__actions">
-              <Button variant="primary" size="lg" icon={<FaArrowRight />}>
-                <Link
-                  to="/projects"
-                  style={{ color: "inherit", textDecoration: "none" }}
-                >
-                  View Quests
-                </Link>
-              </Button>
-              <Button variant="secondary" size="lg">
-                <Link
-                  to="/contact"
-                  style={{ color: "inherit", textDecoration: "none" }}
-                >
-                  Contact Me
-                </Link>
-              </Button>
-            </div>
-          </motion.div>
+          </h1>
 
-          <motion.div
-            className="hero__visual"
-            initial={{ opacity: 0, scale: 0.8 }}
-            animate={{ opacity: 1, scale: 1 }}
-            transition={{ duration: 0.8, delay: 0.3 }}
-          >
-            <div className="hero__avatar-wrapper">
-              <div className="hero__avatar-ring" />
-              <div className="hero__avatar-ring hero__avatar-ring--2" />
-              <div className="hero__avatar">
-                <span className="hero__avatar-emoji">👨‍💻</span>
-              </div>
-            </div>
-            <div className="hero__level badge amber">Programmer</div>
-          </motion.div>
-        </div>
-      </section>
+          {/* Typewriter subtitle */}
+          <p className="hero-subtitle">
+            <span className="hero-role-prefix">I build </span>
+            <span className="hero-role-dynamic">{displayText}</span>
+            <span className="hero__cursor">|</span>
+          </p>
 
-      {/* Stats Section
-      <section className="home-stats">
-        <div className="container">
-          <div className="home-stats__grid">
-            {stats.map((stat, i) => (
-              <motion.div
-                key={stat.label}
-                className="home-stats__card glass-card"
-                initial={{ opacity: 0, y: 30 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true }}
-                transition={{ delay: i * 0.1, duration: 0.5 }}
-              >
-                <div className="home-stats__icon" style={{ color: stat.color }}>
-                  {stat.icon}
-                </div>
-                <h3 className="home-stats__value">{stat.value}</h3>
-                <p className="home-stats__label">{stat.label}</p>
-              </motion.div>
-            ))}
-          </div>
-        </div>
-      </section> */}
+          {/* Bio */}
+          <p className="hero-bio">{PROFILE.bio}</p>
 
-      {/* Featured Projects */}
-      <section className="section">
-        <div className="container">
-          <div className="section-title">
-            <h2>Featured Quests</h2>
-            <p>My most notable adventures in code</p>
-          </div>
-          <div className="home__projects-grid">
-            {featuredProjects.slice(0, 3).map((project, i) => (
-              <ProjectCard key={project._id} project={project} index={i} />
-            ))}
-          </div>
-          <div className="home__projects-cta">
-            <Button variant="secondary" size="md" icon={<FaArrowRight />}>
-              <Link
-                to="/projects"
-                style={{ color: "inherit", textDecoration: "none" }}
-              >
-                View All Quests
+          {/* CTA buttons */}
+          <div className="hero-actions">
+            <Button variant="primary" size="lg" icon={<FaArrowRight />}>
+              <Link to="/projects" style={{ color: "#050608", textDecoration: "none", fontWeight: 600 }}>
+                View Projects
+              </Link>
+            </Button>
+            <Button variant="secondary" size="lg" icon={<FaEnvelope />}>
+              <Link to="/contact" style={{ color: "inherit", textDecoration: "none" }}>
+                Contact Me
               </Link>
             </Button>
           </div>
+
+          {/* Quick stats row */}
+          <div className="hero-stats-row">
+            <div className="hero-stat-item">
+              <FaCode className="hero-stat-icon" />
+              <div>
+                <span className="hero-stat-number">15+</span>
+                <span className="hero-stat-label">Projects Built</span>
+              </div>
+            </div>
+            <div className="hero-stat-divider" />
+            <div className="hero-stat-item">
+              <FaServer className="hero-stat-icon" />
+              <div>
+                <span className="hero-stat-number">Full Stack</span>
+                <span className="hero-stat-label">MERN Specialist</span>
+              </div>
+            </div>
+            <div className="hero-stat-divider" />
+            <div className="hero-stat-item">
+              <FaDatabase className="hero-stat-icon" />
+              <div>
+                <span className="hero-stat-number">2+ Years</span>
+                <span className="hero-stat-label">Coding Experience</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* Gradient transition */}
+      <div className="scene-cut-transition" />
+
+      {/* ===== FEATURED PROJECTS ===== */}
+      <section className="section featured-section">
+        <div className="container">
+          <ScrollReveal direction="up" distance={50} duration={0.8}>
+            <div className="section-title">
+              <h2>Featured Quests</h2>
+              <p>My most notable adventures in code</p>
+            </div>
+          </ScrollReveal>
+
+          <div className="home__projects-grid">
+            {featuredProjects.slice(0, 3).map((project, i) => (
+              <div className="project-card-wrapper" key={project._id}>
+                <ProjectCard project={project} index={i} />
+              </div>
+            ))}
+          </div>
+
+          <ScrollReveal direction="up" delay={0.3} distance={30}>
+            <div className="home__projects-cta">
+              <Button variant="secondary" size="md" icon={<FaArrowRight />}>
+                <Link to="/projects" style={{ color: "inherit", textDecoration: "none" }}>
+                  View All Quests
+                </Link>
+              </Button>
+            </div>
+          </ScrollReveal>
         </div>
       </section>
     </div>

@@ -1,3 +1,7 @@
+/* ============================================
+   NAVBAR — Premium glassmorphism with hide/show
+   ============================================ */
+
 .navbar {
   position: fixed;
   top: 0;
@@ -5,15 +9,26 @@
   right: 0;
   z-index: 1000;
   padding: 0 0;
-  transition: all var(--transition-base);
+  transition: transform 0.4s cubic-bezier(0.22, 1, 0.36, 1),
+              background 0.3s ease,
+              border-color 0.3s ease,
+              box-shadow 0.3s ease;
   background: transparent;
 }
 
+/* Hide navbar on scroll down */
+.navbar--hidden {
+  transform: translateY(-100%);
+}
+
+/* Glassmorphism on scroll */
 .navbar--scrolled {
-  background: rgba(10, 14, 26, 0.85);
-  backdrop-filter: blur(var(--blur-md));
-  -webkit-backdrop-filter: blur(var(--blur-md));
-  border-bottom: 1px solid var(--border-color);
+  background: rgba(5, 6, 8, 0.75);
+  backdrop-filter: blur(20px) saturate(1.4);
+  -webkit-backdrop-filter: blur(20px) saturate(1.4);
+  border-bottom: 1px solid rgba(0, 255, 204, 0.08);
+  box-shadow: 0 4px 30px rgba(0, 0, 0, 0.3),
+              0 0 40px rgba(0, 255, 204, 0.03);
 }
 
 .navbar__container {
@@ -31,6 +46,11 @@
   align-items: center;
   gap: 2px;
   text-decoration: none;
+  transition: transform 0.3s ease;
+}
+
+.navbar__logo:hover {
+  transform: scale(1.05);
 }
 
 .navbar__logo-bracket {
@@ -57,30 +77,30 @@
   font-weight: 500;
   color: var(--text-secondary);
   text-decoration: none;
-  transition: all var(--transition-fast);
+  transition: all 0.25s ease;
   position: relative;
 }
 
 .navbar__link:hover {
   color: var(--text-heading);
-  background: rgba(var(--accent-primary-rgb), 0.1);
+  background: rgba(var(--accent-primary-rgb), 0.08);
 }
 
 .navbar__link--active {
   color: var(--accent-primary);
-  background: rgba(var(--accent-primary-rgb), 0.1);
 }
 
-.navbar__link--active::after {
-  content: '';
+/* Animated underline — slides between active links via layoutId */
+.navbar__link-underline {
   position: absolute;
   bottom: 2px;
   left: 50%;
   transform: translateX(-50%);
-  width: 20px;
+  width: 24px;
   height: 2px;
-  background: var(--accent-primary);
+  background: var(--gradient-primary);
   border-radius: var(--radius-full);
+  box-shadow: 0 0 8px rgba(var(--accent-primary-rgb), 0.5);
 }
 
 .navbar__link-icon {
@@ -93,17 +113,58 @@
   border: none;
   color: var(--text-heading);
   padding: 8px;
+  transition: transform 0.2s ease;
 }
 
-/* Mobile Menu */
+.navbar__toggle:hover {
+  transform: scale(1.1);
+}
+
+/* ---- XP Progress Bar with glow ---- */
+.xp-bar {
+  height: 2px;
+  background: rgba(255, 255, 255, 0.03);
+  position: fixed;
+  top: var(--nav-height);
+  left: 0;
+  right: 0;
+  z-index: 999;
+}
+
+.xp-bar-fill {
+  height: 100%;
+  background: var(--gradient-primary);
+  transition: width 0.15s linear;
+  box-shadow: 0 0 12px rgba(var(--accent-primary-rgb), 0.6),
+              0 0 4px rgba(var(--accent-primary-rgb), 0.3);
+  position: relative;
+}
+
+/* Glow dot at the end of the progress bar */
+.xp-bar-fill::after {
+  content: '';
+  position: absolute;
+  right: -3px;
+  top: -3px;
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: var(--accent-primary);
+  box-shadow: 0 0 10px var(--accent-primary),
+              0 0 20px var(--accent-primary);
+}
+
+/* ---- Mobile Menu ---- */
 .navbar__mobile {
   position: fixed;
   top: 0;
   right: 0;
   width: 280px;
   height: 100vh;
-  background: var(--bg-secondary);
-  border-left: 1px solid var(--border-color);
+  background: rgba(5, 6, 8, 0.95);
+  backdrop-filter: blur(24px);
+  -webkit-backdrop-filter: blur(24px);
+  border-left: 1px solid rgba(0, 255, 204, 0.1);
   z-index: 999;
   padding: calc(var(--nav-height) + var(--space-xl)) var(--space-xl) var(--space-xl);
   display: flex;
@@ -127,13 +188,13 @@
   font-weight: 500;
   color: var(--text-secondary);
   text-decoration: none;
-  transition: all var(--transition-fast);
+  transition: all 0.25s ease;
 }
 
 .navbar__mobile-link:hover,
 .navbar__mobile-link--active {
   color: var(--text-heading);
-  background: rgba(var(--accent-primary-rgb), 0.15);
+  background: rgba(var(--accent-primary-rgb), 0.12);
 }
 
 .navbar__mobile-xp {
