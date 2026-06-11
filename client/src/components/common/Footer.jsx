@@ -10,7 +10,6 @@ import {
 } from "react-icons/fa";
 import { SOCIAL_LINKS, NAV_LINKS } from "../../utils/constants";
 import { scrollToTop } from "../../utils/helpers";
-import ScrollReveal from "./ScrollReveal";
 import "./Footer.css";
 
 const iconMap = { FaGithub, FaLinkedin, FaTwitter, FaInstagram, FaEnvelope };
@@ -22,9 +21,8 @@ const Footer = () => {
     <footer className="footer">
       <div className="footer__glow" />
       <div className="container">
-        <ScrollReveal direction="up" distance={40} duration={0.8} threshold="95%">
-          <div className="footer__grid">
-            <div className="footer__brand">
+        <div className="footer__grid">
+          <div className="footer__brand">
               <span className="footer__logo">
                 <span className="footer__logo-bracket">&lt;</span>
                 Portfolio
@@ -75,7 +73,6 @@ const Footer = () => {
               </div>
             </div>
           </div>
-        </ScrollReveal>
 
         <div className="footer__bottom">
           <p>
