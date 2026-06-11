@@ -75,6 +75,32 @@
   background: var(--accent-danger);
 }
 
+/* ---- Retro Brutalist Cursor ---- */
+body.retro-theme .cursor-main {
+  background: #000000;
+  mix-blend-mode: normal;
+}
+
+body.retro-theme .cursor-glow {
+  background: radial-gradient(
+    circle,
+    rgba(0, 0, 0, 0.05) 0%,
+    transparent 50%
+  );
+  filter: blur(20px);
+  mix-blend-mode: multiply;
+}
+
+body.retro-theme .cursor-trail {
+  background: rgba(0, 0, 0, 0.3);
+  mix-blend-mode: multiply;
+}
+
+body.retro-theme .cursor-main.cursor-icons {
+  background: rgba(0, 0, 0, 0.06);
+  border: 2px solid #000000;
+}
+
 /* ---- Hide custom cursor on touch / small screens ---- */
 @media (hover: none), (max-width: 768px) {
   .cursor-main,

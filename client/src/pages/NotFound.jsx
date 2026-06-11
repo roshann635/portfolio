@@ -1,5 +1,5 @@
 import { Link } from "react-router-dom";
-import "./About.css";
+import Button from "../components/common/Button";
 
 const NotFound = () => {
   return (
@@ -12,9 +12,13 @@ const NotFound = () => {
           <h2>404 - Page Not Found</h2>
           <p>The route you requested does not exist. Try going back home.</p>
         </div>
-        <Link to="/" className="button button--primary">
-          Home
-        </Link>
+        <div style={{ textAlign: "center" }}>
+          <Link to="/" style={{ textDecoration: "none" }}>
+            <Button variant="primary" size="md">
+              Home
+            </Button>
+          </Link>
+        </div>
       </div>
     </div>
   );

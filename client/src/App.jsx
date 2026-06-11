@@ -45,7 +45,7 @@ function App() {
           pauseOnFocusLoss
           draggable
           pauseOnHover
-          theme="dark"
+          theme={document.body.classList.contains('retro-theme') ? 'light' : 'dark'}
         />
       </AuthProvider>
     </BrowserRouter>

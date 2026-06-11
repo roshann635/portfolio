@@ -68,7 +68,7 @@ const Contact = () => {
             <div className="contact-page__info">
               <motion.div
                 className="contact-page__details glass-card"
-                whileHover={{ y: -4, boxShadow: "0 0 30px rgba(0, 255, 204, 0.12)" }}
+                whileHover={{ y: -4 }}
                 transition={{ duration: 0.3 }}
               >
                 <h3>Let's Connect</h3>

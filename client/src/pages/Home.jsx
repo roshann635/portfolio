@@ -200,7 +200,7 @@ const Home = () => {
               <Link
                 to="/projects"
                 style={{
-                  color: "#050608",
+                  color: "inherit",
                   textDecoration: "none",
                   fontWeight: 600,
                 }}

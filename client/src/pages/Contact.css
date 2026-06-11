@@ -94,3 +94,9 @@ a.contact-page__info-value:hover { color: var(--accent-primary); }
     grid-template-columns: 1fr;
   }
 }
+
+@media (max-width: 480px) {
+  .contact-page__details {
+    padding: var(--space-lg);
+  }
+}

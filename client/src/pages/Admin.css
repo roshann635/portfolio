@@ -82,3 +82,24 @@
   background: rgba(var(--accent-primary-rgb), 0.1);
   border-bottom: 2px solid var(--accent-primary);
 }
+
+@media (max-width: 768px) {
+  .admin__tabs {
+    flex-wrap: wrap;
+  }
+  .admin__tab {
+    padding: 8px 14px;
+    font-size: var(--fs-xs);
+  }
+}
+
+@media (max-width: 480px) {
+  .admin-auth__card {
+    padding: var(--space-lg);
+  }
+  .admin__tab {
+    flex: 1;
+    justify-content: center;
+    padding: 8px 10px;
+  }
+}

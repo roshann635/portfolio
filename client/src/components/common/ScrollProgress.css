@@ -17,7 +17,7 @@
   position: absolute;
   height: 100%;
   width: 2px;
-  background-color: var(--border-light, rgba(255, 255, 255, 0.1));
+  background-color: rgba(255, 255, 255, 0.1);
   border-radius: 4px;
   overflow: hidden;
   box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
@@ -29,9 +29,9 @@
   left: 0;
   right: 0;
   height: 100%;
-  background: linear-gradient(to bottom, var(--accent-cyan, #00ffcc), var(--accent-purple, #bc13fe));
+  background: var(--gradient-primary);
   transform-origin: top;
-  box-shadow: 0 0 15px rgba(0, 255, 204, 0.6);
+  box-shadow: 0 0 15px rgba(var(--accent-primary-rgb), 0.6);
 }
 
 .scroll-progress-dots {
@@ -48,15 +48,15 @@
   width: 8px;
   height: 8px;
   border-radius: 50%;
-  background: var(--bg-secondary, #1a1a1a);
-  border: 2px solid var(--border-light, rgba(255, 255, 255, 0.2));
+  background: var(--bg-secondary);
+  border: 2px solid rgba(var(--accent-primary-rgb), 0.2);
   transition: all 0.3s ease;
   z-index: 10;
 }
 
 .scroll-progress-dot:hover {
-  border-color: var(--accent-cyan, #00ffcc);
-  box-shadow: 0 0 8px var(--accent-cyan, #00ffcc);
+  border-color: var(--accent-primary);
+  box-shadow: 0 0 8px var(--accent-primary);
 }
 
 @media (max-width: 768px) {
@@ -69,4 +69,33 @@
     width: 6px;
     height: 6px;
   }
+}
+
+@media (max-width: 480px) {
+  .scroll-progress-container {
+    display: none;
+  }
+}
+
+/* ---- Retro Brutalist Overrides ---- */
+body.retro-theme .scroll-progress-track {
+  background-color: rgba(0, 0, 0, 0.1);
+  box-shadow: none;
+  border: 1px solid #000000;
+  width: 4px;
+}
+
+body.retro-theme .scroll-progress-bar {
+  background: linear-gradient(to bottom, #db2777, #d97706);
+  box-shadow: none;
+}
+
+body.retro-theme .scroll-progress-dot {
+  background: #f4eed9;
+  border: 2px solid #000000;
+}
+
+body.retro-theme .scroll-progress-dot:hover {
+  border-color: var(--accent-secondary);
+  box-shadow: 2px 2px 0px #000000;
 }

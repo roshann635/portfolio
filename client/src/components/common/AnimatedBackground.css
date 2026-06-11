@@ -52,8 +52,19 @@
 }
 
 @media (max-width: 768px) {
-  .bg-blob {
+  .bg-blob,
+  .blob-cyan-2 {
     width: 300px;
     height: 300px;
   }
+}
+
+/* ---- Retro Brutalist — hide animated blobs ---- */
+body.retro-theme .animated-bg {
+  background-color: transparent;
+}
+
+body.retro-theme .bg-blob,
+body.retro-theme .bg-noise-overlay {
+  display: none;
 }

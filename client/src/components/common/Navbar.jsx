@@ -70,6 +70,16 @@ const Navbar = () => {
     setIsOpen(false);
   }, [location]);
 
+  // Lock body scroll when mobile menu is open
+  useEffect(() => {
+    if (isOpen) {
+      document.body.style.overflow = 'hidden';
+    } else {
+      document.body.style.overflow = '';
+    }
+    return () => { document.body.style.overflow = ''; };
+  }, [isOpen]);
+
   // Simple route matching
   const isLinkActive = (path) => {
     return location.pathname === path;
@@ -108,28 +118,12 @@ const Navbar = () => {
             ))}
           </div>
 
-          <div className="navbar__actions" style={{ display: "flex", alignItems: "center", gap: "1rem" }}>
+          <div className="navbar__actions">
             {/* Theme Toggle Button */}
             <button
               onClick={toggleTheme}
               className="theme-toggle-btn"
               aria-label="Toggle Theme"
-              style={{
-                background: "var(--bg-tertiary)",
-                border: "2px solid var(--border-color)",
-                color: "var(--text-primary)",
-                padding: "0.5rem 0.8rem",
-                borderRadius: "var(--radius-full)",
-                cursor: "pointer",
-                fontFamily: "var(--font-mono)",
-                fontSize: "var(--fs-xs)",
-                fontWeight: "600",
-                display: "flex",
-                alignItems: "center",
-                gap: "0.4rem",
-                transition: "all var(--transition-fast)",
-                boxShadow: "var(--shadow-sm)"
-              }}
             >
               {theme === "midnight" ? "⚡ RETRO" : "🌙 NEON"}
             </button>
@@ -150,75 +144,70 @@ const Navbar = () => {
         </div>
       </nav>
 
-      {/* Mobile Menu */}
+      {/* Mobile Backdrop + Menu */}
       <AnimatePresence>
         {isOpen && (
-          <motion.div
-            className="navbar__mobile"
-            initial={{ opacity: 0, x: "100%" }}
-            animate={{ opacity: 1, x: 0 }}
-            exit={{ opacity: 0, x: "100%" }}
-            transition={{ type: "tween", duration: 0.3 }}
-          >
-            <div className="navbar__mobile-links">
-              {NAV_LINKS.map((link, i) => (
-                <motion.div
-                  key={link.path}
-                  initial={{ opacity: 0, x: 50 }}
-                  animate={{ opacity: 1, x: 0 }}
-                  transition={{ delay: i * 0.1 }}
-                >
-                  <Link
-                    to={link.path}
-                    className={`navbar__mobile-link ${isLinkActive(link.path) ? "navbar__mobile-link--active" : ""}`}
+          <>
+            <motion.div
+              className="navbar__backdrop"
+              initial={{ opacity: 0 }}
+              animate={{ opacity: 1 }}
+              exit={{ opacity: 0 }}
+              transition={{ duration: 0.2 }}
+              onClick={() => setIsOpen(false)}
+            />
+            <motion.div
+              className="navbar__mobile"
+              initial={{ opacity: 0, x: "100%" }}
+              animate={{ opacity: 1, x: 0 }}
+              exit={{ opacity: 0, x: "100%" }}
+              transition={{ type: "tween", duration: 0.3 }}
+            >
+              <div className="navbar__mobile-links">
+                {NAV_LINKS.map((link, i) => (
+                  <motion.div
+                    key={link.path}
+                    initial={{ opacity: 0, x: 50 }}
+                    animate={{ opacity: 1, x: 0 }}
+                    transition={{ delay: i * 0.1 }}
                   >
-                    <span className="navbar__link-icon">{link.icon}</span>
-                    {link.name}
-                  </Link>
-                </motion.div>
-              ))}
+                    <Link
+                      to={link.path}
+                      className={`navbar__mobile-link ${isLinkActive(link.path) ? "navbar__mobile-link--active" : ""}`}
+                    >
+                      <span className="navbar__link-icon">{link.icon}</span>
+                      {link.name}
+                    </Link>
+                  </motion.div>
+                ))}
 
-              <div style={{ marginTop: "1.5rem" }}>
-                <button
-                  onClick={() => {
-                    toggleTheme();
-                    setIsOpen(false);
-                  }}
-                  className="theme-toggle-btn"
-                  style={{
-                    background: "var(--bg-tertiary)",
-                    border: "2px solid var(--border-color)",
-                    color: "var(--text-primary)",
-                    padding: "0.6rem 1.2rem",
-                    borderRadius: "var(--radius-full)",
-                    cursor: "pointer",
-                    fontFamily: "var(--font-mono)",
-                    fontSize: "var(--fs-sm)",
-                    fontWeight: "600",
-                    display: "flex",
-                    alignItems: "center",
-                    gap: "0.5rem",
-                    width: "fit-content"
-                  }}
-                >
-                  {theme === "midnight" ? "⚡ RETRO BRUTALIST" : "🌙 MIDNIGHT NEON"}
-                </button>
+                <div style={{ marginTop: "1.5rem" }}>
+                  <button
+                    onClick={() => {
+                      toggleTheme();
+                      setIsOpen(false);
+                    }}
+                    className="theme-toggle-btn theme-toggle-btn--mobile"
+                  >
+                    {theme === "midnight" ? "⚡ RETRO BRUTALIST" : "🌙 MIDNIGHT NEON"}
+                  </button>
+                </div>
               </div>
-            </div>
 
-            <div className="navbar__mobile-xp">
-              <span className="navbar__mobile-xp-label">Explorer XP</span>
-              <div className="stat-bar">
-                <div
-                  className="stat-bar-fill"
-                  style={{ width: `${progress}%` }}
-                />
+              <div className="navbar__mobile-xp">
+                <span className="navbar__mobile-xp-label">Explorer XP</span>
+                <div className="stat-bar">
+                  <div
+                    className="stat-bar-fill"
+                    style={{ width: `${progress}%` }}
+                  />
+                </div>
+                <span className="navbar__mobile-xp-value">
+                  {Math.round(progress)}%
+                </span>
               </div>
-              <span className="navbar__mobile-xp-value">
-                {Math.round(progress)}%
-              </span>
-            </div>
-          </motion.div>
+            </motion.div>
+          </>
         )}
       </AnimatePresence>
     </>

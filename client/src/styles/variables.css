@@ -72,7 +72,7 @@
   --shadow-sm: 0 2px 8px rgba(0, 0, 0, 0.3);
   --shadow-md: 0 4px 20px rgba(0, 0, 0, 0.4);
   --shadow-lg: 0 8px 40px rgba(0, 0, 0, 0.5);
-  --shadow-glow: 0 0 20px rgba(108, 99, 255, 0.3);
+  --shadow-glow: 0 0 20px rgba(188, 19, 254, 0.3);
   --shadow-glow-teal: 0 0 20px rgba(0, 212, 170, 0.3);
 
   --transition-fast: 0.2s ease;
@@ -95,10 +95,10 @@ body.retro-theme {
 
   --accent-primary: #000000;
   --accent-primary-rgb: 0, 0, 0;
-  --accent-secondary: #ec4899;
-  --accent-secondary-rgb: 236, 72, 153;
-  --accent-tertiary: #facc15;
-  --accent-tertiary-rgb: 250, 204, 21;
+  --accent-secondary: #db2777;
+  --accent-secondary-rgb: 219, 39, 119;
+  --accent-tertiary: #d97706;
+  --accent-tertiary-rgb: 217, 119, 6;
   --accent-quaternary: #06b6d4;
 
   --text-primary: #111111;
@@ -118,6 +118,22 @@ body.retro-theme {
   --shadow-md: 4px 4px 0px #000000;
   --shadow-lg: 8px 8px 0px #000000;
   --shadow-glow: 4px 4px 0px #ec4899;
-  --shadow-glow-teal: 4px 4px 0px #facc15;
+  --shadow-glow-teal: 4px 4px 0px #d97706;
 }
 
+/* ---- Responsive font overrides ---- */
+@media (max-width: 768px) {
+  :root {
+    --fs-4xl: 2.5rem;
+    --fs-5xl: 3rem;
+    --fs-3xl: 2rem;
+  }
+}
+
+@media (max-width: 480px) {
+  :root {
+    --fs-4xl: 2rem;
+    --fs-5xl: 2.5rem;
+    --fs-3xl: 1.75rem;
+  }
+}

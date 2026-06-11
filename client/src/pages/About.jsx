@@ -40,7 +40,7 @@ const About = () => {
         <ScrollReveal direction="up" distance={50} delay={0.1}>
           <motion.div
             className="about__intro glass-card"
-            whileHover={{ y: -4, boxShadow: "0 0 30px rgba(0, 255, 204, 0.15)" }}
+            whileHover={{ y: -4 }}
             transition={{ duration: 0.3 }}
           >
             <div className="about__intro-avatar">

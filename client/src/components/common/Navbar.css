@@ -159,13 +159,13 @@
   position: fixed;
   top: 0;
   right: 0;
-  width: 280px;
+  width: min(280px, 85vw);
   height: 100vh;
   background: rgba(5, 6, 8, 0.95);
   backdrop-filter: blur(24px);
   -webkit-backdrop-filter: blur(24px);
   border-left: 1px solid rgba(0, 255, 204, 0.1);
-  z-index: 999;
+  z-index: 1001;
   padding: calc(var(--nav-height) + var(--space-xl)) var(--space-xl) var(--space-xl);
   display: flex;
   flex-direction: column;
@@ -219,4 +219,129 @@
 @media (max-width: 768px) {
   .navbar__links { display: none; }
   .navbar__toggle { display: block; }
+}
+
+/* ---- Backdrop overlay for mobile menu ---- */
+.navbar__backdrop {
+  position: fixed;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.5);
+  z-index: 1000;
+  backdrop-filter: blur(4px);
+  -webkit-backdrop-filter: blur(4px);
+}
+
+/* ============================================
+   RETRO BRUTALIST — Navbar Overrides
+   ============================================ */
+body.retro-theme .navbar--scrolled {
+  background: rgba(244, 238, 217, 0.95);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  border-bottom: 3px solid #000000;
+  box-shadow: 0 4px 0px #000000;
+}
+
+body.retro-theme .navbar__link:hover {
+  background: rgba(0, 0, 0, 0.08);
+}
+
+body.retro-theme .navbar__link--active {
+  color: var(--accent-secondary);
+}
+
+body.retro-theme .navbar__link-underline {
+  background: var(--accent-secondary);
+  box-shadow: none;
+}
+
+/* Retro mobile menu */
+body.retro-theme .navbar__mobile {
+  background: rgba(244, 238, 217, 0.98);
+  border-left: 3px solid #000000;
+  box-shadow: -4px 0 0px #000000;
+}
+
+body.retro-theme .navbar__mobile-link:hover,
+body.retro-theme .navbar__mobile-link--active {
+  background: rgba(0, 0, 0, 0.08);
+  color: var(--text-heading);
+}
+
+body.retro-theme .navbar__backdrop {
+  background: rgba(0, 0, 0, 0.3);
+  backdrop-filter: none;
+  -webkit-backdrop-filter: none;
+}
+
+/* Retro XP bar */
+body.retro-theme .xp-bar {
+  background: rgba(0, 0, 0, 0.1);
+  height: 3px;
+}
+
+body.retro-theme .xp-bar-fill {
+  background: linear-gradient(90deg, #db2777, #d97706);
+  box-shadow: none;
+}
+
+body.retro-theme .xp-bar-fill::after {
+  background: #d97706;
+  box-shadow: none;
+}
+
+/* Retro theme toggle button */
+.theme-toggle-btn {
+  background: var(--bg-tertiary);
+  border: 2px solid var(--border-color);
+  color: var(--text-primary);
+  padding: 0.5rem 0.8rem;
+  border-radius: var(--radius-full);
+  cursor: pointer;
+  font-family: var(--font-mono);
+  font-size: var(--fs-xs);
+  font-weight: 600;
+  display: flex;
+  align-items: center;
+  gap: 0.4rem;
+  transition: all var(--transition-fast);
+  box-shadow: var(--shadow-sm);
+  white-space: nowrap;
+}
+
+.theme-toggle-btn:hover {
+  border-color: var(--accent-primary);
+  transform: scale(1.05);
+}
+
+body.retro-theme .theme-toggle-btn {
+  border: 3px solid #000000;
+  border-radius: 4px;
+  box-shadow: 3px 3px 0px #000000;
+  background: #ffffff;
+}
+
+body.retro-theme .theme-toggle-btn:hover {
+  transform: translate(-2px, -2px);
+  box-shadow: 5px 5px 0px #000000;
+}
+
+/* Mobile theme toggle — larger on mobile */
+.theme-toggle-btn--mobile {
+  padding: 0.6rem 1.2rem;
+  font-size: var(--fs-sm);
+  width: fit-content;
+}
+
+@media (max-width: 480px) {
+  .theme-toggle-btn {
+    padding: 0.4rem 0.6rem;
+    font-size: 0.65rem;
+  }
+}
+
+.navbar__actions {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
 }

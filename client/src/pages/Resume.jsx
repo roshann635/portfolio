@@ -43,7 +43,7 @@ const Resume = () => {
           <ScrollReveal direction="up" distance={40} delay={0.15}>
             <motion.div
               className="resume-page__header glass-card"
-              whileHover={{ y: -4, boxShadow: "0 0 25px rgba(0, 255, 204, 0.1)" }}
+              whileHover={{ y: -4 }}
               transition={{ duration: 0.3 }}
             >
               <div className="resume-page__header-info">
