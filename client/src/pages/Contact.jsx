@@ -2,6 +2,7 @@ import { motion } from "framer-motion";
 import {
   FaEnvelope,
   FaMapMarkerAlt,
+  FaPhone,
   FaGithub,
   FaLinkedin,
   FaInstagram,
@@ -13,6 +14,12 @@ import "./Contact.css";
 
 const Contact = () => {
   const contactInfo = [
+    {
+      icon: <FaPhone />,
+      label: "Phone",
+      value: PROFILE.mobile,
+      href: `tel:${PROFILE.mobile}`,
+    },
     {
       icon: <FaEnvelope />,
       label: "Email",

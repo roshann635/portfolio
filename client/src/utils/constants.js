@@ -51,6 +51,7 @@ export const PROFILE = {
   bio: "Passionate CSE student with a love for creating beautiful, performant web applications. I turn complex problems into elegant solutions. When I’m not coding, you can find me exploring new tech, gaming, or sipping coffee while brainstorming my next project. Let’s build something amazing together!",
   location: "Nashik, Maharashtra, India",
   email: "roshanjadhav4385@gmail.com",
+  mobile: "+91 7058601264",
   avatar: "",
   stats: {
     projects: 12,
