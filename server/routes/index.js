@@ -3,6 +3,7 @@ const projectRoutes = require("./projectRoutes");
 const skillRoutes = require("./skillRoutes");
 const experienceRoutes = require("./experienceRoutes");
 const educationRoutes = require("./educationRoutes");
+const certificateRoutes = require("./certificateRoutes");
 const contactRoutes = require("./contactRoutes");
 const authRoutes = require("./authRoutes");
 
@@ -12,6 +13,8 @@ router.use("/experiences", experienceRoutes);
 router.use("/experience", experienceRoutes); // alias
 router.use("/education", educationRoutes);
 router.use("/educations", educationRoutes); // alias
+router.use("/certificates", certificateRoutes);
+router.use("/certificate", certificateRoutes); // alias
 router.use("/contacts", contactRoutes);
 router.use("/auth", authRoutes);
 

@@ -1,12 +1,16 @@
-import { motion } from "framer-motion";
+import { useState } from "react";
+import { motion, AnimatePresence } from "framer-motion";
 import {
   FaMapMarkerAlt,
   FaGraduationCap,
+  FaCertificate,
+  FaTimes,
 } from "react-icons/fa";
 import {
   PROFILE,
   PLACEHOLDER_SKILLS,
   PLACEHOLDER_EDUCATION,
+  PLACEHOLDER_CERTIFICATES,
   SKILL_CATEGORIES,
 } from "../utils/constants";
 import useFetch from "../hooks/useFetch";
@@ -16,12 +20,20 @@ import "./About.css";
 const About = () => {
   const { data: dbSkills } = useFetch("/skills");
   const { data: dbEducation } = useFetch("/education");
+  const { data: dbCertificates } = useFetch("/certificates");
+
+  const [previewImage, setPreviewImage] = useState(null);
 
   const skills =
     dbSkills && dbSkills.length > 0 ? dbSkills : PLACEHOLDER_SKILLS;
 
   const education =
     dbEducation && dbEducation.length > 0 ? dbEducation : PLACEHOLDER_EDUCATION;
+
+  const certificates =
+    dbCertificates && dbCertificates.length > 0
+      ? dbCertificates
+      : PLACEHOLDER_CERTIFICATES;
 
   return (
     <div
@@ -167,7 +179,97 @@ const About = () => {
             ))}
           </div>
         </section>
+
+        {/* Certificates */}
+        <section className="about__certificates">
+          <ScrollReveal direction="up" distance={40}>
+            <div className="section-title">
+              <h2>Achievements Unlocked</h2>
+              <p>Certifications & credentials earned</p>
+            </div>
+          </ScrollReveal>
+
+          <div className="about__certificates-grid">
+            {certificates.map((cert, i) => (
+              <ScrollReveal
+                key={cert._id}
+                direction="up"
+                distance={40}
+                delay={i * 0.1}
+              >
+                <motion.div
+                  className="about__certificate-card glass-card"
+                  whileHover={{
+                    y: -6,
+                    boxShadow: "0 0 25px rgba(108, 99, 255, 0.15)",
+                  }}
+                  transition={{ duration: 0.3 }}
+                >
+                  {/* Screenshot thumbnail */}
+                  {cert.image && (
+                    <div
+                      className="about__certificate-image"
+                      onClick={() => setPreviewImage(cert.image)}
+                      role="button"
+                      tabIndex={0}
+                      onKeyDown={(e) =>
+                        e.key === "Enter" && setPreviewImage(cert.image)
+                      }
+                    >
+                      <img src={cert.image} alt={cert.title} loading="lazy" />
+                      <div className="about__certificate-image-overlay">
+                        <span>View</span>
+                      </div>
+                    </div>
+                  )}
+
+                  <div className="about__certificate-body">
+                    <div className="about__certificate-icon">
+                      <FaCertificate />
+                    </div>
+                    <h4 className="about__certificate-title">{cert.title}</h4>
+                    <p className="about__certificate-issuer">{cert.issuer}</p>
+                    <div className="about__certificate-meta">
+                      {cert.date && <span className="about__certificate-date">{cert.date}</span>}
+                    </div>
+                  </div>
+                </motion.div>
+              </ScrollReveal>
+            ))}
+          </div>
+        </section>
       </div>
+
+      {/* Lightbox for certificate screenshots */}
+      <AnimatePresence>
+        {previewImage && (
+          <motion.div
+            className="about__lightbox"
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            exit={{ opacity: 0 }}
+            onClick={() => setPreviewImage(null)}
+          >
+            <motion.div
+              className="about__lightbox-content"
+              initial={{ scale: 0.85, opacity: 0 }}
+              animate={{ scale: 1, opacity: 1 }}
+              exit={{ scale: 0.85, opacity: 0 }}
+              transition={{ type: "spring", damping: 25, stiffness: 300 }}
+              onClick={(e) => e.stopPropagation()}
+            >
+              <button
+                className="about__lightbox-close"
+                onClick={() => setPreviewImage(null)}
+                aria-label="Close preview"
+              >
+                <FaTimes />
+              </button>
+              <img src={previewImage} alt="Certificate" />
+            </motion.div>
+          </motion.div>
+        )}
+      </AnimatePresence>
     </div>
   );
 };

@@ -172,8 +172,7 @@ const Home = () => {
         <div className="landing-container">
           {/* Status badge */}
           <div className="hero-status-badge">
-            <span className="hero-status-dot" />
-            <span>Available for work</span>
+
           </div>
 
           {/* Main headline */}
