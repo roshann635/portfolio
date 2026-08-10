@@ -162,6 +162,39 @@ export const PLACEHOLDER_PROJECTS = [
   },
   {
     _id: "3",
+
+    title: "Prep10X - AI-Powered Exam Preparation Platform",
+
+    description:
+      "A bilingual AI-powered examination and preparation platform for competitive exams like MPSC, featuring online mock tests, AI-powered question extraction from PDFs, images and pasted text, automatic question and option detection, English and Marathi (Devanagari) support, personalized performance analytics, AI explanations, study planning, previous-year papers, bookmarks, and an intelligent question management system for administrators.",
+
+    techStack: [
+      "React",
+      "Node.js",
+      "MongoDB",
+      "Express.js",
+      "JavaScript",
+      "JWT",
+      "Tailwind CSS",
+      "Gemini AI",
+      "FastAPI",
+      "Python",
+      "OCR",
+      "PyMuPDF",
+      "Cloudinary",
+      "Recharts",
+      "i18next",
+      "REST API",
+    ],
+
+    category: "web",
+    featured: true,
+    liveUrl: "https://prep10x-by-roshan.vercel.app/",
+    githubUrl: "https://github.com/roshann635/prep10x",
+    image: "",
+  },
+  {
+    _id: "4",
     title: "Samvaad - Chat App",
     description: "A web platform that connects people for chatting",
     techStack: [
@@ -181,7 +214,7 @@ export const PLACEHOLDER_PROJECTS = [
     image: "",
   },
   {
-    _id: "4",
+    _id: "5",
     title: "Portfolio Website",
     description:
       "A personal portfolio website built with React and Tailwind CSS to showcase projects, skills, and experience, with a responsive design and smooth animations.MongoDB is used to store data and contact form submissions.",
@@ -193,7 +226,7 @@ export const PLACEHOLDER_PROJECTS = [
     image: "",
   },
   {
-    _id: "5",
+    _id: "6",
     title: "SevaSetu--A-platform-connecting-NGO-S-Donors-Volunteer",
     description:
       "A web platform that connects NGOs, donors, and volunteers to facilitate social impact projects and community support.",
@@ -206,7 +239,7 @@ export const PLACEHOLDER_PROJECTS = [
     image: "",
   },
   {
-    _id: "6",
+    _id: "7",
     title: "AI Chat Assistant",
     description:
       "An intelligent chatbot powered by GPT with real-time streaming, conversation history, and custom training.",
@@ -218,7 +251,7 @@ export const PLACEHOLDER_PROJECTS = [
     image: "",
   },
   {
-    _id: "7",
+    _id: "8",
     title: "Task Manager Pro",
     description:
       "A collaborative project management tool with Kanban boards, team features, and real-time updates.",
@@ -231,7 +264,7 @@ export const PLACEHOLDER_PROJECTS = [
   },
 
   {
-    _id: "8",
+    _id: "9",
     title: "Graph_Plotter-using-graphics",
     description:
       "A simple graph plotting application using HTML5 Canvas and JavaScript.",
@@ -244,7 +277,7 @@ export const PLACEHOLDER_PROJECTS = [
   },
 
   {
-    _id: "9",
+    _id: "10",
     title: "AlgoNova : DSA Visualizer",
     description:
       "A web app that visualizes data structures and algorithms with interactive animations.",
@@ -257,7 +290,7 @@ export const PLACEHOLDER_PROJECTS = [
   },
 
   {
-    _id: "10",
+    _id: "11",
     title: "ProtectHer",
     description:
       "A safety app for women that shares real-time location with trusted contacts and has an emergency alert feature.",
@@ -270,7 +303,7 @@ export const PLACEHOLDER_PROJECTS = [
   },
 
   {
-    _id: "11",
+    _id: "12",
     title: "energy-wise-companion",
     description:
       "A web app that helps users track and reduce their energy consumption with personalized tips and analytics.",
@@ -283,7 +316,7 @@ export const PLACEHOLDER_PROJECTS = [
   },
 
   {
-    _id: "12",
+    _id: "13",
     title: "sheCityAI",
     description:
       "An AI-powered platform for women safety that provides real-time alerts, location sharing, and community support features.",
