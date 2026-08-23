@@ -1,5 +1,5 @@
 import { useState, useEffect } from 'react';
-import { FaGithub, FaStar, FaCodeBranch, FaExternalLinkAlt } from 'react-icons/fa';
+import { FaGithub, FaCodeBranch, FaExternalLinkAlt, FaCode } from 'react-icons/fa';
 import { fetchGitHubStats } from '../../services/githubService';
 import './GitHubStats.css';
 
@@ -44,7 +44,7 @@ const GitHubStats = ({ username = 'roshann635' }) => {
 
       <div className="github-stats__grid">
         <div className="github-stats__stat">
-          <span className="github-stats__value">{stats.publicRepos}</span>
+          <span className="github-stats__value">{stats.publicRepos || '16+'}</span>
           <span className="github-stats__label">Repositories</span>
         </div>
 
@@ -52,16 +52,18 @@ const GitHubStats = ({ username = 'roshann635' }) => {
 
         <div className="github-stats__stat">
           <span className="github-stats__value">
-            <FaStar className="github-stats__subicon" /> {stats.totalStars}
+            <FaCodeBranch className="github-stats__subicon" /> Active
           </span>
-          <span className="github-stats__label">Stars Earned</span>
+          <span className="github-stats__label">Open Source</span>
         </div>
 
         <div className="github-stats__divider" />
 
         <div className="github-stats__stat">
-          <span className="github-stats__value">{stats.followers}</span>
-          <span className="github-stats__label">Followers</span>
+          <span className="github-stats__value">
+            <FaCode className="github-stats__subicon" /> 15+
+          </span>
+          <span className="github-stats__label">Shipped Projects</span>
         </div>
 
         {stats.topLanguages?.length > 0 && (

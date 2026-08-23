@@ -116,6 +116,65 @@ const About = () => {
           <GitHubStats username="roshann635" />
         </ScrollReveal>
 
+        {/* Engineering Journey */}
+        <section className="about__journey">
+          <ScrollReveal>
+            <div className="section-title">
+              <h2>Engineering Journey</h2>
+              <p>Technical evolution and milestones</p>
+            </div>
+          </ScrollReveal>
+
+          <div className="about__journey-grid">
+            <ScrollReveal>
+              <div className="about__journey-card">
+                <span className="about__journey-year">2024</span>
+                <h4>CS Foundations & DSA</h4>
+                <p>
+                  Commenced B.Tech in CSE (9.28 CGPA), mastering core data
+                  structures, algorithms, and modular object-oriented systems in
+                  C++ and Python.
+                </p>
+              </div>
+            </ScrollReveal>
+
+            <ScrollReveal>
+              <div className="about__journey-card">
+                <span className="about__journey-year">2025</span>
+                <h4>Full-Stack & 3× Hackathons</h4>
+                <p>
+                  Architected full-stack web platforms (React, Node.js, FastAPI)
+                  and placed as a 3× National Finalist across competitive
+                  hackathons.
+                </p>
+              </div>
+            </ScrollReveal>
+
+            <ScrollReveal>
+              <div className="about__journey-card about__journey-card--highlight">
+                <span className="about__journey-year">2026</span>
+                <h4>AI/ML & Distributed Systems</h4>
+                <p>
+                  Engineered CoCompute (LAN distributed computing platform) and
+                  containerized sandboxes with Redis, Docker, and OpenCV/Gemini
+                  OCR.
+                </p>
+              </div>
+            </ScrollReveal>
+
+            <ScrollReveal>
+              <div className="about__journey-card">
+                <span className="about__journey-year">2027+</span>
+                <h4>Scalable Systems & AI Architecture</h4>
+                <p>
+                  Targeting large-scale distributed backends, low-latency
+                  microservices, and production ML deployment pipelines.
+                </p>
+              </div>
+            </ScrollReveal>
+          </div>
+        </section>
+
         {/* Skills */}
         <section className="about__skills">
           <ScrollReveal>
@@ -143,6 +202,30 @@ const About = () => {
               </ScrollReveal>
             );
           })}
+        </section>
+
+        {/* Currently Exploring */}
+        <section className="about__learning">
+          <ScrollReveal>
+            <div className="section-title">
+              <h2>Currently Exploring</h2>
+              <p>Active learning and technical deep-dives</p>
+            </div>
+          </ScrollReveal>
+
+          <div className="about__learning-grid">
+            {PROFILE.currentlyLearning?.map((item) => (
+              <ScrollReveal key={item.number}>
+                <div className="about__learning-card">
+                  <span className="about__learning-num">{item.number}</span>
+                  <div className="about__learning-info">
+                    <h4>{item.title}</h4>
+                    <p>{item.description}</p>
+                  </div>
+                </div>
+              </ScrollReveal>
+            ))}
+          </div>
         </section>
 
         {/* Education */}

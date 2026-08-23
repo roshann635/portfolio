@@ -28,22 +28,39 @@ body {
 }
 
 /* ---- Typography ---- */
-h1, h2, h3, h4, h5, h6 {
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
   font-family: var(--font-display);
   color: var(--text-primary);
-  line-height: 1.2;
+  line-height: 1.15;
   font-weight: 600;
 }
 
-h1 { font-size: var(--fs-4xl); }
-h2 { font-size: var(--fs-3xl); }
-h3 { font-size: var(--fs-2xl); }
-h4 { font-size: var(--fs-xl); }
-h5 { font-size: var(--fs-lg); }
+h1 {
+  font-size: var(--text-hero);
+  line-height: 0.95;
+}
+h2 {
+  font-size: var(--text-section);
+  line-height: 1.05;
+}
+h3 {
+  font-size: var(--text-project-title);
+}
+h4 {
+  font-size: var(--text-subheading);
+}
+h5 {
+  font-size: var(--fs-md);
+}
 
 p {
   color: var(--text-secondary);
-  line-height: 1.8;
+  line-height: 1.7;
 }
 
 a {
@@ -56,15 +73,22 @@ a:hover {
   color: var(--accent-primary);
 }
 
-ul { list-style: none; }
-img { max-width: 100%; display: block; }
+ul {
+  list-style: none;
+}
+img {
+  max-width: 100%;
+  display: block;
+}
 
 button {
   cursor: pointer;
   font-family: var(--font-body);
 }
 
-input, textarea, select {
+input,
+textarea,
+select {
   font-family: var(--font-body);
 }
 
@@ -103,14 +127,16 @@ input, textarea, select {
 }
 
 .section-title h2 {
-  font-size: var(--fs-3xl);
+  font-size: var(--text-section);
   color: var(--text-primary);
   display: inline-block;
+  line-height: 1.05;
 }
 
 .section-title p {
   margin-top: var(--space-sm);
-  font-size: var(--fs-md);
+  font-size: var(--text-body-lg);
+  color: var(--text-secondary);
 }
 
 .section-title::after {
@@ -202,9 +228,15 @@ body.day-theme ::selection {
 
 /* ---- Responsive ---- */
 @media (max-width: 768px) {
-  h1 { font-size: var(--fs-3xl); }
-  h2 { font-size: var(--fs-2xl); }
-  h3 { font-size: var(--fs-xl); }
+  h1 {
+    font-size: var(--fs-3xl);
+  }
+  h2 {
+    font-size: var(--fs-2xl);
+  }
+  h3 {
+    font-size: var(--fs-xl);
+  }
 
   .container {
     padding: 0 var(--space-md);
@@ -216,10 +248,16 @@ body.day-theme ::selection {
 }
 
 @media (max-width: 480px) {
-  h1 { font-size: var(--fs-2xl); }
-  h2 { font-size: var(--fs-xl); }
+  h1 {
+    font-size: var(--fs-2xl);
+  }
+  h2 {
+    font-size: var(--fs-xl);
+  }
 
-  html { font-size: 14px; }
+  html {
+    font-size: 14px;
+  }
 }
 
 /* ---- Toast Override ---- */
@@ -228,4 +266,20 @@ body.day-theme ::selection {
   color: var(--text-primary) !important;
   border: 1px solid var(--border-color) !important;
   border-radius: var(--radius-md) !important;
+}
+
+/* ---- Accessibility: Reduced Motion ---- */
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto !important;
+  }
+
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
 }

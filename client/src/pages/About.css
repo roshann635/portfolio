@@ -64,19 +64,22 @@
 }
 
 .about__intro-bio h3 {
+  font-size: var(--fs-2xl);
   margin-bottom: var(--space-xs);
 }
 
 .about__intro-role {
   color: var(--accent-primary);
   font-family: var(--font-mono);
-  font-size: var(--fs-sm);
+  font-size: var(--text-subheading);
   font-weight: 500;
   margin-bottom: var(--space-md);
 }
 
 .about__intro-text {
-  line-height: 1.8;
+  font-size: var(--text-body-lg);
+  line-height: 1.75;
+  max-width: 720px;
 }
 
 .about__intro-facts {
@@ -101,16 +104,16 @@
 
 .about__fact-label {
   font-family: var(--font-mono);
-  font-size: 10px;
+  font-size: var(--text-label);
   font-weight: 500;
   color: var(--text-muted);
   text-transform: uppercase;
-  letter-spacing: 0.1em;
+  letter-spacing: 0.08em;
 }
 
 .about__fact-value {
   font-family: var(--font-mono);
-  font-size: var(--fs-sm);
+  font-size: var(--text-tech);
   color: var(--text-secondary);
   display: flex;
   align-items: center;
@@ -128,7 +131,7 @@
 
 .about__skill-category {
   font-family: var(--font-display);
-  font-size: var(--fs-md);
+  font-size: var(--text-subheading);
   font-weight: 600;
   color: var(--text-primary);
   margin-bottom: var(--space-md);
@@ -142,7 +145,7 @@
 
 .about__skill-pill {
   font-family: var(--font-mono);
-  font-size: var(--fs-xs);
+  font-size: var(--text-mono-sm);
   font-weight: 400;
   color: var(--text-secondary);
   padding: 6px 14px;
@@ -157,6 +160,58 @@
 .about__skill-pill:hover {
   border-color: var(--accent-secondary);
   color: var(--accent-secondary);
+}
+
+/* Currently Exploring */
+.about__learning {
+  margin-bottom: var(--space-4xl);
+}
+
+.about__learning-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: var(--space-lg);
+}
+
+.about__learning-card {
+  background: var(--bg-secondary);
+  border: 1px solid var(--border-color);
+  border-radius: var(--radius-sm);
+  padding: var(--space-lg);
+  display: flex;
+  gap: var(--space-md);
+  align-items: flex-start;
+  transition: border-color var(--transition-fast);
+}
+
+.about__learning-card:hover {
+  border-color: var(--accent-primary);
+}
+
+.about__learning-num {
+  font-family: var(--font-mono);
+  font-size: var(--fs-xs);
+  font-weight: 700;
+  color: var(--accent-primary);
+  letter-spacing: 0.05em;
+  background: var(--bg-elevated);
+  padding: 2px 6px;
+  border-radius: var(--radius-sm);
+  border: 1px solid var(--border-color);
+}
+
+.about__learning-info h4 {
+  font-family: var(--font-display);
+  font-size: var(--fs-base);
+  font-weight: 600;
+  color: var(--text-primary);
+  margin-bottom: 4px;
+}
+
+.about__learning-info p {
+  font-size: 12.5px;
+  color: var(--text-secondary);
+  line-height: 1.5;
 }
 
 /* Education - timeline */
@@ -367,5 +422,75 @@
 
   .about__intro-facts {
     width: 100%;
+  }
+}
+
+/* Engineering Journey Grid */
+.about__journey {
+  margin-bottom: var(--space-4xl);
+}
+
+.about__journey-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: var(--space-lg);
+  margin-top: var(--space-xl);
+}
+
+.about__journey-card {
+  background: var(--bg-secondary);
+  border: 1px solid var(--border-color);
+  border-radius: var(--radius-sm);
+  padding: var(--space-lg);
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  position: relative;
+  transition:
+    border-color var(--transition-fast),
+    transform var(--transition-fast);
+}
+
+.about__journey-card:hover {
+  border-color: var(--border-accent);
+  transform: translateY(-2px);
+}
+
+.about__journey-card--highlight {
+  border-top: 2px solid var(--accent-primary);
+  background: var(--bg-elevated);
+}
+
+.about__journey-year {
+  font-family: var(--font-mono);
+  font-size: var(--fs-xs);
+  font-weight: 700;
+  color: var(--accent-primary);
+  letter-spacing: 0.08em;
+}
+
+.about__journey-card h4 {
+  font-family: var(--font-display);
+  font-size: var(--fs-sm);
+  font-weight: 600;
+  color: var(--text-primary);
+  line-height: 1.3;
+}
+
+.about__journey-card p {
+  font-size: 12px;
+  color: var(--text-secondary);
+  line-height: 1.55;
+}
+
+@media (max-width: 900px) {
+  .about__journey-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (max-width: 480px) {
+  .about__journey-grid {
+    grid-template-columns: 1fr;
   }
 }

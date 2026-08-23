@@ -1,11 +1,11 @@
-import { useState } from 'react';
-import { Link, useLocation } from 'react-router-dom';
-import { NAV_LINKS } from '../../utils/constants';
-import './Navbar.css';
+import { useState } from "react";
+import { Link, useLocation } from "react-router-dom";
+import { NAV_LINKS } from "../../utils/constants";
+import "./Navbar.css";
 
 const CHAPTERS = NAV_LINKS.map((link, i) => ({
   ...link,
-  chapter: String(i + 1).padStart(2, '0'),
+  chapter: String(i + 1).padStart(2, "0"),
 }));
 
 const Navbar = ({ theme, onToggleTheme, onOpenCommandPalette }) => {
@@ -23,10 +23,12 @@ const Navbar = ({ theme, onToggleTheme, onOpenCommandPalette }) => {
             <Link
               key={ch.path}
               to={ch.path}
-              className={`spine__item ${isActive(ch.path) ? 'spine__item--active' : ''}`}
-              aria-current={isActive(ch.path) ? 'page' : undefined}
+              className={`spine__item ${isActive(ch.path) ? "spine__item--active" : ""}`}
+              aria-current={isActive(ch.path) ? "page" : undefined}
             >
-              <span className="spine__label">{ch.chapter} {ch.name}</span>
+              <span className="spine__label">
+                {ch.chapter} {ch.name}
+              </span>
               {isActive(ch.path) && <span className="spine__indicator" />}
             </Link>
           ))}
@@ -40,8 +42,8 @@ const Navbar = ({ theme, onToggleTheme, onOpenCommandPalette }) => {
             <Link
               key={ch.path}
               to={ch.path}
-              className={`topbar__item ${isActive(ch.path) ? 'topbar__item--active' : ''}`}
-              aria-current={isActive(ch.path) ? 'page' : undefined}
+              className={`topbar__item ${isActive(ch.path) ? "topbar__item--active" : ""}`}
+              aria-current={isActive(ch.path) ? "page" : undefined}
             >
               {ch.chapter} {ch.name}
             </Link>
@@ -49,7 +51,7 @@ const Navbar = ({ theme, onToggleTheme, onOpenCommandPalette }) => {
         </div>
       </nav>
 
-      {/* Floating Utilities (Command Palette & Theme Switcher) */}
+      {/* Floating Utilities (Command Palette, Direct Resume & Theme Switcher) */}
       <div className="nav-controls">
         <button
           className="cmd-trigger"
@@ -61,12 +63,24 @@ const Navbar = ({ theme, onToggleTheme, onOpenCommandPalette }) => {
           <kbd className="cmd-trigger__kbd">⌘K</kbd>
         </button>
 
+        <a
+          href="/resume.pdf"
+          target="_blank"
+          rel="noopener noreferrer"
+          className="nav-resume-btn"
+          aria-label="Direct Download Resume PDF"
+          title="Download Resume PDF"
+        >
+          <span>Resume</span>
+          <span className="nav-resume-btn__arrow">↗</span>
+        </a>
+
         <button
           className="theme-toggle"
           onClick={onToggleTheme}
           onMouseEnter={() => setShowLabel(true)}
           onMouseLeave={() => setShowLabel(false)}
-          aria-label={`Switch to ${theme === 'night' ? 'day' : 'night'} theme`}
+          aria-label={`Switch to ${theme === "night" ? "day" : "night"} theme`}
         >
           <svg
             className="theme-toggle__icon"
@@ -79,8 +93,9 @@ const Navbar = ({ theme, onToggleTheme, onOpenCommandPalette }) => {
             strokeLinecap="round"
             strokeLinejoin="round"
           >
-            {theme === 'night' ? (
-              <>{/* Sun */}
+            {theme === "night" ? (
+              <>
+                {/* Sun */}
                 <circle cx="12" cy="12" r="5" />
                 <line x1="12" y1="1" x2="12" y2="3" />
                 <line x1="12" y1="21" x2="12" y2="23" />
@@ -92,14 +107,15 @@ const Navbar = ({ theme, onToggleTheme, onOpenCommandPalette }) => {
                 <line x1="18.36" y1="5.64" x2="19.78" y2="4.22" />
               </>
             ) : (
-              <>{/* Moon */}
+              <>
+                {/* Moon */}
                 <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z" />
               </>
             )}
           </svg>
           {showLabel && (
             <span className="theme-toggle__label">
-              {theme === 'night' ? 'DAY' : 'NIGHT'}
+              {theme === "night" ? "DAY" : "NIGHT"}
             </span>
           )}
         </button>

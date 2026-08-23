@@ -15,7 +15,7 @@
 }
 
 body.day-theme .profile-modal {
-  background: rgba(234, 227, 216, 0.85);
+  background: rgba(15, 23, 42, 0.45);
 }
 
 .profile-modal__card {
@@ -80,10 +80,29 @@ body.day-theme .profile-modal {
 }
 
 .profile-modal__body {
-  padding: var(--space-2xl);
+  padding: var(--space-xl) var(--space-2xl) var(--space-2xl);
   display: flex;
   gap: var(--space-2xl);
   overflow-y: auto;
+  scrollbar-width: thin;
+  scrollbar-color: var(--border-color) transparent;
+}
+
+.profile-modal__body::-webkit-scrollbar {
+  width: 6px;
+}
+
+.profile-modal__body::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+.profile-modal__body::-webkit-scrollbar-thumb {
+  background: var(--border-color);
+  border-radius: 4px;
+}
+
+.profile-modal__body::-webkit-scrollbar-thumb:hover {
+  background: var(--accent-primary);
 }
 
 /* Photo Column */
@@ -233,7 +252,9 @@ a.profile-modal__contact-item:hover {
   align-items: center;
   gap: var(--space-sm);
   flex-wrap: wrap;
-  margin-top: auto;
+  padding-top: var(--space-md);
+  margin-top: var(--space-sm);
+  border-top: 1px solid var(--border-color);
 }
 
 @media (max-width: 768px) {

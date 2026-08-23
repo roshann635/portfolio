@@ -126,8 +126,10 @@ const ProfileModal = ({ isOpen, onClose }) => {
                       {edu?.institution}
                     </p>
                     <p className="profile-modal__detail-highlight">
-                      Grade: <strong>{edu?.grade}</strong> · {edu?.startYear} —{" "}
-                      {edu?.endYear}
+                      Grade: <strong>{edu?.grade}</strong>
+                      {edu?.startYear && edu?.endYear
+                        ? ` · ${edu.startYear} — ${edu.endYear}`
+                        : ""}
                     </p>
                   </div>
 

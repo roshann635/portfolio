@@ -4,25 +4,39 @@
 
 :root {
   /* ---- Night Theme (default) ---- */
-  --bg-primary: #0B0B0D;
+  --bg-primary: #0b0b0d;
   --bg-secondary: #151517;
-  --bg-elevated: #1D1D20;
+  --bg-elevated: #1d1d20;
 
-  --text-primary: #F4F4F0;
-  --text-secondary: #A6A6AC;
-  --text-muted: #6E6E74;
+  --text-primary: #f4f4f0;
+  --text-secondary: #a6a6ac;
+  --text-muted: #6e6e74;
 
-  --accent-primary: #E9FF3D;
-  --accent-secondary: #3DEFFF;
+  --accent-primary: #e9ff3d;
+  --accent-secondary: #3defff;
 
   --border-color: rgba(244, 244, 240, 0.12);
   --border-accent: rgba(233, 255, 61, 0.4);
 
   /* ---- Typography ---- */
-  --font-display: 'Fraunces', serif;
-  --font-body: 'IBM Plex Sans', sans-serif;
-  --font-mono: 'IBM Plex Mono', monospace;
+  --font-display: "Fraunces", Georgia, serif;
+  --font-body: "IBM Plex Sans", -apple-system, sans-serif;
+  --font-mono: "IBM Plex Mono", monospace;
 
+  /* ---- Typography Scale Tokens ---- */
+  --text-hero: clamp(2.5rem, 5vw, 3.5rem);          /* Balanced hero name title */
+  --text-title: clamp(1.2rem, 2.5vw, 1.6rem);       /* Hero identity title */
+  --text-section: clamp(1.75rem, 3.5vw, 2.5rem);    /* Section headings */
+  --text-project-title: 1.25rem;                    /* Project card titles (20px) */
+  --text-subheading: 1.125rem;                      /* Category & subheadings */
+  --text-body-lg: 1rem;                             /* Hero bio & about intro (16px) */
+  --text-body: 0.9375rem;                           /* Project & card description (15px) */
+  --text-tech: 0.875rem;                            /* Terminal & tech details (14px) */
+  --text-mono-sm: 0.75rem;                          /* Tech pills (12px) */
+  --text-label: 0.6875rem;                          /* Labels & status (11px) */
+  --text-micro: 0.625rem;                           /* Micro metadata (10px) */
+
+  /* Scale Tokens */
   --fs-xs: 0.75rem;
   --fs-sm: 0.875rem;
   --fs-base: 1rem;
@@ -60,36 +74,19 @@
   --transition-slow: 0.5s ease;
 }
 
-/* ---- Day Theme Override ---- */
+/* ---- Day Theme Override (High-Contrast Clean Dossier) ---- */
 body.day-theme {
-  --bg-primary: #EAE3D8;
-  --bg-secondary: #D1C7BD;
-  --bg-elevated: #F5F0E8;
+  --bg-primary: #f8f9fa;
+  --bg-secondary: #ffffff;
+  --bg-elevated: #eef2f6;
 
-  --text-primary: #1E1B17;
-  --text-secondary: #55504A;
-  --text-muted: #8A8378;
+  --text-primary: #0f172a;
+  --text-secondary: #334155;
+  --text-muted: #64748b;
 
-  --accent-primary: #0B6E77;
-  --accent-secondary: #A97C00;
+  --accent-primary: #0d9488;
+  --accent-secondary: #2563eb;
 
-  --border-color: rgba(30, 27, 23, 0.14);
-  --border-accent: rgba(169, 124, 0, 0.4);
-}
-
-/* ---- Responsive font overrides ---- */
-@media (max-width: 768px) {
-  :root {
-    --fs-4xl: 2.5rem;
-    --fs-5xl: 3rem;
-    --fs-3xl: 2rem;
-  }
-}
-
-@media (max-width: 480px) {
-  :root {
-    --fs-4xl: 2rem;
-    --fs-5xl: 2.5rem;
-    --fs-3xl: 1.75rem;
-  }
+  --border-color: rgba(15, 23, 42, 0.12);
+  --border-accent: rgba(13, 148, 136, 0.4);
 }

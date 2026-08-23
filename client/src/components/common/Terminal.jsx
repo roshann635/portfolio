@@ -10,8 +10,22 @@ import {
 import "./Terminal.css";
 
 const WELCOME_MESSAGE = [
-  { type: "system", text: "Roshan Jadhav — Portfolio Shell v1.0.0" },
-  { type: "system", text: "Type 'help' to inspect available commands." },
+  { type: "prompt", text: "whoami" },
+  {
+    type: "output",
+    text: [
+      "roshan@portfolio",
+      "role       Full-Stack Developer & AI/ML Enthusiast",
+      "focus      AI/ML • Distributed Backends • Systems",
+      "standing   9.28 CGPA · K.K. Wagh Institute",
+      "status     open-to-internships",
+    ].join("\n"),
+  },
+  { type: "prompt", text: "help" },
+  {
+    type: "output",
+    text: "Available: about · projects --list · open <name> · skills · achievements · socials · contact",
+  },
 ];
 
 const Terminal = () => {
@@ -71,7 +85,7 @@ const Terminal = () => {
       case "whoami":
         newEntries.push({
           type: "output",
-          text: `${PROFILE.name} — ${PROFILE.tagline}\n${PROFILE.bio}`,
+          text: `${PROFILE.name} // ${PROFILE.title}\nStatus: ${PROFILE.status}\nAcademic Standing: ${PROFILE.cgpa} CGPA (${PROFILE.university})\n\n${PROFILE.bio}`,
         });
         break;
 
@@ -103,23 +117,23 @@ const Terminal = () => {
             text: "Usage: open <project_name> [--live | --code] (e.g. open codeforge, open samvaad --live)",
           });
         } else {
-          const isLive = args.includes('--live');
-          const isCode = args.includes('--code') || args.includes('--github');
-          const nameArgs = args.filter((a) => !a.startsWith('--'));
+          const isLive = args.includes("--live");
+          const isCode = args.includes("--code") || args.includes("--github");
+          const nameArgs = args.filter((a) => !a.startsWith("--"));
 
           if (!nameArgs.length) {
             newEntries.push({
-              type: 'error',
+              type: "error",
               text: "Please specify a project name. E.g. 'open codeforge'",
             });
             break;
           }
 
-          const rawQuery = nameArgs.join(' ').toLowerCase();
-          const cleanQuery = rawQuery.replace(/[^a-z0-9]/g, '');
+          const rawQuery = nameArgs.join(" ").toLowerCase();
+          const cleanQuery = rawQuery.replace(/[^a-z0-9]/g, "");
 
           const found = PLACEHOLDER_PROJECTS.find((p) => {
-            const cleanTitle = p.title.toLowerCase().replace(/[^a-z0-9]/g, '');
+            const cleanTitle = p.title.toLowerCase().replace(/[^a-z0-9]/g, "");
             return (
               cleanTitle.includes(cleanQuery) ||
               cleanQuery.includes(cleanTitle) ||
@@ -130,46 +144,46 @@ const Terminal = () => {
 
           if (found) {
             if (isLive) {
-              if (found.liveUrl && found.liveUrl !== '#') {
-                window.open(found.liveUrl, '_blank', 'noopener,noreferrer');
+              if (found.liveUrl && found.liveUrl !== "#") {
+                window.open(found.liveUrl, "_blank", "noopener,noreferrer");
                 newEntries.push({
-                  type: 'output',
+                  type: "output",
                   text: `Opening live deployment for ${found.title}...`,
                 });
               } else {
                 newEntries.push({
-                  type: 'output',
+                  type: "output",
                   text: `Live deployment URL not available for ${found.title}.`,
                 });
               }
             } else if (isCode) {
-              if (found.githubUrl && found.githubUrl !== '#') {
-                window.open(found.githubUrl, '_blank', 'noopener,noreferrer');
+              if (found.githubUrl && found.githubUrl !== "#") {
+                window.open(found.githubUrl, "_blank", "noopener,noreferrer");
                 newEntries.push({
-                  type: 'output',
+                  type: "output",
                   text: `Opening source repository for ${found.title}...`,
                 });
               } else {
                 newEntries.push({
-                  type: 'output',
+                  type: "output",
                   text: `Source repository not available for ${found.title}.`,
                 });
               }
             } else {
-              const el = document.getElementById('selected-work');
-              if (el && window.location.pathname === '/') {
-                el.scrollIntoView({ behavior: 'smooth' });
+              const el = document.getElementById("selected-work");
+              if (el && window.location.pathname === "/") {
+                el.scrollIntoView({ behavior: "smooth" });
               } else {
-                navigate('/projects');
+                navigate("/projects");
               }
               newEntries.push({
-                type: 'output',
+                type: "output",
                 text: `Navigating to ${found.title}.\nTip: use 'open ${rawQuery} --live' or 'open ${rawQuery} --code' for external links.`,
               });
             }
           } else {
             newEntries.push({
-              type: 'error',
+              type: "error",
               text: `Project '${rawQuery}' not found. Type 'projects --list' to view available entries.`,
             });
           }

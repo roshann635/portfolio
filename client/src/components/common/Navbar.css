@@ -20,7 +20,7 @@
 .spine__chapters {
   display: flex;
   flex-direction: column;
-  gap: 2rem;
+  gap: 2.2rem;
   align-items: center;
 }
 
@@ -36,16 +36,22 @@
   text-decoration: none;
   text-transform: uppercase;
   letter-spacing: 0.08em;
-  padding: 0.5rem 0;
-  transition: color var(--transition-fast);
+  padding: 0.6rem 0;
+  transition:
+    color var(--transition-fast),
+    letter-spacing var(--transition-fast),
+    transform var(--transition-fast);
 }
 
 .spine__item:hover {
-  color: var(--text-primary);
+  color: var(--accent-primary);
+  letter-spacing: 0.12em;
 }
 
 .spine__item--active {
-  color: var(--text-primary);
+  color: var(--accent-primary);
+  font-weight: 700;
+  letter-spacing: 0.1em;
 }
 
 .spine__indicator {
@@ -53,8 +59,9 @@
   left: -1px;
   top: 0;
   bottom: 0;
-  width: 2px;
+  width: 2.5px;
   background: var(--accent-primary);
+  box-shadow: 0 0 8px var(--accent-primary);
 }
 
 /* ---- Mobile Top Bar ---- */
@@ -96,7 +103,9 @@
   align-items: center;
   white-space: nowrap;
   border-bottom: 2px solid transparent;
-  transition: color var(--transition-fast), border-color var(--transition-fast);
+  transition:
+    color var(--transition-fast),
+    border-color var(--transition-fast);
 }
 
 .topbar__item:hover {
@@ -140,7 +149,9 @@
   cursor: pointer;
   font-family: var(--font-mono);
   font-size: var(--fs-xs);
-  transition: border-color var(--transition-fast), color var(--transition-fast);
+  transition:
+    border-color var(--transition-fast),
+    color var(--transition-fast);
 }
 
 .cmd-trigger:hover {
@@ -160,6 +171,35 @@
   border: 1px solid var(--border-color);
   border-radius: 3px;
   color: var(--accent-primary);
+}
+
+.nav-resume-btn {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+  padding: 6px 12px;
+  background: var(--accent-primary);
+  color: var(--bg-primary);
+  border: 1px solid var(--accent-primary);
+  border-radius: var(--radius-full);
+  font-family: var(--font-mono);
+  font-size: 11px;
+  font-weight: 600;
+  text-decoration: none;
+  letter-spacing: 0.04em;
+  transition:
+    opacity var(--transition-fast),
+    transform var(--transition-fast);
+}
+
+.nav-resume-btn:hover {
+  opacity: 0.9;
+  transform: translateY(-1px);
+}
+
+.nav-resume-btn__arrow {
+  font-size: 11px;
+  font-weight: 700;
 }
 
 .theme-toggle {

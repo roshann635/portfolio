@@ -1,277 +1,120 @@
-# 🌐 Roshan Jadhav — Personal Portfolio
+# 🌐 Roshan Jadhav — Engineering Portfolio
 
-A modern, responsive personal portfolio website showcasing my journey as a **Computer Science Engineering student**, my technical skills, projects, achievements, certifications, and experience.
+[![Vercel Deployment](https://img.shields.io/badge/Deployed-Vercel-black?style=flat&logo=vercel)](https://roshan-635.vercel.app/)
+[![React 19](https://img.shields.io/badge/Frontend-React_19-blue?style=flat&logo=react)](https://react.dev/)
+[![FastAPI](https://img.shields.io/badge/Backend-FastAPI-009688?style=flat&logo=fastapi)](https://fastapi.tiangolo.com/)
+[![Node.js](https://img.shields.io/badge/Backend-Node.js-green?style=flat&logo=node.js)](https://nodejs.org/)
 
-🔗 **Live Website:** https://roshan-635.vercel.app/
+> **Full-Stack Developer & AI/ML Enthusiast**  
+> Building intelligent, production-oriented software across AI/ML, backend systems, and modern web architectures.
 
----
-
-## ✨ About the Portfolio
-
-This portfolio serves as a central platform to showcase my work, technical journey, and experience in software development and emerging technologies.
-
-It includes:
-
-* 👨‍💻 About Me
-* 🛠️ Technical Skills
-* 🚀 Projects
-* 🏆 Achievements
-* 📜 Certifications
-* 🎓 Education
-* 📄 Resume
-* 📬 Contact
-
-The website is designed with a clean, modern interface and responsive layout for a smooth experience across different devices.
+🔗 **Live Portfolio:** [https://roshan-635.vercel.app/](https://roshan-635.vercel.app/)
 
 ---
 
-## 🛠️ Tech Stack
+## ⚡ Technical Highlights
 
-* **Frontend:** React.js
-* **Language:** JavaScript
-* **Styling:** CSS / Tailwind CSS
-* **Build Tool:** Vite
-* **Deployment:** Vercel
-* **Version Control:** Git & GitHub
-
----
-
-## 🚀 Featured Projects
-
-The portfolio showcases several of my development projects, covering areas such as full-stack development, real-time applications, education technology, productivity, and AI-powered solutions.
-
-### 🔥 CodeForge
-
-A developer-focused project designed to provide a platform for coding and software development-related activities.
-
-**Focus:** Software Development • Coding • Developer Tools
+- **Interactive Hero Shell**: Embedded terminal emulator supporting internal-first project navigation, capability querying, and keyboard history cycling.
+- **Vector Architecture Diagrams**: Bespoke system topology diagrams embedded directly into featured project drawers.
+- **Live GitHub REST Telemetry**: Cached profile and repository metrics fetched directly from the GitHub API.
+- **Command Palette (`⌘K` / `Ctrl+K`)**: Modal search across portfolio sections, project direct jumps, theme switching, and quick actions.
+- **Bound Dossier Design System**: Strict flat visual ledger featuring Fraunces and IBM Plex typography in Night and Day themes.
 
 ---
 
-### 🤝 SkillSwap
+## 🚀 Flagship Projects
 
-A platform focused on connecting people to **share, exchange, and learn skills** from each other.
+### 1. 🥇 [CoCompute — LAN-Based Distributed Computing Platform](https://github.com/roshann635/CoCompute)
 
-**Focus:** Skill Sharing • Community • Web Development
+- **Problem**: Dedicated GPU computing clusters are cost-prohibitive for student labs and individual researchers.
+- **Architecture**: Coordinates heterogeneous client nodes over local network (LAN) using an mDNS/broadcast discovery protocol, centralized Redis task scheduling queue, and real-time CPU/RAM/GPU telemetry over WebSockets.
+- **Stack**: Python, FastAPI, React 19, PostgreSQL, SQLAlchemy, Redis, WebSockets, Docker, scikit-learn.
+- **Status**: Local/LAN System (Source Available).
 
----
+### 2. 🥈 [CodeForge — DSA Assessment & Sandboxed Execution Engine](https://github.com/roshann635/CodeForge)
 
-### 💬 Samvaad
+- **Problem**: Securely evaluating arbitrary multi-language code submissions under 2 seconds while ensuring test proctoring integrity.
+- **Architecture**: Monaco code editor fronting isolated Docker containers via Judge0 API, real-time client-side proctoring telemetry via `face-api.js`, and Gemini GenAI-powered code explanations.
+- **Stack**: React 19, Monaco Editor, Express 5, MongoDB, Judge0, Docker, PostgreSQL, Redis, Gemini API.
+- **Status**: Live Deployment (`https://codeforge-eta.vercel.app/`).
 
-A **real-time communication application** designed for seamless user-to-user messaging.
+### 3. 🥉 [Prep10X — AI-Powered Exam Preparation & Analytics](https://github.com/roshann635/prep10x)
 
-**Focus:** Real-Time Communication • WebSockets • Full-Stack Development
+- **Problem**: Converting unstructured study notes and low-quality handwritten exams into structured mock tests.
+- **Architecture**: Dual-backend bridge between a Node.js API and a Python FastAPI microservice utilizing OpenCV adaptive thresholding, Pytesseract OCR, and Gemini GenAI for automated grading.
+- **Stack**: React, FastAPI, Python, Node.js, MongoDB, OpenCV, Pytesseract, Docker, Gemini AI.
+- **Status**: Live Deployment (`https://prep10x-by-roshan.vercel.app/`).
 
----
+### 4. 💬 [Samvaad — Real-Time WebSocket Communication Platform](https://github.com/roshann635/Samvaad-Where-conversations-come-alive)
 
-### 📚 Prep10X
-
-A preparation-focused platform designed to help users improve their learning and preparation through a structured digital experience.
-
-**Focus:** Learning • Exam Preparation • Productivity
-
----
-
-### 🛡️ SheCity AI
-
-An AI-powered women's safety platform designed to provide safety-focused tools and intelligent assistance.
-
-**Focus:** AI • Safety Technology • Full-Stack Development
-
----
-
-### 🧠 Algonova
-
-An interactive platform focused on making **Data Structures and Algorithms** easier to learn through visualization and interactive learning experiences.
-
-**Focus:** DSA • Education Technology • Interactive Learning
+- **Problem**: Low-latency bi-directional messaging with guaranteed message ordering and presence synchronization.
+- **Architecture**: Socket.IO persistent channels with optimistic UI dispatch, monotonic sequence ID queues, and token-authenticated socket handshakes.
+- **Stack**: React 19, Node.js, Express, MongoDB, Socket.IO, JWT, bcrypt, Tailwind CSS.
+- **Status**: Live Deployment (`https://samvaad-where-conversations-come-al.vercel.app/`).
 
 ---
 
-### 🌱 PlantScan
+## 🛠️ Technical Taxonomy
 
-An AI-oriented application focused on analyzing plants and providing useful insights through intelligent image-based analysis.
-
-**Focus:** AI/ML • Computer Vision • Agriculture Technology
-
----
-
-### ⚡ Energy Wise Companion
-
-A technology-driven solution focused on improving awareness and decision-making around energy consumption.
-
-**Focus:** Sustainability • Energy • Intelligent Systems
+| Category                  | Technologies                                                           |
+| ------------------------- | ---------------------------------------------------------------------- |
+| **Core Languages**        | Python, JavaScript (ES6+), C++, Java, C                                |
+| **AI / Machine Learning** | Google Gemini API, scikit-learn, OpenCV, NumPy, Pandas, Generative AI  |
+| **Backend & Systems**     | Node.js, FastAPI, Express.js, RESTful APIs, WebSockets, Socket.IO, JWT |
+| **Frontend**              | React 19, Vite, Tailwind CSS, HTML5, CSS3, Responsive Design           |
+| **Databases & Caching**   | MongoDB, Mongoose, PostgreSQL, Redis, SQL                              |
+| **DevOps & Tooling**      | Docker, Docker Compose, Git, GitHub, Postman, Vercel, Render, Linux    |
 
 ---
 
-## 🧩 Skills
+## 🎓 Academic Record & Experience
 
-The portfolio showcases my experience across multiple areas of software development.
-
-### Programming Languages
-
-* C
-* C++
-* Python
-* Java
-* JavaScript
-
-### Frontend Development
-
-* React.js
-* HTML5
-* CSS3
-* Tailwind CSS
-* Bootstrap
-
-### Backend Development
-
-* Node.js
-* Express.js
-* REST APIs
-* Socket.IO
-
-### Databases
-
-* MongoDB
-* MySQL
-* PostgreSQL
-
-### AI / ML
-
-* Python
-* Machine Learning
-* NLP
-* Generative AI
-* MLOps
-
-### Tools & Platforms
-
-* Git
-* GitHub
-* VS Code
-* Postman
-* Vercel
-* Render
-* MongoDB Atlas
+- **Education**: B.Tech in Computer Science and Engineering, **K.K. Wagh Institute of Engineering Education and Research** (2024–2028) · **9.28 CGPA**
+- **Experience**: Virtual Intern — Technology at **Infosys Springboard** (Virtual Internship 7.0, Ongoing)
+- **Achievements**:
+  - Finalist — Nirmaan Hackathon (Amity University Mumbai)
+  - Finalist — PVG HackHub National Level Hackathon (PVG College of Engineering)
+  - Finalist — Innovera National Hackathon
+  - Google Cloud Arcade — Full Program Completion
 
 ---
 
-## 🏆 Achievements
-
-The portfolio highlights my participation and achievements in:
-
-* 🏅 National-level hackathons
-* 🏆 PVG HackHub
-* 🏆 Innovera National Hackathon
-* 🏆 Nirman Hackathon — Amity University Mumbai
-* 👨‍💻 GirlScript Summer of Code
-* 🏏 College-level cricket tournaments
-
----
-
-## 📜 Certifications
-
-The portfolio includes certifications and learning achievements in areas including:
-
-* Artificial Intelligence
-* Generative AI
-* Machine Learning
-* Full-Stack Development
-* NLP
-* MLOps
-
----
-
-## 📱 Responsive Design
-
-The portfolio is built to work across different screen sizes:
-
-* 💻 Desktop
-* 💻 Laptop
-* 📱 Mobile
-* 📟 Tablet
-
----
-
-## ⚙️ Run Locally
+## 💻 Local Development Setup
 
 ### 1. Clone the repository
 
 ```bash
-git clone https://github.com/YOUR_USERNAME/YOUR_REPOSITORY.git
+git clone https://github.com/roshann635/portfolio.git
+cd portfolio
 ```
 
-### 2. Navigate to the project
+### 2. Install dependencies
 
 ```bash
-cd YOUR_REPOSITORY
-```
+# Install client dependencies
+cd client
+npm install
 
-### 3. Install dependencies
-
-```bash
+# Install server dependencies (optional for dynamic API)
+cd ../server
 npm install
 ```
 
-### 4. Start the development server
+### 3. Run the development server
 
 ```bash
+# In client directory
+cd ../client
 npm run dev
 ```
 
-Open the local URL provided by Vite in your browser.
+Open `http://localhost:5173` to explore the live interactive application.
 
 ---
 
-## 📂 Project Structure
+## 📄 License & Contact
 
-```text
-portfolio/
-│
-├── public/
-│   └── assets/
-│
-├── src/
-│   ├── components/
-│   ├── assets/
-│   ├── App.jsx
-│   ├── main.jsx
-│   └── index.css
-│
-├── package.json
-├── vite.config.js
-├── index.html
-└── README.md
-```
-
----
-
-## 🌐 Deployment
-
-The portfolio is deployed using **Vercel**.
-
-🔗 **Live Portfolio:**
-https://roshan-635.vercel.app/
-
----
-
-## 🎯 Purpose
-
-This portfolio represents my ongoing journey in **software development, full-stack engineering, and AI/ML**.
-
-It is continuously updated as I build new projects, learn new technologies, participate in hackathons, and develop my technical skills.
-
----
-
-## 👨‍💻 Author
-
-**Roshan Jadhav**
-
-Computer Science Engineering Student
-Full-Stack Developer • AI/ML Enthusiast
-
----
-
-⭐ **Explore the portfolio:**
-https://roshan-635.vercel.app/
+- **Author**: Roshan Jadhav
+- **Email**: [roshanjadhav4385@gmail.com](mailto:roshanjadhav4385@gmail.com)
+- **LinkedIn**: [linkedin.com/in/roshan-jadhav-100410339](https://www.linkedin.com/in/roshan-jadhav-100410339)
+- **GitHub**: [github.com/roshann635](https://github.com/roshann635)

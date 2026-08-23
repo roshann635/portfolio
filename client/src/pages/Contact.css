@@ -13,12 +13,14 @@
 }
 
 .contact-page__details h3 {
+  font-size: var(--fs-2xl);
   margin-bottom: var(--space-sm);
 }
 
 .contact-page__details > p {
   margin-bottom: var(--space-xl);
-  font-size: var(--fs-sm);
+  font-size: var(--text-body-lg);
+  line-height: 1.65;
 }
 
 .contact-page__info-list {
@@ -48,7 +50,7 @@
 .contact-page__info-label {
   display: block;
   font-family: var(--font-mono);
-  font-size: 10px;
+  font-size: var(--text-label);
   text-transform: uppercase;
   letter-spacing: 0.08em;
   color: var(--text-muted);
@@ -56,7 +58,8 @@
 }
 
 .contact-page__info-value {
-  font-size: var(--fs-sm);
+  font-family: var(--font-mono);
+  font-size: var(--text-tech);
   font-weight: 500;
   color: var(--text-primary);
 }

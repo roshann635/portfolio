@@ -1,4 +1,5 @@
 import { FaEnvelope, FaMapMarkerAlt, FaPhone, FaGithub, FaLinkedin } from 'react-icons/fa';
+import { SiLeetcode } from 'react-icons/si';
 import ContactForm from '../components/contact/ContactForm';
 import { PROFILE } from '../utils/constants';
 import ScrollReveal from '../components/common/ScrollReveal';
@@ -12,9 +13,10 @@ const Contact = () => {
   ];
 
   const socials = [
-    { icon: <FaGithub />, url: 'https://github.com/roshann635', label: 'GitHub' },
-    { icon: <FaLinkedin />, url: 'https://www.linkedin.com/in/roshan-jadhav-100410339', label: 'LinkedIn' },
-    { icon: <FaEnvelope />, url: 'https://mail.google.com/mail/?view=cm&fs=1&to=roshanjadhav4385@gmail.com', label: 'Email' },
+    { icon: <FaGithub />, url: PROFILE.socials.github, label: 'GitHub' },
+    { icon: <FaLinkedin />, url: PROFILE.socials.linkedin, label: 'LinkedIn' },
+    { icon: <SiLeetcode />, url: PROFILE.socials.leetcode, label: 'LeetCode' },
+    { icon: <FaEnvelope />, url: `mailto:${PROFILE.email}`, label: 'Email' },
   ];
 
   return (

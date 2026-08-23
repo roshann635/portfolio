@@ -85,12 +85,11 @@ const CommandPalette = ({ isOpen, onClose, onToggleTheme, currentTheme }) => {
       title: `Project: ${p.title}`,
       category: "Projects",
       icon: <FaCode />,
-      shortcut: "Live",
+      shortcut: "Jump",
       run: () => {
-        if (p.liveUrl && p.liveUrl !== "#") {
-          window.open(p.liveUrl, "_blank", "noopener,noreferrer");
-        } else if (p.githubUrl && p.githubUrl !== "#") {
-          window.open(p.githubUrl, "_blank", "noopener,noreferrer");
+        if (window.location.pathname === "/") {
+          const el = document.getElementById("selected-work");
+          if (el) el.scrollIntoView({ behavior: "smooth" });
         } else {
           navigate("/projects");
         }
@@ -155,11 +154,16 @@ const CommandPalette = ({ isOpen, onClose, onToggleTheme, currentTheme }) => {
     );
   });
 
+  const previousFocusRef = useRef(null);
+
   useEffect(() => {
     if (isOpen) {
+      previousFocusRef.current = document.activeElement;
       setQuery("");
       setSelectedIndex(0);
       setTimeout(() => inputRef.current?.focus(), 50);
+    } else if (previousFocusRef.current) {
+      previousFocusRef.current.focus?.();
     }
   }, [isOpen]);
 
