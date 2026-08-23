@@ -7,9 +7,10 @@ import './ProjectList.css';
 const ProjectList = ({ projects = [] }) => {
   const [activeCategory, setActiveCategory] = useState('all');
 
-  const filtered = activeCategory === 'all'
-    ? projects
-    : projects.filter(p => p.category === activeCategory);
+  const filtered =
+    activeCategory === 'all'
+      ? projects
+      : projects.filter((p) => p.category === activeCategory);
 
   return (
     <div className="project-list">
@@ -21,9 +22,6 @@ const ProjectList = ({ projects = [] }) => {
             onClick={() => setActiveCategory(cat.key)}
           >
             {cat.label}
-            {activeCategory === cat.key && (
-              <motion.div className="project-list__filter-indicator" layoutId="filter-indicator" />
-            )}
           </button>
         ))}
       </div>
@@ -34,8 +32,7 @@ const ProjectList = ({ projects = [] }) => {
         ))}
         {filtered.length === 0 && (
           <div className="project-list__empty">
-            <span>🔍</span>
-            <p>No quests found in this category.</p>
+            <p>No projects found in this category.</p>
           </div>
         )}
       </motion.div>

@@ -1,0 +1,129 @@
+/* ============================================
+   LIVE GITHUB STATS (Flat Dossier Theme)
+   ============================================ */
+
+.github-stats {
+  background: var(--bg-secondary);
+  border: 1px solid var(--border-color);
+  border-radius: var(--radius-sm);
+  padding: var(--space-lg);
+  margin-top: var(--space-2xl);
+  margin-bottom: var(--space-2xl);
+}
+
+.github-stats__header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding-bottom: var(--space-md);
+  margin-bottom: var(--space-md);
+  border-bottom: 1px solid var(--border-color);
+  flex-wrap: wrap;
+  gap: var(--space-sm);
+}
+
+.github-stats__identity {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.github-stats__icon {
+  font-size: var(--fs-md);
+  color: var(--text-primary);
+}
+
+.github-stats__title {
+  font-family: var(--font-mono);
+  font-size: var(--fs-sm);
+  font-weight: 600;
+  color: var(--text-primary);
+}
+
+.github-stats__badge {
+  font-family: var(--font-mono);
+  font-size: 9px;
+  font-weight: 600;
+  color: var(--accent-primary);
+  letter-spacing: 0.08em;
+  padding: 1px 6px;
+  border: 1px solid var(--border-accent);
+  border-radius: var(--radius-sm);
+}
+
+.github-stats__link {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  font-family: var(--font-mono);
+  font-size: var(--fs-xs);
+  color: var(--accent-secondary);
+  text-decoration: none;
+  transition: color var(--transition-fast);
+}
+
+.github-stats__link:hover {
+  color: var(--accent-primary);
+}
+
+.github-stats__grid {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: var(--space-lg);
+  flex-wrap: wrap;
+}
+
+.github-stats__stat {
+  display: flex;
+  flex-direction: column;
+}
+
+.github-stats__value {
+  font-family: var(--font-display);
+  font-size: var(--fs-xl);
+  font-weight: 700;
+  color: var(--accent-primary);
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  line-height: 1.2;
+}
+
+.github-stats__subicon {
+  font-size: 0.8em;
+}
+
+.github-stats__label {
+  font-family: var(--font-mono);
+  font-size: var(--fs-xs);
+  color: var(--text-muted);
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+}
+
+.github-stats__divider {
+  width: 1px;
+  height: 32px;
+  background: var(--border-color);
+}
+
+.github-stats__stat--langs .github-stats__langs-list {
+  font-family: var(--font-mono);
+  font-size: var(--fs-sm);
+  font-weight: 500;
+  color: var(--text-secondary);
+  line-height: 1.4;
+}
+
+@media (max-width: 768px) {
+  .github-stats__grid {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: var(--space-md);
+  }
+
+  .github-stats__divider {
+    display: none;
+  }
+}

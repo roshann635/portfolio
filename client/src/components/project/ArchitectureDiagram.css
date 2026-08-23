@@ -1,0 +1,108 @@
+/* ============================================
+   ARCHITECTURE DIAGRAM (Flat Dossier Theme)
+   ============================================ */
+
+.arch-diagram {
+  margin-top: var(--space-md);
+  padding: var(--space-md);
+  background: var(--bg-primary);
+  border: 1px solid var(--border-color);
+  border-radius: var(--radius-sm);
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-sm);
+}
+
+.arch-diagram__header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding-bottom: 6px;
+  border-bottom: 1px solid var(--border-color);
+}
+
+.arch-diagram__badge {
+  font-family: var(--font-mono);
+  font-size: 10px;
+  font-weight: 600;
+  color: var(--accent-primary);
+  letter-spacing: 0.08em;
+}
+
+.arch-diagram__hint {
+  font-family: var(--font-mono);
+  font-size: 9px;
+  color: var(--text-muted);
+  text-transform: uppercase;
+}
+
+.arch-diagram__canvas {
+  width: 100%;
+  overflow-x: auto;
+  -webkit-overflow-scrolling: touch;
+}
+
+.arch-diagram__svg {
+  width: 100%;
+  min-width: 540px;
+  height: auto;
+  display: block;
+}
+
+/* Nodes */
+.arch-node {
+  fill: var(--bg-secondary);
+  stroke: var(--border-color);
+  stroke-width: 1.5px;
+  transition: stroke 0.2s ease, fill 0.2s ease;
+}
+
+.arch-node--highlight {
+  fill: var(--bg-elevated);
+  stroke: var(--accent-primary);
+  stroke-width: 1.5px;
+}
+
+/* Text */
+.arch-node-title {
+  font-family: var(--font-mono);
+  font-size: 12px;
+  font-weight: 600;
+  fill: var(--text-primary);
+}
+
+.arch-node-title--highlight {
+  fill: var(--accent-primary);
+}
+
+.arch-node-sub {
+  font-family: var(--font-mono);
+  font-size: 10px;
+  fill: var(--text-secondary);
+}
+
+/* Edges / Lines */
+.arch-edge {
+  stroke: var(--text-muted);
+  stroke-width: 1.5px;
+  fill: none;
+}
+
+.arch-edge--highlight {
+  stroke: var(--accent-primary);
+  stroke-width: 1.5px;
+  stroke-dasharray: 4 2;
+  animation: archDash 20s linear infinite;
+}
+
+.arch-edge-label {
+  font-family: var(--font-mono);
+  font-size: 9px;
+  fill: var(--accent-secondary);
+}
+
+@keyframes archDash {
+  to {
+    stroke-dashoffset: -100;
+  }
+}

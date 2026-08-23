@@ -1,108 +1,49 @@
-import { motion } from "framer-motion";
-import {
-  FaEnvelope,
-  FaMapMarkerAlt,
-  FaPhone,
-  FaGithub,
-  FaLinkedin,
-  FaInstagram,
-} from "react-icons/fa";
-import ContactForm from "../components/contact/ContactForm";
-import { PROFILE } from "../utils/constants";
-import ScrollReveal from "../components/common/ScrollReveal";
-import "./Contact.css";
+import { FaEnvelope, FaMapMarkerAlt, FaPhone, FaGithub, FaLinkedin } from 'react-icons/fa';
+import ContactForm from '../components/contact/ContactForm';
+import { PROFILE } from '../utils/constants';
+import ScrollReveal from '../components/common/ScrollReveal';
+import './Contact.css';
 
 const Contact = () => {
   const contactInfo = [
-    {
-      icon: <FaPhone />,
-      label: "Phone",
-      value: PROFILE.mobile,
-      href: `tel:${PROFILE.mobile}`,
-    },
-    {
-      icon: <FaEnvelope />,
-      label: "Email",
-      value: PROFILE.email,
-      href: `mailto:${PROFILE.email}`,
-    },
-    {
-      icon: <FaMapMarkerAlt />,
-      label: "Location",
-      value: PROFILE.location,
-      href: null,
-    },
+    { icon: <FaPhone />, label: 'Phone', value: PROFILE.mobile, href: `tel:${PROFILE.mobile}` },
+    { icon: <FaEnvelope />, label: 'Email', value: PROFILE.email, href: `mailto:${PROFILE.email}` },
+    { icon: <FaMapMarkerAlt />, label: 'Location', value: PROFILE.location, href: null },
   ];
 
   const socials = [
-    {
-      icon: <FaGithub />,
-      url: "https://github.com/roshann635",
-      label: "GitHub",
-    },
-    {
-      icon: <FaLinkedin />,
-      url: "https://www.linkedin.com/in/roshan-jadhav-100410339",
-      label: "LinkedIn",
-    },
-    {
-      icon: <FaInstagram />,
-      url: "https://www.instagram.com/roshann_635",
-      label: "Instagram",
-    },
-    {
-      icon: <FaEnvelope />,
-      url: "https://mail.google.com/mail/?view=cm&fs=1&to=roshanjadhav4385@gmail.com",
-      label: "Email",
-    },
+    { icon: <FaGithub />, url: 'https://github.com/roshann635', label: 'GitHub' },
+    { icon: <FaLinkedin />, url: 'https://www.linkedin.com/in/roshan-jadhav-100410339', label: 'LinkedIn' },
+    { icon: <FaEnvelope />, url: 'https://mail.google.com/mail/?view=cm&fs=1&to=roshanjadhav4385@gmail.com', label: 'Email' },
   ];
 
   return (
-    <div
-      className="contact-page section"
-      style={{ paddingTop: "calc(var(--nav-height) + var(--space-3xl))" }}
-    >
+    <div className="contact-page section" style={{ paddingTop: 'calc(var(--nav-height) + var(--space-3xl))' }}>
       <div className="container">
-        <ScrollReveal direction="up" distance={40} duration={0.8}>
+        <ScrollReveal>
           <div className="section-title">
-            <h2>Get In Touch</h2>
-            <p>Have a quest for me? Let's talk!</p>
+            <h2>Contact</h2>
+            <p>Have a project in mind? Let's talk.</p>
           </div>
         </ScrollReveal>
 
         <div className="contact-page__grid">
-          <ScrollReveal direction="left" distance={50} delay={0.1}>
+          <ScrollReveal>
             <div className="contact-page__info">
-              <motion.div
-                className="contact-page__details glass-card"
-                whileHover={{ y: -4 }}
-                transition={{ duration: 0.3 }}
-              >
+              <div className="contact-page__details">
                 <h3>Let's Connect</h3>
-                <p>
-                  I'm always open to discussing new projects, creative ideas, or
-                  opportunities to be part of your vision.
-                </p>
+                <p>I'm always open to discussing new projects, creative ideas, or opportunities to be part of your vision.</p>
 
                 <div className="contact-page__info-list">
                   {contactInfo.map((item) => (
                     <div key={item.label} className="contact-page__info-item">
                       <div className="contact-page__info-icon">{item.icon}</div>
                       <div>
-                        <span className="contact-page__info-label">
-                          {item.label}
-                        </span>
+                        <span className="contact-page__info-label">{item.label}</span>
                         {item.href ? (
-                          <a
-                            href={item.href}
-                            className="contact-page__info-value"
-                          >
-                            {item.value}
-                          </a>
+                          <a href={item.href} className="contact-page__info-value">{item.value}</a>
                         ) : (
-                          <span className="contact-page__info-value">
-                            {item.value}
-                          </span>
+                          <span className="contact-page__info-value">{item.value}</span>
                         )}
                       </div>
                     </div>
@@ -113,24 +54,18 @@ const Contact = () => {
                   <h4>Find me online</h4>
                   <div className="contact-page__social-links">
                     {socials.map((s) => (
-                      <a
-                        key={s.label}
-                        href={s.url}
-                        target="_blank"
-                        rel="noopener noreferrer"
-                        className="contact-page__social-link"
-                        aria-label={s.label}
-                      >
+                      <a key={s.label} href={s.url} target="_blank" rel="noopener noreferrer" className="contact-page__social-link" aria-label={s.label}>
                         {s.icon}
+                        <span>{s.label}</span>
                       </a>
                     ))}
                   </div>
                 </div>
-              </motion.div>
+              </div>
             </div>
           </ScrollReveal>
 
-          <ScrollReveal direction="right" distance={50} delay={0.2}>
+          <ScrollReveal>
             <ContactForm />
           </ScrollReveal>
         </div>

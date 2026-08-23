@@ -7,41 +7,36 @@
 }
 
 .project-list__filter {
-  position: relative;
-  padding: 10px 20px;
+  padding: 8px 20px;
   border: 1px solid var(--border-color);
   border-radius: var(--radius-full);
   background: transparent;
   color: var(--text-secondary);
-  font-size: var(--fs-sm);
+  font-family: var(--font-mono);
+  font-size: var(--fs-xs);
   font-weight: 500;
   cursor: pointer;
   transition: all var(--transition-fast);
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
 }
 
 .project-list__filter:hover {
   border-color: var(--accent-primary);
-  color: var(--text-heading);
+  color: var(--text-primary);
 }
 
 .project-list__filter--active {
-  color: var(--text-heading);
+  background: var(--accent-primary);
+  color: var(--bg-primary);
   border-color: var(--accent-primary);
-}
-
-.project-list__filter-indicator {
-  position: absolute;
-  inset: -1px;
-  background: var(--gradient-primary);
-  border-radius: var(--radius-full);
-  z-index: -1;
-  opacity: 0.9;
 }
 
 .project-list__grid {
   display: grid;
   grid-template-columns: repeat(auto-fill, minmax(min(340px, 100%), 1fr));
   gap: var(--space-xl);
+  align-items: start;
 }
 
 .project-list__empty {
@@ -49,12 +44,6 @@
   text-align: center;
   padding: var(--space-4xl) 0;
   color: var(--text-muted);
-}
-
-.project-list__empty span {
-  font-size: 3rem;
-  display: block;
-  margin-bottom: var(--space-md);
 }
 
 @media (max-width: 480px) {

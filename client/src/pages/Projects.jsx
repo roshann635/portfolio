@@ -11,15 +11,15 @@ const Projects = () => {
   return (
     <div className="section" style={{ paddingTop: 'calc(var(--nav-height) + var(--space-3xl))' }}>
       <div className="container">
-        <ScrollReveal direction="up" distance={40} duration={0.8}>
+        <ScrollReveal>
           <div className="section-title">
-            <h2>Quest Board</h2>
-            <p>Browse all my completed and ongoing adventures</p>
+            <h2>Projects</h2>
+            <p>A collection of projects I've built</p>
           </div>
         </ScrollReveal>
 
-        <ScrollReveal direction="up" distance={50} delay={0.15}>
-          {loading ? <Loader text="Loading quests..." /> : <ProjectList projects={projects} />}
+        <ScrollReveal>
+          {loading ? <Loader text="Loading projects..." /> : <ProjectList projects={projects} />}
         </ScrollReveal>
       </div>
     </div>

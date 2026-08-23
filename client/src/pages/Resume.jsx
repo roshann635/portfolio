@@ -1,34 +1,28 @@
-import { motion } from "framer-motion";
-import {
-  FaDownload,
-  FaCode,
-  FaGraduationCap,
-} from "react-icons/fa";
-import Button from "../components/common/Button";
+import { FaDownload } from 'react-icons/fa';
+import Button from '../components/common/Button';
 import {
   PROFILE,
   PLACEHOLDER_SKILLS,
   PLACEHOLDER_EDUCATION,
+  PLACEHOLDER_EXPERIENCES,
+  PLACEHOLDER_ACHIEVEMENTS,
   SKILL_CATEGORIES,
-} from "../utils/constants";
-import ScrollReveal from "../components/common/ScrollReveal";
-import "./Resume.css";
+} from '../utils/constants';
+import ScrollReveal from '../components/common/ScrollReveal';
+import './Resume.css';
 
 const Resume = () => {
   return (
-    <div
-      className="resume-page section"
-      style={{ paddingTop: "calc(var(--nav-height) + var(--space-3xl))" }}
-    >
+    <div className="resume-page section" style={{ paddingTop: 'calc(var(--nav-height) + var(--space-3xl))' }}>
       <div className="container">
-        <ScrollReveal direction="up" distance={40} duration={0.8}>
+        <ScrollReveal>
           <div className="section-title">
             <h2>Resume</h2>
             <p>A summary of my professional journey</p>
           </div>
         </ScrollReveal>
 
-        <ScrollReveal direction="up" distance={30} delay={0.1}>
+        <ScrollReveal>
           <div className="resume-page__actions">
             <a href="/resume.pdf" target="_blank" rel="noopener noreferrer">
               <Button variant="primary" size="md" icon={<FaDownload />}>
@@ -40,78 +34,99 @@ const Resume = () => {
 
         <div className="resume-page__content">
           {/* Header */}
-          <ScrollReveal direction="up" distance={40} delay={0.15}>
-            <motion.div
-              className="resume-page__header glass-card"
-              whileHover={{ y: -4 }}
-              transition={{ duration: 0.3 }}
-            >
-              <div className="resume-page__header-info">
-                <h2>{PROFILE.name}</h2>
-                <p className="resume-page__header-role">{PROFILE.tagline}</p>
-                <p>
-                  {PROFILE.location} • {PROFILE.email}
-                </p>
+          <ScrollReveal>
+            <div className="resume-page__header">
+              <h2>{PROFILE.name}</h2>
+              <p className="resume-page__header-role">{PROFILE.tagline}</p>
+              <p className="resume-page__header-contact">{PROFILE.location} &middot; {PROFILE.email}</p>
+            </div>
+          </ScrollReveal>
+
+          {/* Experience */}
+          <ScrollReveal>
+            <div className="resume-page__section">
+              <h3 className="resume-page__section-title">Experience</h3>
+              <div className="resume-page__timeline">
+                {PLACEHOLDER_EXPERIENCES.map((exp) => (
+                  <div key={exp._id} className="resume-page__timeline-item">
+                    <div className="resume-page__timeline-dot" />
+                    <div className="resume-page__timeline-content">
+                      <div className="resume-page__item-header">
+                        <div>
+                          <h4>{exp.role}</h4>
+                          <p className="resume-page__item-company">{exp.company}</p>
+                        </div>
+                        <span className="resume-page__item-date">{exp.startDate} &mdash; {exp.endDate}</span>
+                      </div>
+                      <p className="resume-page__item-desc">{exp.description}</p>
+                    </div>
+                  </div>
+                ))}
               </div>
-            </motion.div>
+            </div>
+          </ScrollReveal>
+
+          {/* Achievements */}
+          <ScrollReveal>
+            <div className="resume-page__section">
+              <h3 className="resume-page__section-title">Achievements</h3>
+              <div className="resume-page__achievements">
+                {PLACEHOLDER_ACHIEVEMENTS.map((a) => (
+                  <div key={a._id} className="resume-page__achievement">
+                    <div className="resume-page__timeline-dot" />
+                    <div className="resume-page__achievement-content">
+                      <span className="resume-page__achievement-title">{a.title}</span>
+                      {a.org && <span className="resume-page__achievement-org">{a.org}</span>}
+                    </div>
+                  </div>
+                ))}
+              </div>
+            </div>
           </ScrollReveal>
 
           {/* Education */}
-          <ScrollReveal direction="up" distance={40} delay={0.2}>
+          <ScrollReveal>
             <div className="resume-page__section">
-              <h3 className="resume-page__section-title">
-                <FaGraduationCap /> Education
-              </h3>
-              {PLACEHOLDER_EDUCATION.map((edu, i) => (
-                <ScrollReveal key={edu._id} direction="left" distance={30} delay={i * 0.08}>
-                  <div className="resume-page__item">
-                    <div className="resume-page__item-header">
-                      <div>
-                        <h4>{edu.degree}</h4>
-                        <p className="resume-page__item-company">
-                          {edu.institution}
-                        </p>
+              <h3 className="resume-page__section-title">Education</h3>
+              <div className="resume-page__timeline">
+                {PLACEHOLDER_EDUCATION.map((edu) => (
+                  <div key={edu._id} className="resume-page__timeline-item">
+                    <div className="resume-page__timeline-dot" />
+                    <div className="resume-page__timeline-content">
+                      <div className="resume-page__item-header">
+                        <div>
+                          <h4>{edu.degree}</h4>
+                          <p className="resume-page__item-company">{edu.institution}</p>
+                        </div>
+                        <span className="resume-page__item-date">
+                          {edu.startYear ? `${edu.startYear} &mdash; ${edu.endYear}` : ''}
+                        </span>
                       </div>
-                      <span className="resume-page__item-date">
-                        {edu.startYear} — {edu.endYear}
-                      </span>
+                      {edu.grade && <p className="resume-page__item-desc">Grade: {edu.grade}</p>}
                     </div>
-                    {edu.grade && (
-                      <p className="resume-page__item-desc">Grade: {edu.grade}</p>
-                    )}
                   </div>
-                </ScrollReveal>
-              ))}
+                ))}
+              </div>
             </div>
           </ScrollReveal>
 
           {/* Skills */}
-          <ScrollReveal direction="up" distance={40} delay={0.25}>
+          <ScrollReveal>
             <div className="resume-page__section">
-              <h3 className="resume-page__section-title">
-                <FaCode /> Technical Skills
-              </h3>
+              <h3 className="resume-page__section-title">Technical Skills</h3>
               <div className="resume-page__skills">
-                {SKILL_CATEGORIES.map((cat, catIdx) => {
-                  const catSkills = PLACEHOLDER_SKILLS.filter(
-                    (s) => s.category === cat.key,
-                  );
+                {SKILL_CATEGORIES.map((cat) => {
+                  const catSkills = PLACEHOLDER_SKILLS.filter((s) => s.category === cat.key);
                   if (catSkills.length === 0) return null;
                   return (
-                    <ScrollReveal key={cat.key} direction="up" distance={25} delay={catIdx * 0.06}>
-                      <div className="resume-page__skill-group">
-                        <h5 style={{ color: cat.color }}>
-                          {cat.icon} {cat.label}
-                        </h5>
-                        <div className="resume-page__skill-tags">
-                          {catSkills.map((s) => (
-                            <span key={s.name} className="resume-page__skill-tag">
-                              {s.name}
-                            </span>
-                          ))}
-                        </div>
+                    <div key={cat.key} className="resume-page__skill-group">
+                      <h5>{cat.label}</h5>
+                      <div className="resume-page__skill-tags">
+                        {catSkills.map((s) => (
+                          <span key={s.name} className="resume-page__skill-tag">{s.name}</span>
+                        ))}
                       </div>
-                    </ScrollReveal>
+                    </div>
                   );
                 })}
               </div>

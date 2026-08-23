@@ -45,11 +45,11 @@ import cert44 from "../assets/certificates/cert44.png";
 import cert45 from "../assets/certificates/cert45.jpeg";
 
 export const NAV_LINKS = [
-  { name: "Home", path: "/", icon: "🏠" },
-  { name: "About", path: "/about", icon: "👤" },
-  { name: "Projects", path: "/projects", icon: "🚀" },
-  { name: "Resume", path: "/resume", icon: "📄" },
-  { name: "Contact", path: "/contact", icon: "💬" },
+  { name: "Home", path: "/" },
+  { name: "About", path: "/about" },
+  { name: "Projects", path: "/projects" },
+  { name: "Resume", path: "/resume" },
+  { name: "Contact", path: "/contact" },
 ];
 
 export const SOCIAL_LINKS = [
@@ -72,14 +72,17 @@ export const SOCIAL_LINKS = [
 ];
 
 export const SKILL_CATEGORIES = [
-  { key: "frontend", label: "Frontend", icon: "🎨", color: "#6c63ff" },
-  { key: "backend", label: "Backend", icon: "⚙️", color: "#00d4aa" },
-  { key: "database", label: "Database", icon: "🗃️", color: "#f59e0b" },
-  { key: "tools", label: "Tools", icon: "🛠️", color: "#ec4899" },
+  { key: "languages", label: "Languages" },
+  { key: "frontend", label: "Frontend" },
+  { key: "backend", label: "Backend" },
+  { key: "database", label: "Databases" },
+  { key: "ai-ml", label: "AI / ML" },
+  { key: "devops", label: "DevOps & Tools" },
+  { key: "concepts", label: "Concepts" },
 ];
 
 export const PROJECT_CATEGORIES = [
-  { key: "all", label: "All Quests" },
+  { key: "all", label: "All" },
   { key: "web", label: "Web Apps" },
   { key: "ai", label: "AI / ML" },
   { key: "other", label: "Other" },
@@ -87,34 +90,70 @@ export const PROJECT_CATEGORIES = [
 
 export const PROFILE = {
   name: "Roshan",
-  tagline: "Full Stack Developer & Creative Coder",
-  roles: [
-    "CSE Student",
-    "Full Stack Developer",
-    "DSA Enthusiast",
-    "Problem Solver",
-  ],
-  bio: "Passionate CSE student with a love for creating beautiful, performant web applications. I turn complex problems into elegant solutions. When I’m not coding, you can find me exploring new tech, gaming, or sipping coffee while brainstorming my next project. Let’s build something amazing together!",
+  tagline: "Full-Stack Engineer — MERN & AI/GenAI",
+  roles: ["Full Stack & AI Developer", "CSE Student", "Problem Solver"],
+  bio: "Third-year Computer Science Engineering student (CGPA 9.28/10) building full-stack and AI-powered applications with JavaScript, Python, React, Node, and FastAPI. I've independently designed and shipped end-to-end systems — a coding-assessment platform, a distributed computing system, and an AI-powered exam platform — and been a finalist in three national-level hackathons.",
   location: "Nashik, Maharashtra, India",
   email: "roshanjadhav4385@gmail.com",
   mobile: "+91 7058601264",
-  avatar: "",
+  avatar: "/photo.jpg",
   stats: {
-    projects: 12,
+    projects: 15,
   },
 };
 
-// Placeholder data for when DB is empty
 export const PLACEHOLDER_SKILLS = [
-  { name: "React", category: "frontend", proficiency: 90 },
-  { name: "JavaScript", category: "frontend", proficiency: 92 },
-
-  { name: "HTML/CSS", category: "frontend", proficiency: 95 },
-  { name: "Node.js", category: "backend", proficiency: 85 },
-  { name: "Express", category: "backend", proficiency: 82 },
-  { name: "Python", category: "backend", proficiency: 25 },
-  { name: "MongoDB", category: "database", proficiency: 80 },
-  { name: "Git", category: "tools", proficiency: 88 },
+  // Languages
+  { name: "C", category: "languages" },
+  { name: "C++", category: "languages" },
+  { name: "Java", category: "languages" },
+  { name: "Python", category: "languages" },
+  { name: "JavaScript (ES6+)", category: "languages" },
+  // Frontend
+  { name: "React.js", category: "frontend" },
+  { name: "HTML5", category: "frontend" },
+  { name: "CSS3", category: "frontend" },
+  { name: "Tailwind CSS", category: "frontend" },
+  { name: "Bootstrap", category: "frontend" },
+  { name: "Responsive Design", category: "frontend" },
+  // Backend
+  { name: "Node.js", category: "backend" },
+  { name: "Express.js", category: "backend" },
+  { name: "FastAPI", category: "backend" },
+  { name: "REST APIs", category: "backend" },
+  { name: "WebSockets", category: "backend" },
+  { name: "JWT Authentication", category: "backend" },
+  { name: "MVC Architecture", category: "backend" },
+  // Databases
+  { name: "MongoDB", category: "database" },
+  { name: "Mongoose", category: "database" },
+  { name: "PostgreSQL", category: "database" },
+  { name: "SQL", category: "database" },
+  { name: "Redis", category: "database" },
+  // AI/ML
+  { name: "Google Gemini API", category: "ai-ml" },
+  { name: "scikit-learn", category: "ai-ml" },
+  { name: "NumPy", category: "ai-ml" },
+  { name: "Pandas", category: "ai-ml" },
+  { name: "OpenCV", category: "ai-ml" },
+  { name: "Generative AI", category: "ai-ml" },
+  { name: "Prompt Engineering", category: "ai-ml" },
+  // DevOps & Tools
+  { name: "Git", category: "devops" },
+  { name: "GitHub", category: "devops" },
+  { name: "Docker", category: "devops" },
+  { name: "Docker Compose", category: "devops" },
+  { name: "Postman", category: "devops" },
+  { name: "Vercel", category: "devops" },
+  { name: "Render", category: "devops" },
+  { name: "VS Code", category: "devops" },
+  // Concepts
+  { name: "DSA", category: "concepts" },
+  { name: "OOP", category: "concepts" },
+  { name: "DBMS", category: "concepts" },
+  { name: "DCN", category: "concepts" },
+  { name: "OS", category: "concepts" },
+  { name: "Agile/Scrum", category: "concepts" },
 ];
 
 export const PLACEHOLDER_PROJECTS = [
@@ -122,16 +161,23 @@ export const PLACEHOLDER_PROJECTS = [
     _id: "1",
     title: "CodeForge - DSA Learning Platform",
     description:
-      "A web platform that provides interactive coding challenges, tutorials, and a community forum for learning data structures and algorithms, with features like code editor, progress tracking, and peer discussions, and video proctoring for coding interviews.",
+      "A full-stack coding-assessment platform combining algorithm visualizations, LeetCode-style problem sets, and leaderboard-based performance tracking, with video-proctoring and tab-switch detection to preserve test integrity.",
     techStack: [
-      "React",
-      "Node.js",
-      "MongoDB",
-      "JWT",
+      "React 19",
+      "Vite",
       "Tailwind CSS",
-      "Express.js",
-      "API Integration",
-      "Video Proctoring",
+      "Monaco Editor",
+      "Node.js",
+      "Express 5",
+      "MongoDB",
+      "Mongoose",
+      "JWT",
+      "Judge0",
+      "Docker",
+      "PostgreSQL",
+      "Redis",
+      "Gemini API",
+      "face-api.js",
     ],
     category: "web",
     featured: true,
@@ -139,7 +185,92 @@ export const PLACEHOLDER_PROJECTS = [
     githubUrl: "https://github.com/roshann635/CodeForge",
     image: "",
   },
-
+  {
+    _id: "14",
+    title: "CoCompute — LAN-Based Distributed Computing Platform",
+    description:
+      "A distributed computing platform that coordinates multiple machines over a local network, with worker discovery, task distribution, resource monitoring, and AI-based job scheduling to make use of available system resources.",
+    techStack: [
+      "Python",
+      "FastAPI",
+      "React 19",
+      "Vite",
+      "Tailwind CSS 4",
+      "PostgreSQL",
+      "SQLAlchemy",
+      "Redis",
+      "WebSockets",
+      "Docker",
+      "scikit-learn",
+      "PySide6",
+    ],
+    category: "web",
+    featured: true,
+    liveUrl: "#",
+    githubUrl: "https://github.com/roshann635/CoCompute",
+    image: "",
+  },
+  {
+    _id: "3",
+    title: "Prep10X - AI-Powered Exam Preparation Platform",
+    description:
+      "A full-stack examination and learning platform with secure authentication, multilingual support, and analytics, backed by a dedicated FastAPI microservice that integrates Gemini, OCR, and document processing for AI-assisted content generation.",
+    techStack: [
+      "React",
+      "Node.js",
+      "MongoDB",
+      "Express.js",
+      "JavaScript",
+      "JWT",
+      "Tailwind CSS 4",
+      "Vite 8",
+      "TanStack React Query",
+      "Gemini AI",
+      "FastAPI",
+      "Python",
+      "OCR",
+      "OpenCV",
+      "Pytesseract",
+      "PyMuPDF",
+      "Docker",
+      "Cloudinary",
+      "Recharts",
+      "i18next",
+      "REST API",
+    ],
+    category: "web",
+    featured: true,
+    liveUrl: "https://prep10x-by-roshan.vercel.app/",
+    githubUrl: "https://github.com/roshann635/prep10x",
+    image: "",
+  },
+  {
+    _id: "4",
+    title: "Samvaad - Chat App",
+    description:
+      "A real-time one-to-one and group messaging app built on Socket.IO, with JWT authentication, secure password hashing, responsive PWA support, and automated API testing via Jest and Supertest.",
+    techStack: [
+      "React 19",
+      "Vite 8",
+      "React Router 7",
+      "Node.js",
+      "MongoDB",
+      "Mongoose 9",
+      "Socket.io",
+      "JWT",
+      "bcrypt",
+      "Axios",
+      "Jest",
+      "Supertest",
+      "PWA",
+    ],
+    category: "web",
+    featured: true,
+    liveUrl: "https://samvaad-where-conversations-come-al.vercel.app/",
+    githubUrl:
+      "https://github.com/roshann635/Samvaad-Where-conversations-come-alive",
+    image: "",
+  },
   {
     _id: "2",
     title: "Skill_Swap - A Peer-to-Peer Learning Platform",
@@ -155,62 +286,9 @@ export const PLACEHOLDER_PROJECTS = [
       "Tailwind CSS",
     ],
     category: "web",
-    featured: true,
+    featured: false,
     liveUrl: "https://skill-swap-rose-mu.vercel.app/",
     githubUrl: "https://github.com/roshann635/Skill_Swap",
-    image: "",
-  },
-  {
-    _id: "3",
-
-    title: "Prep10X - AI-Powered Exam Preparation Platform",
-
-    description:
-      "A bilingual AI-powered examination and preparation platform for competitive exams like MPSC, featuring online mock tests, AI-powered question extraction from PDFs, images and pasted text, automatic question and option detection, English and Marathi (Devanagari) support, personalized performance analytics, AI explanations, study planning, previous-year papers, bookmarks, and an intelligent question management system for administrators.",
-
-    techStack: [
-      "React",
-      "Node.js",
-      "MongoDB",
-      "Express.js",
-      "JavaScript",
-      "JWT",
-      "Tailwind CSS",
-      "Gemini AI",
-      "FastAPI",
-      "Python",
-      "OCR",
-      "PyMuPDF",
-      "Cloudinary",
-      "Recharts",
-      "i18next",
-      "REST API",
-    ],
-
-    category: "web",
-    featured: true,
-    liveUrl: "https://prep10x-by-roshan.vercel.app/",
-    githubUrl: "https://github.com/roshann635/prep10x",
-    image: "",
-  },
-  {
-    _id: "4",
-    title: "Samvaad - Chat App",
-    description: "A web platform that connects people for chatting",
-    techStack: [
-      "React",
-      "Node.js",
-      "MongoDB",
-      "Socket.io",
-      "JWT",
-      "Tailwind CSS",
-      "Express.js",
-    ],
-    category: "web",
-    featured: true,
-    liveUrl: "https://samvaad-where-conversations-come-al.vercel.app/",
-    githubUrl:
-      "https://github.com/roshann635/Samvaad-Where-conversations-come-alive",
     image: "",
   },
   {
@@ -220,7 +298,7 @@ export const PLACEHOLDER_PROJECTS = [
       "A personal portfolio website built with React and Tailwind CSS to showcase projects, skills, and experience, with a responsive design and smooth animations.MongoDB is used to store data and contact form submissions.",
     techStack: ["React", "Node.js", "Express.js", "MongoDB"],
     category: "web",
-    featured: true,
+    featured: false,
     liveUrl: "https://portfolio-weld-eight-88.vercel.app/",
     githubUrl: "https://github.com/roshann635/portfolio",
     image: "",
@@ -232,7 +310,7 @@ export const PLACEHOLDER_PROJECTS = [
       "A web platform that connects NGOs, donors, and volunteers to facilitate social impact projects and community support.",
     techStack: ["React", "Node.js", "MongoDB"],
     category: "web",
-    featured: true,
+    featured: false,
     liveUrl: "#",
     githubUrl:
       "https://github.com/roshann635/SevaSetu--A-platform-connecting-NGO-S-Donors-Volunteer",
@@ -245,7 +323,7 @@ export const PLACEHOLDER_PROJECTS = [
       "An intelligent chatbot powered by GPT with real-time streaming, conversation history, and custom training.",
     techStack: ["JavaScript", "OpenAI", "React", "WebSocket"],
     category: "ai",
-    featured: true,
+    featured: false,
     liveUrl: "#",
     githubUrl: "#",
     image: "",
@@ -257,12 +335,11 @@ export const PLACEHOLDER_PROJECTS = [
       "A collaborative project management tool with Kanban boards, team features, and real-time updates.",
     techStack: ["node.js", "React"],
     category: "web",
-    featured: true,
+    featured: false,
     liveUrl: "#",
     githubUrl: "#",
     image: "",
   },
-
   {
     _id: "9",
     title: "Graph_Plotter-using-graphics",
@@ -275,7 +352,6 @@ export const PLACEHOLDER_PROJECTS = [
     githubUrl: "https://github.com/roshann635/Graph_Plotter-using-graphics",
     image: "",
   },
-
   {
     _id: "10",
     title: "AlgoNova : DSA Visualizer",
@@ -288,7 +364,6 @@ export const PLACEHOLDER_PROJECTS = [
     githubUrl: "#",
     image: "",
   },
-
   {
     _id: "11",
     title: "ProtectHer",
@@ -301,7 +376,6 @@ export const PLACEHOLDER_PROJECTS = [
     githubUrl: "https://github.com/roshann635/protectHer",
     image: "",
   },
-
   {
     _id: "12",
     title: "energy-wise-companion",
@@ -314,7 +388,6 @@ export const PLACEHOLDER_PROJECTS = [
     githubUrl: "#",
     image: "",
   },
-
   {
     _id: "13",
     title: "sheCityAI",
@@ -340,7 +413,6 @@ export const PLACEHOLDER_EDUCATION = [
     endYear: "2028",
     grade: "9.28 CGPA",
   },
-
   {
     _id: "2",
     institution: "H.P.T. Arts and R.Y.K. Science College, Nashik",
@@ -348,7 +420,6 @@ export const PLACEHOLDER_EDUCATION = [
     field: "Science",
     grade: "81.33%",
   },
-
   {
     _id: "3",
     institution: "Adarsh Madhya Vidyalaya, Nashik",
@@ -360,30 +431,31 @@ export const PLACEHOLDER_EDUCATION = [
 export const PLACEHOLDER_EXPERIENCES = [
   {
     _id: "1",
-    role: "Frontend Developer",
-    company: "Indie Studio",
-    startDate: "Jan 2023",
-    endDate: "Present",
+    role: "Infosys Springboard Virtual Internship 7.0",
+    company: "Infosys Springboard",
+    startDate: "Sep 2026",
+    endDate: "Ongoing",
     description:
-      "Built interactive React apps, reusable UI components, and optimized performance across mobile and desktop.",
+      "Selected for a competitive industry internship program through a multi-stage evaluation process; working on real-world engineering problems under industry mentorship.",
+  },
+];
+
+export const PLACEHOLDER_ACHIEVEMENTS = [
+  {
+    _id: "1",
+    title: "Finalist — Nirmaan Hackathon",
+    org: "Amity University Mumbai",
   },
   {
     _id: "2",
-    role: "Full Stack Intern",
-    company: "Tech Innovators",
-    startDate: "Jun 2022",
-    endDate: "Dec 2022",
-    description:
-      "Developed REST APIs with Node.js/MongoDB and integrated authentication, role-based access, and data dashboards.",
+    title: "Finalist — PVG HackHub National Level Hackathon",
+    org: "PVG College",
   },
+  { _id: "3", title: "Finalist — Innovera National Hackathon", org: "" },
   {
-    _id: "3",
-    role: "Open Source Contributor",
-    company: "Community Projects",
-    startDate: "Sep 2021",
-    endDate: "May 2022",
-    description:
-      "Contributed bug fixes and features to React libraries, and wrote docs/tests for friendly onboarding.",
+    _id: "4",
+    title: "Google Cloud Arcade — Full Program Completion",
+    org: "Google Cloud",
   },
 ];
 

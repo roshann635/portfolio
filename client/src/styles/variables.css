@@ -1,42 +1,27 @@
 /* ============================================
-   DESIGN SYSTEM — Cyber Corporate Theme
+   DESIGN SYSTEM — Night / Day Dossier Theme
    ============================================ */
 
 :root {
-  /* ---- Colors ---- */
-  --bg-primary: #050608;
-  --bg-secondary: #0a0d14;
-  --bg-tertiary: #0f141e;
-  --bg-card: rgba(10, 13, 20, 0.7);
-  --bg-glass: rgba(5, 6, 8, 0.6);
+  /* ---- Night Theme (default) ---- */
+  --bg-primary: #0B0B0D;
+  --bg-secondary: #151517;
+  --bg-elevated: #1D1D20;
 
-  --accent-primary: #00ffcc;
-  --accent-primary-rgb: 0, 255, 204;
-  --accent-secondary: #bc13fe;
-  --accent-secondary-rgb: 188, 19, 254;
-  --accent-tertiary: #f59e0b;
-  --accent-tertiary-rgb: 245, 158, 11;
-  --accent-danger: #ef4444;
-  --accent-quaternary: #ec4899;
+  --text-primary: #F4F4F0;
+  --text-secondary: #A6A6AC;
+  --text-muted: #6E6E74;
 
-  --text-primary: #e2e8f0;
-  --text-secondary: #94a3b8;
-  --text-muted: #64748b;
-  --text-heading: #ffffff;
+  --accent-primary: #E9FF3D;
+  --accent-secondary: #3DEFFF;
 
-  --border-color: rgba(0, 255, 204, 0.2);
-  --border-glow: rgba(0, 255, 204, 0.6);
-
-  /* ---- Gradients ---- */
-  --gradient-primary: linear-gradient(135deg, #00ffcc 0%, #bc13fe 100%);
-  --gradient-hero: linear-gradient(135deg, #050608 0%, #0a0d14 50%, #050608 100%);
-  --gradient-card: linear-gradient(145deg, rgba(10, 13, 20, 0.8), rgba(5, 6, 8, 0.4));
-  --gradient-glow: radial-gradient(circle at center, rgba(0, 255, 204, 0.15) 0%, transparent 70%);
+  --border-color: rgba(244, 244, 240, 0.12);
+  --border-accent: rgba(233, 255, 61, 0.4);
 
   /* ---- Typography ---- */
-  --font-heading: 'Space Grotesk', sans-serif;
-  --font-body: 'Inter', sans-serif;
-  --font-mono: 'JetBrains Mono', 'Fira Code', monospace;
+  --font-display: 'Fraunces', serif;
+  --font-body: 'IBM Plex Sans', sans-serif;
+  --font-mono: 'IBM Plex Mono', monospace;
 
   --fs-xs: 0.75rem;
   --fs-sm: 0.875rem;
@@ -61,64 +46,35 @@
 
   /* ---- Layout ---- */
   --max-width: 1200px;
-  --nav-height: 70px;
+  --spine-width: 56px;
+  --nav-height: 48px; /* mobile top bar only */
 
   /* ---- Effects ---- */
-  --radius-sm: 6px;
-  --radius-md: 12px;
-  --radius-lg: 20px;
+  --radius-sm: 4px;
+  --radius-md: 8px;
+  --radius-lg: 16px;
   --radius-full: 9999px;
-
-  --shadow-sm: 0 2px 8px rgba(0, 0, 0, 0.3);
-  --shadow-md: 0 4px 20px rgba(0, 0, 0, 0.4);
-  --shadow-lg: 0 8px 40px rgba(0, 0, 0, 0.5);
-  --shadow-glow: 0 0 20px rgba(188, 19, 254, 0.3);
-  --shadow-glow-teal: 0 0 20px rgba(0, 212, 170, 0.3);
 
   --transition-fast: 0.2s ease;
   --transition-base: 0.3s ease;
   --transition-slow: 0.5s ease;
-  --transition-spring: 0.6s cubic-bezier(0.34, 1.56, 0.64, 1);
-
-  --blur-sm: 8px;
-  --blur-md: 16px;
-  --blur-lg: 24px;
 }
 
-/* ---- Retro Brutalist Theme Override ---- */
-body.retro-theme {
-  --bg-primary: #f4eed9;
-  --bg-secondary: #eae2ca;
-  --bg-tertiary: #ded4b7;
-  --bg-card: #ffffff;
-  --bg-glass: rgba(244, 238, 217, 0.9);
+/* ---- Day Theme Override ---- */
+body.day-theme {
+  --bg-primary: #EAE3D8;
+  --bg-secondary: #D1C7BD;
+  --bg-elevated: #F5F0E8;
 
-  --accent-primary: #000000;
-  --accent-primary-rgb: 0, 0, 0;
-  --accent-secondary: #db2777;
-  --accent-secondary-rgb: 219, 39, 119;
-  --accent-tertiary: #d97706;
-  --accent-tertiary-rgb: 217, 119, 6;
-  --accent-quaternary: #06b6d4;
+  --text-primary: #1E1B17;
+  --text-secondary: #55504A;
+  --text-muted: #8A8378;
 
-  --text-primary: #111111;
-  --text-secondary: #2d2d2d;
-  --text-muted: #555555;
-  --text-heading: #000000;
+  --accent-primary: #0B6E77;
+  --accent-secondary: #A97C00;
 
-  --border-color: #000000;
-  --border-glow: #000000;
-
-  --gradient-primary: linear-gradient(135deg, #000000 0%, #ec4899 100%);
-  --gradient-hero: linear-gradient(135deg, #f4eed9 0%, #eae2ca 100%);
-  --gradient-card: linear-gradient(145deg, #ffffff, #eae2ca);
-  --gradient-glow: radial-gradient(circle at center, rgba(0, 0, 0, 0.05) 0%, transparent 70%);
-
-  --shadow-sm: 2px 2px 0px #000000;
-  --shadow-md: 4px 4px 0px #000000;
-  --shadow-lg: 8px 8px 0px #000000;
-  --shadow-glow: 4px 4px 0px #ec4899;
-  --shadow-glow-teal: 4px 4px 0px #d97706;
+  --border-color: rgba(30, 27, 23, 0.14);
+  --border-accent: rgba(169, 124, 0, 0.4);
 }
 
 /* ---- Responsive font overrides ---- */

@@ -1,11 +1,6 @@
 import { useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
-import {
-  FaMapMarkerAlt,
-  FaGraduationCap,
-  FaCertificate,
-  FaTimes,
-} from "react-icons/fa";
+import { FaMapMarkerAlt, FaChevronDown, FaTimes } from "react-icons/fa";
 import {
   PROFILE,
   PLACEHOLDER_SKILLS,
@@ -15,6 +10,7 @@ import {
 } from "../utils/constants";
 import useFetch from "../hooks/useFetch";
 import ScrollReveal from "../components/common/ScrollReveal";
+import GitHubStats from "../components/common/GitHubStats";
 import "./About.css";
 
 const About = () => {
@@ -23,17 +19,28 @@ const About = () => {
   const { data: dbCertificates } = useFetch("/certificates");
 
   const [previewImage, setPreviewImage] = useState(null);
+  const [expandedIssuers, setExpandedIssuers] = useState({});
 
   const skills =
     dbSkills && dbSkills.length > 0 ? dbSkills : PLACEHOLDER_SKILLS;
-
   const education =
     dbEducation && dbEducation.length > 0 ? dbEducation : PLACEHOLDER_EDUCATION;
-
   const certificates =
     dbCertificates && dbCertificates.length > 0
       ? dbCertificates
       : PLACEHOLDER_CERTIFICATES;
+
+  // Group certificates by issuer
+  const certsByIssuer = certificates.reduce((acc, cert) => {
+    const issuer = cert.issuer || "Other";
+    if (!acc[issuer]) acc[issuer] = [];
+    acc[issuer].push(cert);
+    return acc;
+  }, {});
+
+  const toggleIssuer = (issuer) => {
+    setExpandedIssuers((prev) => ({ ...prev, [issuer]: !prev[issuer] }));
+  };
 
   return (
     <div
@@ -41,93 +48,80 @@ const About = () => {
       style={{ paddingTop: "calc(var(--nav-height) + var(--space-3xl))" }}
     >
       <div className="container">
-        {/* About Header */}
-        <ScrollReveal direction="up" distance={40} duration={0.8}>
+        {/* Header */}
+        <ScrollReveal>
           <div className="section-title">
-            <h2>About Me</h2>
-            <p>Get to know the developer behind the code</p>
+            <h2>About</h2>
+            <p>Background and capabilities</p>
           </div>
         </ScrollReveal>
 
-        <ScrollReveal direction="up" distance={50} delay={0.1}>
-          <motion.div
-            className="about__intro glass-card"
-            whileHover={{ y: -4 }}
-            transition={{ duration: 0.3 }}
-          >
-            <div className="about__intro-avatar">
-              <span>👨‍💻</span>
+        {/* Intro: three-column (portrait + bio + facts) */}
+        <ScrollReveal>
+          <div className="about__intro">
+            <div className="about__portrait">
+              <img
+                src={PROFILE.avatar || "/photo.jpg"}
+                alt={PROFILE.name}
+                className="about__portrait-img"
+              />
             </div>
-            <div className="about__intro-content">
+            <div className="about__intro-bio">
               <h3>{PROFILE.name}</h3>
               <p className="about__intro-role">{PROFILE.tagline}</p>
-              <p className="about__intro-bio">{PROFILE.bio}</p>
-              <div className="about__intro-meta">
-                <span>
+              <p className="about__intro-text">{PROFILE.bio}</p>
+            </div>
+            <div className="about__intro-facts">
+              <div className="about__fact">
+                <span className="about__fact-label">Location</span>
+                <span className="about__fact-value">
                   <FaMapMarkerAlt /> {PROFILE.location}
                 </span>
-                <span className="badge teal">🟢 Available for hire</span>
+              </div>
+              <div className="about__fact">
+                <span className="about__fact-label">Current</span>
+                <span className="about__fact-value">
+                  Infosys Springboard Intern
+                </span>
+              </div>
+              <div className="about__fact">
+                <span className="about__fact-label">Focus</span>
+                <span className="about__fact-value">MERN Stack & AI/GenAI</span>
+              </div>
+              <div className="about__fact">
+                <span className="about__fact-label">Status</span>
+                <span className="about__fact-value">Open to opportunities</span>
               </div>
             </div>
-          </motion.div>
+          </div>
         </ScrollReveal>
 
-        {/* Skills - RPG Stats */}
+        {/* Live GitHub Stats */}
+        <ScrollReveal>
+          <GitHubStats username="roshann635" />
+        </ScrollReveal>
+
+        {/* Skills */}
         <section className="about__skills">
-          <ScrollReveal direction="up" distance={40}>
+          <ScrollReveal>
             <div className="section-title">
-              <h2>Skill Tree</h2>
-              <p>Character stats & abilities</p>
+              <h2>Skills</h2>
+              <p>Technologies and tools I work with</p>
             </div>
           </ScrollReveal>
 
-          {SKILL_CATEGORIES.map((category, catIdx) => {
+          {SKILL_CATEGORIES.map((category) => {
             const catSkills = skills.filter((s) => s.category === category.key);
             if (catSkills.length === 0) return null;
-
             return (
-              <ScrollReveal
-                key={category.key}
-                direction="left"
-                distance={40}
-                delay={catIdx * 0.08}
-              >
+              <ScrollReveal key={category.key}>
                 <div className="about__skill-group">
-                  <h4 className="about__skill-category">
-                    <span>{category.icon}</span> {category.label}
-                  </h4>
-                  <div className="about__skill-list">
-                    {catSkills.map((skill, i) => (
-                      <motion.div
-                        key={skill.name}
-                        className="about__skill-item"
-                        initial={{ opacity: 0 }}
-                        whileInView={{ opacity: 1 }}
-                        viewport={{ once: true }}
-                        transition={{ delay: i * 0.05 }}
-                      >
-                        <div className="about__skill-header">
-                          <span className="about__skill-name">{skill.name}</span>
-                          <span
-                            className="about__skill-level"
-                            style={{ color: category.color }}
-                          >
-                            {skill.proficiency}%
-                          </span>
-                        </div>
-                        <div className="stat-bar">
-                          <motion.div
-                            className="stat-bar-fill"
-                            initial={{ width: 0 }}
-                            whileInView={{ width: `${skill.proficiency}%` }}
-                            viewport={{ once: true }}
-                            transition={{ duration: 1.2, delay: i * 0.05 }}
-                            style={{
-                              background: `linear-gradient(90deg, ${category.color}, ${category.color}88)`,
-                            }}
-                          />
-                        </div>
-                      </motion.div>
+                  <h4 className="about__skill-category">{category.label}</h4>
+                  <div className="about__skill-pills">
+                    {catSkills.map((skill) => (
+                      <span key={skill.name} className="about__skill-pill">
+                        {skill.name}
+                      </span>
                     ))}
                   </div>
                 </div>
@@ -138,109 +132,86 @@ const About = () => {
 
         {/* Education */}
         <section className="about__education">
-          <ScrollReveal direction="up" distance={40}>
+          <ScrollReveal>
             <div className="section-title">
-              <h2>Training Grounds</h2>
+              <h2>Education</h2>
               <p>Academic qualifications</p>
             </div>
           </ScrollReveal>
 
-          <div className="about__education-grid">
-            {education.map((edu, i) => (
-              <ScrollReveal
-                key={edu._id}
-                direction="up"
-                distance={40}
-                delay={i * 0.1}
-              >
-                <motion.div
-                  className="about__education-card glass-card"
-                  whileHover={{
-                    y: -6,
-                    boxShadow: "0 0 25px rgba(0, 255, 204, 0.12)",
-                  }}
-                  transition={{ duration: 0.3 }}
-                >
-                  <div className="about__education-icon">
-                    <FaGraduationCap />
+          <div className="about__education-list">
+            {education.map((edu) => (
+              <ScrollReveal key={edu._id}>
+                <div className="about__education-item">
+                  <div className="about__education-dot" />
+                  <div className="about__education-content">
+                    <h4>{edu.degree}</h4>
+                    <p className="about__education-inst">{edu.institution}</p>
+                    <div className="about__education-meta">
+                      {edu.startYear && (
+                        <span>
+                          {edu.startYear} — {edu.endYear}
+                        </span>
+                      )}
+                      {edu.grade && (
+                        <span className="about__education-grade">
+                          {edu.grade}
+                        </span>
+                      )}
+                    </div>
                   </div>
-                  <h4>{edu.degree}</h4>
-                  <p className="about__education-inst">{edu.institution}</p>
-                  <div className="about__education-meta">
-                    <span>
-                      {edu.startYear} — {edu.endYear}
-                    </span>
-                    {edu.grade && (
-                      <span className="badge amber">{edu.grade}</span>
-                    )}
-                  </div>
-                </motion.div>
+                </div>
               </ScrollReveal>
             ))}
           </div>
         </section>
 
-        {/* Certificates */}
-        <section className="about__certificates">
-          <ScrollReveal direction="up" distance={40}>
+        {/* Certifications */}
+        <section className="about__certs">
+          <ScrollReveal>
             <div className="section-title">
-              <h2>Achievements Unlocked</h2>
-              <p>Certifications & credentials earned</p>
+              <h2>Certifications</h2>
+              <p>{certificates.length} credentials earned</p>
             </div>
           </ScrollReveal>
 
-          <div className="about__certificates-grid">
-            {certificates.map((cert, i) => (
-              <ScrollReveal
-                key={cert._id}
-                direction="up"
-                distance={40}
-                delay={i * 0.1}
-              >
-                <motion.div
-                  className="about__certificate-card glass-card"
-                  whileHover={{
-                    y: -6,
-                    boxShadow: "0 0 25px rgba(108, 99, 255, 0.15)",
-                  }}
-                  transition={{ duration: 0.3 }}
+          <div className="about__certs-accordion">
+            {Object.entries(certsByIssuer).map(([issuer, certs]) => (
+              <div key={issuer} className="about__certs-group">
+                <button
+                  className={`about__certs-header ${expandedIssuers[issuer] ? "about__certs-header--open" : ""}`}
+                  onClick={() => toggleIssuer(issuer)}
+                  aria-expanded={!!expandedIssuers[issuer]}
                 >
-                  {/* Screenshot thumbnail */}
-                  {cert.image && (
-                    <div
-                      className="about__certificate-image"
-                      onClick={() => setPreviewImage(cert.image)}
-                      role="button"
-                      tabIndex={0}
-                      onKeyDown={(e) =>
-                        e.key === "Enter" && setPreviewImage(cert.image)
-                      }
-                    >
-                      <img src={cert.image} alt={cert.title} loading="lazy" />
-                      <div className="about__certificate-image-overlay">
-                        <span>View</span>
+                  <span className="about__certs-issuer">{issuer}</span>
+                  <span className="about__certs-count">{certs.length}</span>
+                  <FaChevronDown className="about__certs-chevron" />
+                </button>
+                {expandedIssuers[issuer] && (
+                  <div className="about__certs-list">
+                    {certs.map((cert) => (
+                      <div key={cert._id} className="about__cert-row">
+                        <span className="about__cert-title">{cert.title}</span>
+                        {cert.image && (
+                          <button
+                            className="about__cert-view"
+                            onClick={() => setPreviewImage(cert.image)}
+                            aria-label={`View ${cert.title}`}
+                          >
+                            View
+                          </button>
+                        )}
                       </div>
-                    </div>
-                  )}
-
-                  <div className="about__certificate-body">
-                    <div className="about__certificate-icon">
-                      <FaCertificate />
-                    </div>
-                    <h4 className="about__certificate-title">{cert.title}</h4>
-                    <p className="about__certificate-issuer">{cert.issuer}</p>
-                    <div className="about__certificate-meta">
-                      {cert.date && <span className="about__certificate-date">{cert.date}</span>}
-                    </div>
+                    ))}
                   </div>
-                </motion.div>
-              </ScrollReveal>
+                )}
+              </div>
             ))}
           </div>
         </section>
       </div>
 
-      {/* Lightbox for certificate screenshots */}
+      {/* Lightbox */}
       <AnimatePresence>
         {previewImage && (
           <motion.div
@@ -252,10 +223,9 @@ const About = () => {
           >
             <motion.div
               className="about__lightbox-content"
-              initial={{ scale: 0.85, opacity: 0 }}
+              initial={{ scale: 0.9, opacity: 0 }}
               animate={{ scale: 1, opacity: 1 }}
-              exit={{ scale: 0.85, opacity: 0 }}
-              transition={{ type: "spring", damping: 25, stiffness: 300 }}
+              exit={{ scale: 0.9, opacity: 0 }}
               onClick={(e) => e.stopPropagation()}
             >
               <button

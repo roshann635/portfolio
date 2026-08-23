@@ -1,215 +1,109 @@
-import { useState, useEffect, useRef } from "react";
-import { Link, useLocation } from "react-router-dom";
-import { motion, AnimatePresence } from "framer-motion";
-import { HiMenuAlt3, HiX } from "react-icons/hi";
-import { NAV_LINKS } from "../../utils/constants";
-import { getScrollProgress } from "../../utils/helpers";
-import "./Navbar.css";
+import { useState } from 'react';
+import { Link, useLocation } from 'react-router-dom';
+import { NAV_LINKS } from '../../utils/constants';
+import './Navbar.css';
 
-/**
- * Navbar — Premium glass navbar with:
- *   - Hide on scroll down / show on scroll up
- *   - Animated underline indicator (layoutId)
- *   - Theme switcher (Midnight Neon <-> Retro Brutalist)
- *   - Glowing scroll progress bar
- */
-const Navbar = () => {
-  const [isOpen, setIsOpen] = useState(false);
-  const [scrolled, setScrolled] = useState(false);
-  const [hidden, setHidden] = useState(false);
-  const [progress, setProgress] = useState(0);
-  const [theme, setTheme] = useState("midnight");
+const CHAPTERS = NAV_LINKS.map((link, i) => ({
+  ...link,
+  chapter: String(i + 1).padStart(2, '0'),
+}));
+
+const Navbar = ({ theme, onToggleTheme, onOpenCommandPalette }) => {
   const location = useLocation();
-  const lastScrollY = useRef(0);
+  const [showLabel, setShowLabel] = useState(false);
 
-  // Initialize and listen to theme changes
-  useEffect(() => {
-    const savedTheme = localStorage.getItem("portfolio-theme") || "midnight";
-    setTheme(savedTheme);
-    if (savedTheme === "retro") {
-      document.body.classList.add("retro-theme");
-    } else {
-      document.body.classList.remove("retro-theme");
-    }
-  }, []);
-
-  const toggleTheme = () => {
-    const newTheme = theme === "midnight" ? "retro" : "midnight";
-    setTheme(newTheme);
-    localStorage.setItem("portfolio-theme", newTheme);
-    if (newTheme === "retro") {
-      document.body.classList.add("retro-theme");
-    } else {
-      document.body.classList.remove("retro-theme");
-    }
-  };
-
-  // Scroll listener for scrolled state, progress bar, hide/show
-  useEffect(() => {
-    const handleScroll = () => {
-      const currentY = window.scrollY;
-
-      setScrolled(currentY > 50);
-      setProgress(getScrollProgress());
-
-      // Hide/show based on scroll direction
-      if (currentY > 300) {
-        setHidden(currentY > lastScrollY.current && currentY - lastScrollY.current > 5);
-      } else {
-        setHidden(false);
-      }
-
-      lastScrollY.current = currentY;
-    };
-
-    window.addEventListener("scroll", handleScroll, { passive: true });
-    return () => window.removeEventListener("scroll", handleScroll);
-  }, []);
-
-  useEffect(() => {
-    setIsOpen(false);
-  }, [location]);
-
-  // Lock body scroll when mobile menu is open
-  useEffect(() => {
-    if (isOpen) {
-      document.body.style.overflow = 'hidden';
-    } else {
-      document.body.style.overflow = '';
-    }
-    return () => { document.body.style.overflow = ''; };
-  }, [isOpen]);
-
-  // Simple route matching
-  const isLinkActive = (path) => {
-    return location.pathname === path;
-  };
+  const isActive = (path) => location.pathname === path;
 
   return (
     <>
-      <nav
-        className={`navbar ${scrolled ? "navbar--scrolled" : ""} ${hidden ? "navbar--hidden" : ""}`}
-      >
-        <div className="navbar__container container">
-          <Link to="/" className="navbar__logo">
-            <span className="navbar__logo-bracket">&lt;</span>
-            <span className="navbar__logo-text">Portfolio</span>
-            <span className="navbar__logo-bracket">/&gt;</span>
-          </Link>
-
-          <div className="navbar__links">
-            {NAV_LINKS.map((link) => (
-              <Link
-                key={link.path}
-                to={link.path}
-                className={`navbar__link ${isLinkActive(link.path) ? "navbar__link--active" : ""}`}
-              >
-                <span className="navbar__link-icon">{link.icon}</span>
-                {link.name}
-                {/* Underline indicator */}
-                {isLinkActive(link.path) && (
-                  <motion.div
-                    className="navbar__link-underline"
-                    layoutId="navbar-underline"
-                    transition={{ type: "spring", stiffness: 350, damping: 30 }}
-                  />
-                )}
-              </Link>
-            ))}
-          </div>
-
-          <div className="navbar__actions">
-            {/* Theme Toggle Button */}
-            <button
-              onClick={toggleTheme}
-              className="theme-toggle-btn"
-              aria-label="Toggle Theme"
+      {/* Desktop Spine */}
+      <nav className="spine" aria-label="Main navigation">
+        <div className="spine__chapters">
+          {CHAPTERS.map((ch) => (
+            <Link
+              key={ch.path}
+              to={ch.path}
+              className={`spine__item ${isActive(ch.path) ? 'spine__item--active' : ''}`}
+              aria-current={isActive(ch.path) ? 'page' : undefined}
             >
-              {theme === "midnight" ? "⚡ RETRO" : "🌙 NEON"}
-            </button>
-
-            <button
-              className="navbar__toggle"
-              onClick={() => setIsOpen(!isOpen)}
-              aria-label="Toggle menu"
-            >
-              {isOpen ? <HiX size={24} /> : <HiMenuAlt3 size={24} />}
-            </button>
-          </div>
-        </div>
-
-        {/* Scroll Progress Bar */}
-        <div className="xp-bar">
-          <div className="xp-bar-fill" style={{ width: `${progress}%` }} />
+              <span className="spine__label">{ch.chapter} {ch.name}</span>
+              {isActive(ch.path) && <span className="spine__indicator" />}
+            </Link>
+          ))}
         </div>
       </nav>
 
-      {/* Mobile Backdrop + Menu */}
-      <AnimatePresence>
-        {isOpen && (
-          <>
-            <motion.div
-              className="navbar__backdrop"
-              initial={{ opacity: 0 }}
-              animate={{ opacity: 1 }}
-              exit={{ opacity: 0 }}
-              transition={{ duration: 0.2 }}
-              onClick={() => setIsOpen(false)}
-            />
-            <motion.div
-              className="navbar__mobile"
-              initial={{ opacity: 0, x: "100%" }}
-              animate={{ opacity: 1, x: 0 }}
-              exit={{ opacity: 0, x: "100%" }}
-              transition={{ type: "tween", duration: 0.3 }}
+      {/* Mobile Top Bar */}
+      <nav className="topbar" aria-label="Main navigation">
+        <div className="topbar__scroll">
+          {CHAPTERS.map((ch) => (
+            <Link
+              key={ch.path}
+              to={ch.path}
+              className={`topbar__item ${isActive(ch.path) ? 'topbar__item--active' : ''}`}
+              aria-current={isActive(ch.path) ? 'page' : undefined}
             >
-              <div className="navbar__mobile-links">
-                {NAV_LINKS.map((link, i) => (
-                  <motion.div
-                    key={link.path}
-                    initial={{ opacity: 0, x: 50 }}
-                    animate={{ opacity: 1, x: 0 }}
-                    transition={{ delay: i * 0.1 }}
-                  >
-                    <Link
-                      to={link.path}
-                      className={`navbar__mobile-link ${isLinkActive(link.path) ? "navbar__mobile-link--active" : ""}`}
-                    >
-                      <span className="navbar__link-icon">{link.icon}</span>
-                      {link.name}
-                    </Link>
-                  </motion.div>
-                ))}
+              {ch.chapter} {ch.name}
+            </Link>
+          ))}
+        </div>
+      </nav>
 
-                <div style={{ marginTop: "1.5rem" }}>
-                  <button
-                    onClick={() => {
-                      toggleTheme();
-                      setIsOpen(false);
-                    }}
-                    className="theme-toggle-btn theme-toggle-btn--mobile"
-                  >
-                    {theme === "midnight" ? "⚡ RETRO BRUTALIST" : "🌙 MIDNIGHT NEON"}
-                  </button>
-                </div>
-              </div>
+      {/* Floating Utilities (Command Palette & Theme Switcher) */}
+      <div className="nav-controls">
+        <button
+          className="cmd-trigger"
+          onClick={onOpenCommandPalette}
+          aria-label="Open Command Palette"
+          title="Open Command Palette (Cmd+K / Ctrl+K)"
+        >
+          <span className="cmd-trigger__text">Search</span>
+          <kbd className="cmd-trigger__kbd">⌘K</kbd>
+        </button>
 
-              <div className="navbar__mobile-xp">
-                <span className="navbar__mobile-xp-label">Explorer XP</span>
-                <div className="stat-bar">
-                  <div
-                    className="stat-bar-fill"
-                    style={{ width: `${progress}%` }}
-                  />
-                </div>
-                <span className="navbar__mobile-xp-value">
-                  {Math.round(progress)}%
-                </span>
-              </div>
-            </motion.div>
-          </>
-        )}
-      </AnimatePresence>
+        <button
+          className="theme-toggle"
+          onClick={onToggleTheme}
+          onMouseEnter={() => setShowLabel(true)}
+          onMouseLeave={() => setShowLabel(false)}
+          aria-label={`Switch to ${theme === 'night' ? 'day' : 'night'} theme`}
+        >
+          <svg
+            className="theme-toggle__icon"
+            width="16"
+            height="16"
+            viewBox="0 0 24 24"
+            fill="none"
+            stroke="currentColor"
+            strokeWidth="2"
+            strokeLinecap="round"
+            strokeLinejoin="round"
+          >
+            {theme === 'night' ? (
+              <>{/* Sun */}
+                <circle cx="12" cy="12" r="5" />
+                <line x1="12" y1="1" x2="12" y2="3" />
+                <line x1="12" y1="21" x2="12" y2="23" />
+                <line x1="4.22" y1="4.22" x2="5.64" y2="5.64" />
+                <line x1="18.36" y1="18.36" x2="19.78" y2="19.78" />
+                <line x1="1" y1="12" x2="3" y2="12" />
+                <line x1="21" y1="12" x2="23" y2="12" />
+                <line x1="4.22" y1="19.78" x2="5.64" y2="18.36" />
+                <line x1="18.36" y1="5.64" x2="19.78" y2="4.22" />
+              </>
+            ) : (
+              <>{/* Moon */}
+                <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z" />
+              </>
+            )}
+          </svg>
+          {showLabel && (
+            <span className="theme-toggle__label">
+              {theme === 'night' ? 'DAY' : 'NIGHT'}
+            </span>
+          )}
+        </button>
+      </div>
     </>
   );
 };
