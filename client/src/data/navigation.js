@@ -15,7 +15,7 @@ export const SOCIAL_LINKS = [
   },
   {
     name: "LeetCode",
-    url: "https://leetcode.com/u/roshan_635/",
+    url: "https://leetcode.com/u/roshan_635",
     icon: "SiLeetcode",
   },
   {

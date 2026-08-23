@@ -6,8 +6,6 @@ export const education = [
     degree: "B.Tech in Computer Science and Engineering",
     field: "Computer Science",
     grade: "9.28 CGPA",
-    startYear: "2024",
-    endYear: "2028",
     status: "Currently Pursuing (Third Year)",
   },
   {
@@ -16,8 +14,6 @@ export const education = [
     degree: "Higher Secondary Certificate (HSC)",
     field: "Science",
     grade: "81.33%",
-    startYear: "2022",
-    endYear: "2024",
   },
   {
     _id: "3",
@@ -25,7 +21,5 @@ export const education = [
     degree: "Secondary School Certificate (SSC)",
     field: "General Science & Mathematics",
     grade: "96.40%",
-    startYear: "2020",
-    endYear: "2022",
   },
 ];
