@@ -11,6 +11,7 @@ import {
   FaGithub,
   FaLinkedin,
 } from "react-icons/fa";
+import { SiLeetcode } from "react-icons/si";
 import {
   PROFILE,
   PLACEHOLDER_EDUCATION,
@@ -169,9 +170,17 @@ const ProfileModal = ({ isOpen, onClose }) => {
                     variant="ghost"
                     size="sm"
                     icon={<FaLinkedin />}
-                    href="https://www.linkedin.com/in/roshan-jadhav-100410339"
+                    href={PROFILE.socials.linkedin}
                   >
                     LinkedIn
+                  </Button>
+                  <Button
+                    variant="ghost"
+                    size="sm"
+                    icon={<SiLeetcode />}
+                    href={PROFILE.socials.leetcode}
+                  >
+                    LeetCode
                   </Button>
                 </div>
               </div>

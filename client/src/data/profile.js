@@ -18,6 +18,7 @@ export const profile = {
   socials: {
     github: "https://github.com/roshann635",
     linkedin: "https://www.linkedin.com/in/roshan-jadhav-100410339",
+    leetcode: "https://leetcode.com/u/roshan_635",
     portfolioRepo: "https://github.com/roshann635/portfolio",
   },
   stats: {

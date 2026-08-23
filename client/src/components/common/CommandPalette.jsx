@@ -16,6 +16,7 @@ import {
   FaCopy,
   FaExternalLinkAlt,
 } from "react-icons/fa";
+import { SiLeetcode } from "react-icons/si";
 import { PROFILE, PLACEHOLDER_PROJECTS } from "../../utils/constants";
 import "./CommandPalette.css";
 
@@ -136,11 +137,16 @@ const CommandPalette = ({ isOpen, onClose, onToggleTheme, currentTheme }) => {
       icon: <FaLinkedin />,
       shortcut: "LinkedIn",
       run: () =>
-        window.open(
-          "https://www.linkedin.com/in/roshan-jadhav-100410339",
-          "_blank",
-          "noopener,noreferrer",
-        ),
+        window.open(PROFILE.socials.linkedin, "_blank", "noopener,noreferrer"),
+    },
+    {
+      id: "ext-leetcode",
+      title: "Open LeetCode Profile",
+      category: "Links",
+      icon: <SiLeetcode />,
+      shortcut: "LeetCode",
+      run: () =>
+        window.open(PROFILE.socials.leetcode, "_blank", "noopener,noreferrer"),
     },
   ];
 

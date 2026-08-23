@@ -247,6 +247,13 @@ const Terminal = () => {
         });
         break;
 
+      case "socials":
+        newEntries.push({
+          type: "output",
+          text: `GitHub:   ${PROFILE.socials.github}\nLinkedIn: ${PROFILE.socials.linkedin}\nLeetCode: ${PROFILE.socials.leetcode}\nEmail:    ${PROFILE.email}`,
+        });
+        break;
+
       case "clear":
         setHistory([]);
         setInputVal("");
