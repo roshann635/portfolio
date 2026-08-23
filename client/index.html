@@ -18,7 +18,7 @@
 
     <!-- Open Graph / Facebook / LinkedIn -->
     <meta property="og:type" content="website" />
-    <meta property="og:url" content="https://roshann635.github.io/" />
+    <meta property="og:url" content="https://roshan-635.vercel.app/" />
     <meta
       property="og:title"
       content="Roshan Jadhav — Full-Stack & AI Engineer"
@@ -41,6 +41,38 @@
     />
     <meta name="twitter:image" content="/photo.jpg" />
 
+    <!-- Structured Data (JSON-LD) for Crawlers & Search Engines -->
+    <script type="application/ld+json">
+      {
+        "@context": "https://schema.org",
+        "@type": "Person",
+        "name": "Roshan Jadhav",
+        "jobTitle": "Full-Stack Engineer",
+        "description": "Third-year Computer Science Engineering student (CGPA 9.28/10) building full-stack and AI-powered applications with JavaScript, Python, React, Node, and FastAPI.",
+        "url": "https://roshan-635.vercel.app",
+        "sameAs": [
+          "https://github.com/roshann635",
+          "https://www.linkedin.com/in/roshan-jadhav-100410339"
+        ],
+        "knowsAbout": [
+          "React",
+          "FastAPI",
+          "Node.js",
+          "Python",
+          "JavaScript",
+          "MongoDB",
+          "PostgreSQL",
+          "Docker",
+          "Artificial Intelligence",
+          "Distributed Computing"
+        ],
+        "alumniOf": {
+          "@type": "CollegeOrUniversity",
+          "name": "K.K. Wagh Institute of Engineering Education and Research"
+        }
+      }
+    </script>
+
     <!-- Google Fonts Preconnect & Display Swap -->
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
@@ -51,7 +83,81 @@
     <title>Roshan's Portfolio</title>
   </head>
   <body>
-    <div id="root"></div>
+    <!-- Pre-rendered semantic DOM snapshot for web crawlers, scrapers & non-JS engines -->
+    <div id="root">
+      <header>
+        <h1>Roshan Jadhav</h1>
+        <p>Full-Stack Engineer — MERN & AI/GenAI</p>
+        <p>Third-year Computer Science Engineering student (CGPA 9.28/10) building full-stack and AI-powered applications with JavaScript, Python, React, Node, and FastAPI.</p>
+        <ul>
+          <li><strong>Location:</strong> Nashik, Maharashtra, India</li>
+          <li><strong>Institute:</strong> K.K. Wagh Institute of Engineering Education and Research</li>
+          <li><strong>Degree:</strong> B.Tech in Computer Science (2024—2028, 9.28 CGPA)</li>
+          <li><strong>Internship:</strong> Infosys Springboard Virtual Internship 7.0</li>
+        </ul>
+      </header>
+
+      <main>
+        <section>
+          <h2>Featured Engineering Projects</h2>
+          <article>
+            <h3>CodeForge - DSA Learning Platform</h3>
+            <p>A full-stack coding-assessment platform combining algorithm visualizations, LeetCode-style problem sets, and leaderboard-based performance tracking, with video-proctoring and tab-switch detection.</p>
+            <p>Tech Stack: React 19, Vite, Tailwind CSS, Monaco Editor, Node.js, Express 5, MongoDB, Judge0, Docker, PostgreSQL, Redis, Gemini API, face-api.js</p>
+            <p><a href="https://codeforge-eta.vercel.app/">Live Deployment</a> | <a href="https://github.com/roshann635/CodeForge">Source Code</a></p>
+          </article>
+
+          <article>
+            <h3>CoCompute — LAN-Based Distributed Computing Platform</h3>
+            <p>A distributed computing platform that coordinates multiple machines over a local network, with worker discovery, task distribution, resource monitoring, and AI-based job scheduling.</p>
+            <p>Tech Stack: Python, FastAPI, React 19, Vite, Tailwind CSS 4, PostgreSQL, SQLAlchemy, Redis, WebSockets, Docker, scikit-learn, PySide6</p>
+            <p><a href="https://github.com/roshann635/CoCompute">Source Code</a></p>
+          </article>
+
+          <article>
+            <h3>Prep10X - AI-Powered Exam Preparation Platform</h3>
+            <p>A full-stack examination and learning platform with secure authentication, multilingual support, and analytics, backed by a dedicated FastAPI microservice that integrates Gemini, OCR, and document processing.</p>
+            <p>Tech Stack: React, Node.js, MongoDB, Express.js, JWT, FastAPI, Python, OCR, OpenCV, Pytesseract, Docker, Gemini AI</p>
+            <p><a href="https://prep10x-by-roshan.vercel.app/">Live Deployment</a> | <a href="https://github.com/roshann635/prep10x">Source Code</a></p>
+          </article>
+
+          <article>
+            <h3>Samvaad - Chat App</h3>
+            <p>A real-time one-to-one and group messaging app built on Socket.IO, with JWT authentication, secure password hashing, responsive PWA support, and automated API testing.</p>
+            <p>Tech Stack: React 19, Vite, React Router 7, Node.js, MongoDB, Mongoose 9, Socket.io, JWT, bcrypt</p>
+            <p><a href="https://samvaad-where-conversations-come-al.vercel.app/">Live Deployment</a> | <a href="https://github.com/roshann635/Samvaad-Where-conversations-come-alive">Source Code</a></p>
+          </article>
+        </section>
+
+        <section>
+          <h2>Technical Skills</h2>
+          <p><strong>Languages:</strong> C, C++, Java, Python, JavaScript (ES6+)</p>
+          <p><strong>Frontend:</strong> React.js, HTML5, CSS3, Tailwind CSS, Bootstrap, Responsive Design</p>
+          <p><strong>Backend:</strong> Node.js, Express.js, FastAPI, REST APIs, WebSockets, JWT Authentication, MVC Architecture</p>
+          <p><strong>Databases:</strong> MongoDB, Mongoose, PostgreSQL, SQL, Redis</p>
+          <p><strong>AI / ML:</strong> Google Gemini API, scikit-learn, NumPy, Pandas, OpenCV, Generative AI, Prompt Engineering</p>
+          <p><strong>DevOps & Tools:</strong> Git, GitHub, Docker, Docker Compose, Postman, Vercel, Render, VS Code</p>
+        </section>
+
+        <section>
+          <h2>Honors & Achievements</h2>
+          <ul>
+            <li>Finalist — Nirmaan Hackathon (Amity University Mumbai)</li>
+            <li>Finalist — PVG HackHub National Level Hackathon (PVG College)</li>
+            <li>Finalist — Innovera National Hackathon</li>
+            <li>Google Cloud Arcade — Full Program Completion (Google Cloud)</li>
+          </ul>
+        </section>
+
+        <section>
+          <h2>Contact & Links</h2>
+          <p>Email: <a href="mailto:roshanjadhav4385@gmail.com">roshanjadhav4385@gmail.com</a></p>
+          <p>GitHub: <a href="https://github.com/roshann635">https://github.com/roshann635</a></p>
+          <p>LinkedIn: <a href="https://www.linkedin.com/in/roshan-jadhav-100410339">https://www.linkedin.com/in/roshan-jadhav-100410339</a></p>
+        </section>
+      </main>
+    </div>
+
     <script type="module" src="/src/main.jsx"></script>
   </body>
 </html>

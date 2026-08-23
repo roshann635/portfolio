@@ -11,6 +11,7 @@ import {
 import useFetch from "../hooks/useFetch";
 import ScrollReveal from "../components/common/ScrollReveal";
 import GitHubStats from "../components/common/GitHubStats";
+import ProfileModal from "../components/common/ProfileModal";
 import "./About.css";
 
 const About = () => {
@@ -20,6 +21,7 @@ const About = () => {
 
   const [previewImage, setPreviewImage] = useState(null);
   const [expandedIssuers, setExpandedIssuers] = useState({});
+  const [isProfileModalOpen, setIsProfileModalOpen] = useState(false);
 
   const skills =
     dbSkills && dbSkills.length > 0 ? dbSkills : PLACEHOLDER_SKILLS;
@@ -59,12 +61,25 @@ const About = () => {
         {/* Intro: three-column (portrait + bio + facts) */}
         <ScrollReveal>
           <div className="about__intro">
-            <div className="about__portrait">
+            <div
+              className="about__portrait"
+              onClick={() => setIsProfileModalOpen(true)}
+              role="button"
+              tabIndex={0}
+              aria-label="Maximize profile photo and dossier"
+              onKeyDown={(e) => {
+                if (e.key === "Enter" || e.key === " ") {
+                  e.preventDefault();
+                  setIsProfileModalOpen(true);
+                }
+              }}
+            >
               <img
                 src={PROFILE.avatar || "/photo.jpg"}
                 alt={PROFILE.name}
                 className="about__portrait-img"
               />
+              <span className="about__portrait-expand-badge">MAXIMIZE</span>
             </div>
             <div className="about__intro-bio">
               <h3>{PROFILE.name}</h3>
@@ -240,6 +255,12 @@ const About = () => {
           </motion.div>
         )}
       </AnimatePresence>
+
+      {/* Profile Maximized Modal */}
+      <ProfileModal
+        isOpen={isProfileModalOpen}
+        onClose={() => setIsProfileModalOpen(false)}
+      />
     </div>
   );
 };

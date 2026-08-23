@@ -51,19 +51,33 @@
   padding: 14px;
   height: 280px;
   overflow-y: auto;
+  overscroll-behavior-y: contain;
+  touch-action: pan-y;
+  -webkit-overflow-scrolling: touch;
   display: flex;
   flex-direction: column;
   gap: 8px;
   font-size: 12px;
   line-height: 1.5;
+  scrollbar-width: thin;
+  scrollbar-color: var(--border-color) transparent;
 }
 
 .terminal__body::-webkit-scrollbar {
-  width: 4px;
+  width: 6px;
 }
+
+.terminal__body::-webkit-scrollbar-track {
+  background: transparent;
+}
+
 .terminal__body::-webkit-scrollbar-thumb {
-  background: var(--bg-elevated);
-  border-radius: 2px;
+  background: var(--border-color);
+  border-radius: 4px;
+}
+
+.terminal__body::-webkit-scrollbar-thumb:hover {
+  background: var(--accent-primary);
 }
 
 .terminal__entry {

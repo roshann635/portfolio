@@ -165,6 +165,15 @@
   border: 1px solid var(--border-color);
   border-left: 2px solid var(--accent-primary);
   border-radius: var(--radius-sm);
+  cursor: pointer;
+  transition:
+    border-color var(--transition-fast),
+    transform var(--transition-fast);
+}
+
+.hero__credentials:hover {
+  border-color: var(--accent-primary);
+  transform: translateY(-1px);
 }
 
 .hero__portrait {
@@ -175,6 +184,33 @@
   overflow: hidden;
   border: 1px solid var(--border-color);
   background: var(--bg-elevated);
+  position: relative;
+}
+
+.hero__portrait-expand-badge {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  background: rgba(11, 11, 13, 0.85);
+  color: var(--accent-primary);
+  font-family: var(--font-mono);
+  font-size: 7px;
+  font-weight: 700;
+  text-align: center;
+  padding: 2px 0;
+  letter-spacing: 0.05em;
+  opacity: 0.85;
+  transition:
+    opacity var(--transition-fast),
+    background var(--transition-fast),
+    color var(--transition-fast);
+}
+
+.hero__credentials:hover .hero__portrait-expand-badge {
+  opacity: 1;
+  background: var(--accent-primary);
+  color: var(--bg-primary);
 }
 
 .hero__portrait-img {
