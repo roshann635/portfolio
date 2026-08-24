@@ -19,6 +19,11 @@ export const SOCIAL_LINKS = [
     icon: "SiLeetcode",
   },
   {
+    name: "WhatsApp",
+    url: "https://wa.me/917058601264",
+    icon: "FaWhatsapp",
+  },
+  {
     name: "Email",
     url: "mailto:roshanjadhav4385@gmail.com",
     icon: "FaEnvelope",

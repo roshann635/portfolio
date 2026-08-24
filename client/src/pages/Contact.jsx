@@ -1,4 +1,4 @@
-import { FaEnvelope, FaMapMarkerAlt, FaPhone, FaGithub, FaLinkedin } from 'react-icons/fa';
+import { FaEnvelope, FaMapMarkerAlt, FaPhone, FaGithub, FaLinkedin, FaWhatsapp } from 'react-icons/fa';
 import { SiLeetcode } from 'react-icons/si';
 import ContactForm from '../components/contact/ContactForm';
 import { PROFILE } from '../utils/constants';
@@ -8,6 +8,7 @@ import './Contact.css';
 const Contact = () => {
   const contactInfo = [
     { icon: <FaPhone />, label: 'Phone', value: PROFILE.mobile, href: `tel:${PROFILE.mobile}` },
+    { icon: <FaWhatsapp />, label: 'WhatsApp', value: 'Chat on WhatsApp', href: PROFILE.socials.whatsapp },
     { icon: <FaEnvelope />, label: 'Email', value: PROFILE.email, href: `mailto:${PROFILE.email}` },
     { icon: <FaMapMarkerAlt />, label: 'Location', value: PROFILE.location, href: null },
   ];
@@ -16,6 +17,7 @@ const Contact = () => {
     { icon: <FaGithub />, url: PROFILE.socials.github, label: 'GitHub' },
     { icon: <FaLinkedin />, url: PROFILE.socials.linkedin, label: 'LinkedIn' },
     { icon: <SiLeetcode />, url: PROFILE.socials.leetcode, label: 'LeetCode' },
+    { icon: <FaWhatsapp />, url: PROFILE.socials.whatsapp, label: 'WhatsApp' },
     { icon: <FaEnvelope />, url: `mailto:${PROFILE.email}`, label: 'Email' },
   ];
 
@@ -43,7 +45,14 @@ const Contact = () => {
                       <div>
                         <span className="contact-page__info-label">{item.label}</span>
                         {item.href ? (
-                          <a href={item.href} className="contact-page__info-value">{item.value}</a>
+                          <a
+                            href={item.href}
+                            target={item.href.startsWith('http') ? '_blank' : undefined}
+                            rel={item.href.startsWith('http') ? 'noopener noreferrer' : undefined}
+                            className="contact-page__info-value"
+                          >
+                            {item.value}
+                          </a>
                         ) : (
                           <span className="contact-page__info-value">{item.value}</span>
                         )}

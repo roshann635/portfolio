@@ -10,6 +10,7 @@ import {
   FaDownload,
   FaGithub,
   FaLinkedin,
+  FaWhatsapp,
 } from "react-icons/fa";
 import { SiLeetcode } from "react-icons/si";
 import {
@@ -101,6 +102,14 @@ const ProfileModal = ({ isOpen, onClose }) => {
                   >
                     <FaPhone /> {PROFILE.mobile}
                   </a>
+                  <a
+                    href={PROFILE.socials.whatsapp}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="profile-modal__contact-item"
+                  >
+                    <FaWhatsapp /> Chat on WhatsApp
+                  </a>
                   <span className="profile-modal__contact-item">
                     <FaMapMarkerAlt /> {PROFILE.location}
                   </span>
@@ -154,7 +163,7 @@ const ProfileModal = ({ isOpen, onClose }) => {
                     variant="primary"
                     size="sm"
                     icon={<FaDownload />}
-                    href="/resume.pdf"
+                    href="/Roshan-Jadhav-Resume.pdf"
                   >
                     Download Resume
                   </Button>
@@ -162,7 +171,7 @@ const ProfileModal = ({ isOpen, onClose }) => {
                     variant="ghost"
                     size="sm"
                     icon={<FaGithub />}
-                    href="https://github.com/roshann635"
+                    href={PROFILE.socials.github}
                   >
                     GitHub
                   </Button>
@@ -173,6 +182,14 @@ const ProfileModal = ({ isOpen, onClose }) => {
                     href={PROFILE.socials.linkedin}
                   >
                     LinkedIn
+                  </Button>
+                  <Button
+                    variant="ghost"
+                    size="sm"
+                    icon={<FaWhatsapp />}
+                    href={PROFILE.socials.whatsapp}
+                  >
+                    WhatsApp
                   </Button>
                   <Button
                     variant="ghost"

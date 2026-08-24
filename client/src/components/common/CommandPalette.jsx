@@ -13,6 +13,7 @@ import {
   FaDownload,
   FaGithub,
   FaLinkedin,
+  FaWhatsapp,
   FaCopy,
   FaExternalLinkAlt,
 } from "react-icons/fa";
@@ -147,6 +148,15 @@ const CommandPalette = ({ isOpen, onClose, onToggleTheme, currentTheme }) => {
       shortcut: "LeetCode",
       run: () =>
         window.open(PROFILE.socials.leetcode, "_blank", "noopener,noreferrer"),
+    },
+    {
+      id: "ext-whatsapp",
+      title: "Open WhatsApp Chat",
+      category: "Links",
+      icon: <FaWhatsapp />,
+      shortcut: "WhatsApp",
+      run: () =>
+        window.open(PROFILE.socials.whatsapp, "_blank", "noopener,noreferrer"),
     },
   ];
 

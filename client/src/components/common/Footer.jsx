@@ -1,9 +1,16 @@
-import { Link } from 'react-router-dom';
-import { FaGithub, FaLinkedin, FaEnvelope, FaArrowUp, FaCode } from 'react-icons/fa';
-import { SiLeetcode } from 'react-icons/si';
-import { PROFILE, NAV_LINKS } from '../../utils/constants';
-import { scrollToTop } from '../../utils/helpers';
-import './Footer.css';
+import { Link } from "react-router-dom";
+import {
+  FaGithub,
+  FaLinkedin,
+  FaEnvelope,
+  FaArrowUp,
+  FaCode,
+  FaWhatsapp,
+} from "react-icons/fa";
+import { SiLeetcode } from "react-icons/si";
+import { PROFILE, NAV_LINKS } from "../../utils/constants";
+import { scrollToTop } from "../../utils/helpers";
+import "./Footer.css";
 
 const Footer = () => {
   const year = new Date().getFullYear();
@@ -45,6 +52,15 @@ const Footer = () => {
                 <SiLeetcode /> <span>LeetCode</span>
               </a>
               <a
+                href={PROFILE.socials.whatsapp}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="footer__social-link"
+                aria-label="WhatsApp"
+              >
+                <FaWhatsapp /> <span>WhatsApp</span>
+              </a>
+              <a
                 href={`mailto:${PROFILE.email}`}
                 className="footer__social-link"
                 aria-label="Email"
@@ -67,7 +83,11 @@ const Footer = () => {
             <h4 className="footer__heading">Navigation</h4>
             <div className="footer__nav-links">
               {NAV_LINKS.map((link) => (
-                <Link key={link.path} to={link.path} className="footer__nav-link">
+                <Link
+                  key={link.path}
+                  to={link.path}
+                  className="footer__nav-link"
+                >
                   {link.name}
                 </Link>
               ))}
@@ -77,7 +97,8 @@ const Footer = () => {
           <div className="footer__engineering">
             <h4 className="footer__heading">Engineering</h4>
             <p className="footer__tech-note">
-              Flat design ledger system built with React 19, Vite, Framer Motion, and IBM Plex Typography.
+              Flat design ledger system built with React 19, Vite, Framer
+              Motion, and IBM Plex Typography.
             </p>
             <a
               href={PROFILE.socials.portfolioRepo}
@@ -91,8 +112,14 @@ const Footer = () => {
         </div>
 
         <div className="footer__bottom">
-          <p>© {year} {PROFILE.name}. All rights reserved.</p>
-          <button className="footer__scroll-top" onClick={scrollToTop} aria-label="Scroll to top">
+          <p>
+            © {year} {PROFILE.name}. All rights reserved.
+          </p>
+          <button
+            className="footer__scroll-top"
+            onClick={scrollToTop}
+            aria-label="Scroll to top"
+          >
             <FaArrowUp />
           </button>
         </div>

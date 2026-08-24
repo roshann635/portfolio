@@ -9,6 +9,7 @@ export const profile = {
   location: "Maharashtra, India",
   email: "roshanjadhav4385@gmail.com",
   mobile: "+91 7058601264",
+  whatsapp: "https://wa.me/917058601264",
   avatar: "/photo.jpg",
   cgpa: "9.28",
   university: "K.K. Wagh Institute of Engineering Education and Research",
@@ -19,6 +20,7 @@ export const profile = {
     github: "https://github.com/roshann635",
     linkedin: "https://www.linkedin.com/in/roshan-jadhav-100410339",
     leetcode: "https://leetcode.com/u/roshan_635",
+    whatsapp: "https://wa.me/917058601264",
     portfolioRepo: "https://github.com/roshann635/portfolio",
   },
   stats: {
