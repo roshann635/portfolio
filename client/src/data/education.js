@@ -5,7 +5,7 @@ export const education = [
       "K.K. Wagh Institute of Engineering Education and Research, Nashik",
     degree: "B.Tech in Computer Science and Engineering",
     field: "Computer Science",
-    grade: "9.28 CGPA",
+    grade: "9.29 CGPA",
     status: "Currently Pursuing (Third Year)",
   },
   {

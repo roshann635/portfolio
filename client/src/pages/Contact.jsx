@@ -8,7 +8,7 @@ import './Contact.css';
 const Contact = () => {
   const contactInfo = [
     { icon: <FaPhone />, label: 'Phone', value: PROFILE.mobile, href: `tel:${PROFILE.mobile}` },
-    { icon: <FaWhatsapp />, label: 'WhatsApp', value: 'Chat on WhatsApp', href: PROFILE.socials.whatsapp },
+    { icon: <FaWhatsapp />, label: 'WhatsApp', value: 'message on WhatsApp', href: PROFILE.socials.whatsapp },
     { icon: <FaEnvelope />, label: 'Email', value: PROFILE.email, href: `mailto:${PROFILE.email}` },
     { icon: <FaMapMarkerAlt />, label: 'Location', value: PROFILE.location, href: null },
   ];

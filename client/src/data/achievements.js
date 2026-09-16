@@ -3,19 +3,19 @@ export const achievements = [
     _id: "1",
     title: "Finalist — Nirmaan National Hackathon",
     org: "Amity University Mumbai",
-    year: "2025",
+    year: "2026",
     result: "National Finalist",
-    project: "Full-Stack Web Innovation",
+    project: "Authentify - Verification of certificates using Blockchain & AI",
     description:
-      "Engineered and pitched an end-to-end full-stack software prototype under 36-hour timed competitive hackathon conditions.",
+      "Engineered and pitched an end-to-end full-stack software prototype under 48-hour timed competitive hackathon conditions.",
   },
   {
     _id: "2",
     title: "Finalist — PVG HackHub National Level Hackathon",
-    org: "PVG's COET, Pune",
+    org: "PVG's college of Engineering, Nashik",
     year: "2025",
     result: "National Finalist",
-    project: "Distributed & Web Architecture",
+    project: "SevaSetu - NGO & Volunteer Management System",
     description:
       "Selected among top nationwide engineering teams for innovative technology architecture and rapid problem resolution.",
   },
@@ -25,9 +25,6 @@ export const achievements = [
     org: "Innovera Tech Summit",
     year: "2025",
     result: "National Finalist",
-    project: "AI & Algorithmic Solution",
-    description:
-      "Designed and deployed a rapid algorithmic and web software solution during competitive nationwide hackathon tracks.",
   },
   {
     _id: "4",
